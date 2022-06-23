@@ -1,0 +1,1007 @@
+<div class="w3-white">
+
+    <!-- Top container -->
+    <div class="w3-bar w3-top w3-indigo w3-large" style="z-index:4">
+      <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+      <span class="w3-bar-item w3-right">SLL PLATFORM</span>
+    </div>
+    
+    <!-- <?php echo file_get_contents("navigation-admin.html"); ?> -->
+    <app-Header></app-Header>
+    
+    
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+    
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:300px;margin-top:43px;">
+    
+      <!-- Header -->
+      <header class="w3-container" style="padding-top:22px">
+        <h5><b><i class="fa fa-wpforms"></i> Restaurant Account</b></h5>
+      </header>
+        <div class="w3-container w3-white w3-padding-32">
+        <div class="w3-container">
+    <!-- tabs with options -->
+    <div class="tab">
+      <button class="tablinks" hidden id="pa" (click)="opencity('package')" id="defaultOpen">Package</button>
+      <button class="tablinks" hidden (click)="opencity('promo')" id="defaultpromo">Promo & Calendar</button>
+      <button class="tablinks" hidden (click)="opencity('signholder')" id="defaultsign">Sign Holder</button>
+      <button class="tablinks" hidden (click)="opencity('window')" id="defaultwindow">Wall or Tabletop Signs/Window Cling</button>
+      <!-- <button class="tablinks" (click)="opencity('window')" id="defaultwindow"><small>Wall or Tabletop Signs/Window Cling</small></button> -->
+      <button class="tablinks" active (click)="opencity('stockimage')" id="defaultstock">Stock Images</button>
+      <button class="tablinks" (click)="opencity('mail_body')" id="defaultemail">Emails</button>
+      <button class="tablinks" (click)="opencity('instructions')" id="ins">Instructions</button>
+      <button class="tablinks" (click)="opencity('menu_style')" id="menu_st"><small>Configure Menu</small></button>
+      <button class="tablinks" (click)="opencity('help_sec')" id="help_sec">Help Section</button>
+      <button class="tablinks" (click)="opencity('birthday_ins')" id="b_e_ins">Birthday/Events</button>
+      <button class="tablinks" (click)="opencity('event_img')" id="e_img">Event Calendar</button>
+      <button class="tablinks" (click)="opencity('cover_img')" id="c_img">Cover Image</button>
+      <button class="tablinks" (click)="opencity('conf_email')" id="c_email">Order Confirmation</button>
+    
+    </div>
+    <!-- tabs end -->
+    <!-- tab for package -->
+        <div id="package" class="tabcontent" [hidden]="pack">
+        <div style="overflow-x:auto;">
+        <table width="100%" cellspacing="15">
+        <tr>
+        <th scope="col">Sl No</th>
+        <th scope="col">Package Name</th>
+        <th scope="col">Number Of Menu</th>
+        <th scope="col">Special Menu</th>
+        <th scope="col">Set Up Fee</th>
+        <th scope="col">Monthly Fee</th>
+        <!-- <th scope="col">Description </th> -->
+        <th scope="col">Action </th>
+        </tr>
+            
+        <tr align="center">
+        <td>1 <input type="text" value="1" hidden #sl_no></td>
+
+        <td>Standard </td>
+        <td>
+        <select class="w3-input w3-padding-16 w3-border" name="country" #opt id="standard">
+        <option value="Select">Select</option>
+        <option value="O" [selected]="this.stnd_numberofmenu=='O'">One Menu</option>
+        <option value="T" [selected]="this.stnd_numberofmenu=='T'">Two Menus</option>
+        <option value="U" [selected]="this.stnd_numberofmenu=='U'">Unlimited Menus</option>
+        </select>	
+        </td>
+        <td>
+            <input type="radio" id="yes_stnd" name="specialMenuStd" value="Y"> <label for="yes_stnd" class="m-1">Yes</label> 
+            <input type="radio" id="no_stnd" name="specialMenuStd" value="N"> <label for="No_stnd" class="m-1">No</label>
+        </td>
+        <td><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Amount" required="" name="setUpFee" #amm1 (keypress)="preventNonNumericalInput($event)" value="{{this.stndpackage_setupfee}}"></td>
+        <td><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Amount" required="" name="monthlyFee" #amm2 (keypress)="preventNonNumericalInput($event)" value="{{this.stndpacakge__monthlyfee}}"></td>
+        <!-- <td><textarea class="w3-input w3-padding-16 w3-border customTextarea" hidden #desc value={{this.stndpackage_desc}}></textarea></td> -->
+        <td>
+          <!-- <button type="submit" class="btn btn-default editeCustom">Edit</button>  -->
+            <button type="submit" class="btn btn-default saveCustom" (click)="submit(opt.value,sl_no.value,amm1.value,amm2.value)">Save</button></td>
+        </tr>
+            
+        <tr align="center">
+        <td>2 <input type="hidden" name="" value="2" #sl_nostndplus></td>
+        <td>Standard Plus</td>
+        <td>
+        <select class="w3-input w3-padding-16 w3-border" name="country"  #optstndplus>
+        <option value="Select Country">Select</option>
+        <option value="O" [selected]="this.stndpluspacakge__numberofmenu=='O'">One Menu</option>
+        <option value="T" [selected]="this.stndpluspacakge__numberofmenu=='T'">Two Menus</option>
+        <option value="U" [selected]="this.stndpluspacakge__numberofmenu=='U'">Unlimited Menus</option>
+        </select>	
+        </td>
+        <td>
+            <input type="radio" id="yes" name="specialMenuStdPlus" value="Yes"> <label for="yes" class="m-1">Yes</label> 
+            <input type="radio" id="no" name="specialMenuStdPlus" value="No"> <label for="No" class="m-1">No</label>
+        </td>
+        <td><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Amount" required="" name="setUpFee"  #amm1stndplus (keypress)="preventNonNumericalInput($event)" value={{this.stndpluspacakge_setupfee}}></td>
+        <td><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Amount" required="" name="monthlyFee"  #amm2stndplus (keypress)="preventNonNumericalInput($event)" value={{this.stndpluspackage_monthlyfee}}></td>
+        <!-- <td><textarea class="w3-input w3-padding-16 w3-border customTextarea" #descstndplus value={{this.stndpluspacakge_desc}}></textarea></td> -->
+        <td>
+          <!-- <button type="submit" class="btn btn-default editeCustom">Edit</button>  -->
+          <button (click)="submitstndplus(optstndplus.value,sl_nostndplus.value,amm1stndplus.value,amm2stndplus.value)" type="submit" class="btn btn-default saveCustom">Save</button></td>
+        </tr>
+            
+        <tr align="center">
+        <td>3 <input type="hidden" name="" value="3" #slpremium></td>
+        <td>Premium  </td>
+        <td>
+        <select class="w3-input w3-padding-16 w3-border" name="country" #opspremium>
+        <option value="Select Country">Select</option>
+        <option value="O" [selected]="this.premiumpacakge_numberofmenu=='O'">One Menu</option>
+        <option value="T" [selected]=" this.premiumpacakge_numberofmenu=='T'">Two Menus</option>
+        <option value="U" [selected]=" this.premiumpacakge_numberofmenu=='U'">Unlimited Menus</option>
+        </select>	
+        </td>
+        <td>
+            <input type="radio" id="yes_premium" name="specialMenuPremium1" value="Yes" > <label for="yes" class="m-1">Yes</label> 
+            <input type="radio" id="no_premium" name="specialMenuPremium1" value="No"> <label for="No" class="m-1">No</label>
+        </td>
+        <td><input class="w3-input w3-padding-16 w3-border" #amm1premium type="text" placeholder="Amount" required="" name="setUpFee" (keypress)="preventNonNumericalInput($event)" value={{this.premiumpacakge_setupfee}}></td>
+        <td><input class="w3-input w3-padding-16 w3-border" #amm2premium type="text" placeholder="Amount" required="" name="monthlyFee" (keypress)="preventNonNumericalInput($event)" value={{this.premiumpacakge_monthlyfee}}></td>
+        <!-- <td><textarea class="w3-input w3-padding-16 w3-border customTextarea" #descpremium value={{this.premiumpacakge_des}}></textarea></td> -->
+        <td>
+          <!-- <button type="submit" class="btn btn-default editeCustom">Edit</button>  -->
+            <button type="submit" class="btn btn-default saveCustom" (click)="submitpremium(opspremium.value,slpremium.value,amm1premium.value,amm2premium.value)">Save</button></td>
+        </tr>
+            
+        </table> <br>
+        </div>
+        </div>
+            <!--tab for package ends  -->
+            <!-- tab for promo calendar -->
+        <div id="promoCalendar" class="tabcontent" [hidden]="promo">
+        <div style="overflow-x:auto;">
+        <table width="100%" cellspacing="15">
+        <tr>
+        <th scope="col">Sl No</th>
+        <th scope="col">Name</th>
+        <th scope="col">Free</th>
+        <th scope="col">Price</th>
+        <th scope="col">Action</th>
+        </tr>
+            
+        <tr align="center">
+        <td>1 <input type="hidden" name="" value="4" #birth></td>
+        <td>Birthday/Anniversary </td>
+        <td>
+            <input type="radio" id="yes_birth" [checked]="true" name="specialMenuStd1" value="y" (change)="verify('y')"> <label for="yes" class="m-1">Yes</label> 
+            <input type="radio" id="no_birth" name="specialMenuStd1" value="n" (change)="verify('n')"> <label for="No">No</label>
+        </td>
+        <td>
+            <input class="w3-input w3-padding-16 w3-border" id="birthday" type="text" value="{{this.promo_Birthdayprice}}" (keypress)="preventNonNumericalInput($event)" placeholder="Price" required="" name="price" #Price [readonly]="promo1">
+        </td>
+        <td>
+          <!-- <button type="submit" class="btn btn-default editeCustom">Edit</button>  -->
+          <button type="submit" class="btn btn-default saveCustom" (click)="birthdayaniversery(birth.value,Price.value)">Save</button></td>
+    
+        </tr>
+            
+        <tr align="center">
+        <td>2 <input type="hidden" name="" value="5" #sent></td>
+        <td>Entertainment / Event Calendar </td>
+        <td>
+            <input type="radio" id="yes_calend" [checked]="true" name="specialMenu1" value="yes" (change)="verifytre('yes')"> <label for="yes" class="m-1">Yes</label> 
+            <input type="radio" id="no_calend" name="specialMenu1" value="no" (change)="verifytre('no')"> <label for="No">No</label>
+        </td>
+        <td>
+            <input class="w3-input w3-padding-16 w3-border" id="eventcalnedar"  value="{{this.promo_EventCalendarprice}}" type="text" placeholder="Price" (keypress)="preventNonNumericalInput($event)" required="" name="price" #price [readonly]="promo2">
+        </td>
+        <td>
+          <!-- <button type="submit" class="btn btn-default editeCustom">Edit</button>  -->
+          <button type="submit" class="btn btn-default saveCustom" (click)="showeventcalendar(sent.value,price.value)">Save</button></td>
+        </tr>
+            
+        
+            
+        </table> <br>
+        </div>
+        </div>
+    <!-- tab for calendar ends -->
+    <!-- tab for signholder -->
+        <div id="signHolder" class="tabcontent" [hidden]="signhold">
+        <div style="overflow-x:auto;">
+        <table width="100%" cellspacing="15">
+        <tr>
+        <th scope="col">Sl No</th>
+        <th scope="col">Name</th>
+        <th scope="col">Size</th>
+        <th scope="col">Per Holder Price</th>
+        <th scope="col">Action</th>
+        </tr>
+            
+        <tr align="center">
+        <td>1 <input type="hidden" name="" value="6" #tabletop></td>
+        <td>Tabletop Sign Holder</td>
+        <td> 5" x 7"</td>
+        <td>
+            <input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Price" required="" name="price" #text1 value="{{this.signholder_price1}}"  (keypress)="preventNonNumericalInput($event)">
+        </td>
+        <td>
+          <!-- <button type="submit" class="btn btn-default editeCustom">Edit</button> -->
+           <button type="submit" class="btn btn-default saveCustom" (click)="opentabletop(text1.value,tabletop.value)">Save</button></td>
+        </tr>
+            
+        <!-- </tr> -->
+            
+        <tr align="center">
+        <td>2 <input type="hidden" name="" value="7" #wallmount></td>
+        <td>Wall Mount Sign Holder </td>
+        <td> 5" x 7"</td>
+        <td>
+            <input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Price" required="" name="price" value="{{this.signholder_price2}}"  #text2 (keypress)="preventNonNumericalInput($event)">
+        </td>
+        <td>
+          <!-- <button type="submit" class="btn btn-default editeCustom">Edit</button> -->
+           <button type="submit" class="btn btn-default saveCustom" (click)="openwallmount(wallmount.value,text2.value)">Save</button></td>
+        </tr>
+            
+        <!-- </tr> -->
+            
+        <tr align="center">
+        <td>3 <input type="hidden" name="" value="8" #wallmount1></td>
+        <td>Wall Mount Sign Holder</td>
+        <td>8.5" x 11"</td>
+        <td>
+            <input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Price" required="" name="price" #text3 value="{{this.signholder_price3}}" (keypress)="preventNonNumericalInput($event)">
+        </td>
+        <td>
+          <!-- <button type="submit" class="btn btn-default editeCustom">Edit</button>  -->
+          <button type="submit" class="btn btn-default saveCustom" (click)="showwall(wallmount1.value,text3.value)">Save</button></td>
+        </tr>
+            
+        
+            
+        </table> <br>
+        </div>
+    
+        </div>
+    <!-- tab for signholder ends -->
+    <!-- tab for window cling -->
+        <div id="windowCling" class="tabcontent" [hidden]="windowcl">	
+    
+        <div style="overflow-x:auto;">
+        <table width="100%" cellspacing="15">
+        <tr>
+        <th scope="col">Sl No</th>
+        <th scope="col">Name</th>
+        <th scope="col">Size</th>
+        <th scope="col">Per Holder Price</th>
+        <th scope="col">Action</th>
+        </tr>
+            
+        <tr align="center">
+        <td>1 <input type="hidden" name="" value="9" #window></td>
+        <td>Window Clings </td>
+        <td> 6" x 10" </td>
+        <td>
+            <input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Price" required="" name="price" #TEXT value={{this.windowcling_price}}>
+        </td>
+        <td>
+          <!-- <button type="submit" class="btn btn-default editeCustom">Edit</button>  -->
+          <button type="submit" class="btn btn-default saveCustom" (click)="showwindow(window.value,TEXT.value)">Save</button></td>
+        </tr>
+            
+        
+            
+        
+            
+        </table> <br>
+        </div>
+        </div>
+        <!-- tab for windowcling ends -->
+         <!-- tab for stock images -->
+        <div id="stock" class="tabcontent" [hidden]="stockimage">	
+          <div style="overflow-x:auto;">
+          <strong>Upload a stock image for special menu and birthday/anniversary.</strong>
+          <form>
+            <div class="rowCustomFour">
+                <div class="fieldSecHalf">
+                    <label class="titleCustom">Category</label>
+                    <select id="pickup_place_stock_img" #cat_name name="pickup_place" (change)="cat_select()" class="formCss">
+                        <option value="" selected="selected">Select One</option>
+                        <option *ngFor="let c of catData" value="{{c.id}}">{{c.name}}</option>
+                        <!-- <option value="1">Breakfast</option>
+                        <option value="2">Lunch</option>
+                        <option value="3">Dinner</option>
+                        <option value="4">Brunch</option>
+                        <option value="5">Special</option> -->
+                    </select>
+
+                </div>
+
+
+
+            </div>
+        </form>
+        
+              
+        <button hidden  id="logo_crop" (click)="open_crop_modal()" ></button>
+                  <div class="stockDiv">
+                    <input type="file"  #stock_name id="headTitle_stock" name="headTitle" (change)="stock_image_change($event)">
+
+                  </div>
+                  <div class="stockDiv">
+                    <button type="submit" class="btn btn-default saveCustom" (click)="submit_stock_image(cat_name.value)">Submit</button> &nbsp;
+                    <button type="submit" class="btn btn-danger" (click)="reset_stock()">Reset</button>
+
+                  </div>
+
+             
+                  <div  class="prvImgCustom">
+                    <div class="rowCustomFour">
+                      <div class="fieldSecHalf">
+                        <div class="row">
+                          <div class="col-4">
+                            <select id="pickup_place" #cat name="pickup_place_stock" (change)="pic_select(cat.value)" class="formCss">
+                              <option value="" selected>Show all</option>
+                              <option *ngFor="let c of catData" value="{{c.id}}">{{c.name}}</option>
+                             
+                          </select>
+                          </div>
+                          <!-- <label>Category</label> -->
+                         
+                        </div>
+                         
+          
+                      </div>
+          
+          
+          
+                  </div>
+                  <div >
+                    <div class="thumImgContainer" (mouseenter)="show_cross()" (mouseleave)="hide_cross()" *ngIf="imageData.length!=0">
+                     
+                        <div class="thumImgSm" *ngFor="let i of imageData" >
+                          <!-- <span class="close" (click)="deleteImg(i.id);openDeleteModal();">&times;</span> -->
+                          <span class="close" (click)="deleteImg(i.id)"  data-bs-toggle="modal" data-bs-target="#myModal_delete" >&times;</span>
+                        <img [src]="url1+i.img_path" class="stockimgPrev " height="100" width="100" alt="" (click)="open_preview_modal(url1+i.img_path)">
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="row" *ngIf="imageData.length==0">
+                      <div class="col-4"></div>
+                      <div class="col-6 mb-4" >
+                      <!-- <img [src]="url1+i.img_path" class="stockimgPrev" height="100" width="100" alt="" (click)="open_preview_modal(url1+i.img_path)"> -->
+                       <strong>
+                        There are no images under this category.
+                       </strong>  
+                      </div>
+                      <div class="col-2"></div>
+                  </div>
+                    
+                    
+                    <br>
+                  </div>
+                    <!-- <img alt=""> -->
+                </div>
+         
+          </div>
+         
+    
+        </div> 
+       <!-- tab for stock images ends -->
+       <!-- tab for email body text -->
+        <div id="mailid" class="tabcontent" [hidden]="mailbodydiv">	
+          
+          <div style="overflow-x:auto;">
+         
+          <form>
+            <div class="rowCustomFour">
+                <div class="fieldSecHalf">
+                  
+                    <label class="titleCustom">Category</label>
+                    <select id="pickup_place_email_body" #em_body_name name="pickup_place" (change)="em_select(em_body_name.value)" class="formCss">
+                        <option value="" selected="selected">Select One</option>
+                        <option *ngFor="let c of emailtype" value="{{c.id}}">{{c.type_name}}</option>
+                        <!-- <option value="1">Breakfast</option>
+                        <option value="2">Lunch</option>
+                        <option value="3">Dinner</option>
+                        <option value="4">Brunch</option>
+                        <option value="5">Special</option> -->
+                    </select>
+                    <div class="aboutLeft">
+                      <label class="titleCustom">Mail Body (current)</label>
+                      <textarea name="introduction" maxlength="150" rows="6" cols="25" class="formCssTextArea"
+                         readonly> {{emailbodyreadonly}}</textarea>
+
+                  </div>
+                  <div class="aboutLeft">
+                      <label class="titleCustom">Mail Body (update) <b>({{concatdatalength2}}/150)</b></label>
+                      <textarea id="em_bd" name="introduction" maxlength="150" rows="6" cols="25"
+                      (input)="restrict2($event)" (change)="restrict2($event)"   class="formCssTextArea" #about_write_txt></textarea>
+
+                  </div>
+                </div><br>
+                <form action="" class="form-inline">
+
+
+                  
+              </form>
+
+             
+
+            </div>
+        </form>
+        <div class="stockDiv">
+          <button type="submit" class="btn btn-default saveCustom" (click)="post_em_body(em_body_name.value,about_write_txt.value)">Submit</button> &nbsp;
+          <button type="submit" class="btn btn-danger" (click)="reset_email_body()">Reset</button>
+
+        </div>
+              
+        
+          </div>
+         
+    
+        </div> 
+        <!-- tab for email body text ends -->
+        <!-- tab for menu instructions -->
+        <div id="menu_ins" class="tabcontent" [hidden]="instructions">	
+          <div style="overflow-x:auto;">
+          <strong>Add instructions in accordance with the menu.</strong>
+          <form>
+            <div class="rowCustomFour" >
+                <div class="fieldSecHalf">
+                    <label>Menu</label>
+                    <select id="pickup_place_menu_ins"  name="pickup_place" class="formCss" #Menu
+                    (change)="menu_sel(Menu.value)">
+                    <option value="">Select One</option>
+                    <option *ngFor="let mnc of menuchoiceData" value="{{mnc.id}}">{{mnc.menu_description}}</option>
+                 
+                </select>
+                <div class="aboutLeft">
+                  <label class="titleCustom">Instructions <b>({{concatdatalength3}}/250)</b></label>
+                  <textarea id="em_ins" name="introduction" maxlength="250" rows="6" cols="25"
+                  (input)="restrict3($event)" (change)="restrict3($event)"   class="formCssTextArea" #about_ins_txt>{{menu_instruction}}</textarea>
+
+              </div>
+                </div>
+
+
+            </div>
+        </form>
+        <button type="submit" class="btn btn-default saveCustom" (click)="post_ins_body(Menu.value,about_ins_txt.value)">Submit</button> &nbsp;
+        <button type="submit" class="btn btn-danger" (click)="reset_ins()">Reset</button>
+        
+              
+        
+         
+          </div>
+         
+    
+        </div> 
+        <!-- tab for menu instructions ends -->
+        <!-- tab for landing page content stylings -->
+        <div id="menu_bod" class="tabcontent" [hidden]="styling">	
+          <div style="overflow-x:auto;">
+          <strong>Add stylings for footer, navigation and footer content.</strong>
+         
+            <div class="rowCustomFour" >
+                <div class="fieldSecHalf">
+                    <label class="titleCustom">Footer and navigation bar color:</label>
+                   <input type="color" id="bodCol" #bodcol value="{{menubodCol}}">
+                   <label class="titleCustom">Text color:</label>
+                   <input type="color" id="txtCol" #txtcol value="{{menutextCol}}">
+                   <label class="titleCustom">Greeting font color:</label>
+                   <input type="color" id="txtCol" #greetcol value="{{greettextCol}}">
+                 
+                <div class="aboutLeft">
+                  <!-- {{htmlContent}}
+                    
+                  <angular-editor [(ngModel)]="htmlContent" [config]="config"></angular-editor>  -->
+                  <label class="titleCustom"></label>
+                  
+                  <angular-editor [(ngModel)]="editorText" [config]="config"></angular-editor>
+                  <!-- <h5 class="html-header">HTML Output</h5> -->
+                  
+              </div>
+             
+                </div>
+                
+
+            </div>
+        
+        <button type="submit" class="btn btn-default saveCustom" (click)="post_style(bodcol.value,txtcol.value,greetcol.value)">Submit</button> &nbsp;
+        <!-- <button type="submit" class="btn btn-danger" (click)="reset_ins()">Reset</button> -->
+        
+              
+        
+         
+          </div>
+         
+    
+        </div> 
+        <!-- tab for landing page content stylings ends -->
+        <!-- tab for help section instructions -->
+        <div id="help_ins" class="tabcontent" [hidden]="help_section">	
+          <div style="overflow-x:auto;">
+          <strong>Add text for help section.</strong>
+          <form>
+            <div class="rowCustomFour" >
+                <div class="fieldSecHalf">
+                   
+                <div class="aboutLeft">
+                  <label class="titleCustom">Menu:</label>
+                  <textarea id="em_ins" name="introduction" maxlength="250" rows="6" cols="25"
+                     class="formCssTextArea" #menu_txt>{{menu_readonly}}</textarea>
+
+              </div>
+              <div class="aboutLeft">
+                <label class="titleCustom">Calendar:</label>
+                <textarea id="em_ins" name="introduction" maxlength="250" rows="6" cols="25"
+                   class="formCssTextArea" #cal_txt>{{calendar_readonly}}</textarea>
+
+            </div>
+            <div class="aboutLeft">
+              <label class="titleCustom">QR Code Signage:</label>
+              <textarea id="em_ins" name="introduction" maxlength="250" rows="6" cols="25"
+                 class="formCssTextArea" #qrcs_txt>{{qrcs_readonly}}</textarea>
+
+          </div>
+          <div class="aboutLeft">
+            <label class="titleCustom">Birthday/Anniversary:</label>
+            <textarea id="em_ins" name="introduction" maxlength="250" rows="6" cols="25"
+               class="formCssTextArea" #bdad_txt>{{bdad_readonly}}</textarea>
+
+        </div>
+        <div class="aboutLeft">
+          <label class="titleCustom">Contact Information QR Code:</label>
+          <textarea id="em_ins" name="introduction" maxlength="250" rows="6" cols="25"
+             class="formCssTextArea" #circ_txt>{{circ_readonly}}</textarea>
+
+      </div>
+                </div>
+
+
+            </div>
+        </form>
+        <button type="submit" class="btn btn-default saveCustom" (click)="post_help(menu_txt.value,cal_txt.value,qrcs_txt.value,bdad_txt.value,circ_txt.value)">Submit</button> &nbsp;
+        <!-- <button type="submit" class="btn btn-danger" (click)="reset_help()">Reset</button> -->
+        
+              
+        
+         
+          </div>
+         
+    
+        </div> 
+        <!-- tab for help section instructions ends -->
+        <!-- tab for birthday and events instructions -->
+        <div id="be_ins" class="tabcontent" [hidden]="bir_ins">	
+          <div style="overflow-x:auto;">
+          <strong>Add instructions for event calendar and birthdays.</strong>
+         
+            <div class="rowCustomFour" >
+                <div class="fieldSecHalf">
+                   
+                 
+                <div class="aboutLeft">
+                  <!-- {{htmlContent}}
+                    
+                  <angular-editor [(ngModel)]="htmlContent" [config]="config"></angular-editor>  -->
+                  <label class="titleCustom">Birthday/Anniversary Instructions:</label> 
+                  <angular-editor [(ngModel)]="editorText1" [config]="config1"></angular-editor>
+                  <!-- <h5 class="html-header">HTML Output</h5> -->
+                  
+              </div>
+              <div class="aboutLeft">
+                <!-- {{htmlContent}}
+                  
+                <angular-editor [(ngModel)]="htmlContent" [config]="config"></angular-editor>  -->
+               <label class="titleCustom">Event Instructions:</label> 
+                <angular-editor [(ngModel)]="editorText2" [config]="config2"></angular-editor>
+                <!-- <h5 class="html-header">HTML Output</h5> -->
+                
+            </div>
+             
+                </div>
+                
+
+            </div>
+        
+        <button type="submit" class="btn btn-default saveCustom" (click)="post_ev_ins()">Submit</button> &nbsp;
+        <!-- <button type="submit" class="btn btn-danger" (click)="reset_ins()">Reset</button> -->
+        
+              
+        
+         
+          </div>
+         
+    
+        </div> 
+        <!-- tab for birthday and evetns instructions ends -->
+        <!-- tab for uploading default image for events -->
+        <div id="event_image" class="tabcontent" [hidden]="eventimage">	
+          <div style="overflow-x:auto;">
+          <strong class="titleCustom">Upload a default image for event.</strong>
+          
+        
+              
+        <button hidden  id="logo_crop" (click)="open_crop_modal()" ></button>
+                  <div class="stockDiv mt-2">
+                    <input type="file"  #stock_name id="headTitle_stock" name="headTitle" (change)="event_image_change($event)">
+
+                  </div>
+                  <div class="stockDiv">
+                    <button type="submit" class="btn btn-default saveCustom" (click)="submit_event_image()">Submit</button> &nbsp;
+                    <!-- <button type="submit" class="btn btn-danger" (click)="reset_stock()">Reset</button> -->
+
+                  </div>
+
+             
+                  <div  class="prvImgCustom">
+                   
+                  <div >
+                    <div class="thumImgContainer">
+                     
+                        <div class="thumImgSm" *ngIf="event_img" >
+                          <!-- <span class="close" (click)="deleteImg(i.id);openDeleteModal();">&times;</span> -->
+                          <!-- <span class="close" (click)="deleteImg(i.id)"  data-bs-toggle="modal" data-bs-target="#myModal_delete" >&times;</span> -->
+                        <img [src]="event_img" class="stockimgPrev " height="100" width="100" alt="" (click)="open_preview_modal(event_img)">
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="row" *ngIf="imageData.length==0">
+                      <div class="col-4"></div>
+                      <div class="col-6 mb-4" >
+                      <!-- <img [src]="url1+i.img_path" class="stockimgPrev" height="100" width="100" alt="" (click)="open_preview_modal(url1+i.img_path)"> -->
+                       <strong>
+                        There are no images under this category.
+                       </strong>  
+                      </div>
+                      <div class="col-2"></div>
+                  </div>
+                    
+                    
+                    <br>
+                  </div>
+                    <!-- <img alt=""> -->
+                </div>
+         
+          </div>
+         
+    
+        </div> 
+        <!-- tab for uploading default image for events ends -->
+        <!-- tab for default cover image for crossover -->
+        <div id="c_image" class="tabcontent" [hidden]="coverimage">	
+          <div style="overflow-x:auto;">
+          <strong class="titleCustom">Upload a default cover image for the home page.</strong>
+          
+        
+              
+        <button hidden  id="logo_crop" (click)="open_crop_modal()" ></button>
+                  <div class="stockDiv mt-2">
+                    <input type="file"  #cov_name id="headTitle_stock" name="headTitle" (change)="cover_image_change($event)">
+
+                  </div>
+                  <div class="stockDiv">
+                    <button type="submit" class="btn btn-default saveCustom" (click)="submit_cover_image()">Submit</button> &nbsp;
+                    <!-- <button type="submit" class="btn btn-danger" (click)="reset_stock()">Reset</button> -->
+
+                  </div>
+
+             
+                  <div  class="prvImgCustom">
+                   
+                  <div >
+                    <div class="thumImgContainer">
+                     
+                        <div class="thumImgSm" *ngIf="cover_img" >
+                          <!-- <span class="close" (click)="deleteImg(i.id);openDeleteModal();">&times;</span> -->
+                          <!-- <span class="close" (click)="deleteImg(i.id)"  data-bs-toggle="modal" data-bs-target="#myModal_delete" >&times;</span> -->
+                        <img [src]="cover_img" class="stockimgPrev " height="100" width="100" alt="" (click)="open_preview_modal(cover_img)">
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="row" *ngIf="imageData.length==0">
+                      <div class="col-4"></div>
+                      <div class="col-6 mb-4" >
+                      <!-- <img [src]="url1+i.img_path" class="stockimgPrev" height="100" width="100" alt="" (click)="open_preview_modal(url1+i.img_path)"> -->
+                       <strong>
+                        There are no images under this category.
+                       </strong>  
+                      </div>
+                      <div class="col-2"></div>
+                  </div>
+                    
+                    
+                    <br>
+                  </div>
+                    <!-- <img alt=""> -->
+                </div>
+         
+          </div>
+         
+    
+        </div> 
+        <!-- tab for default cover image for crossover ends -->
+        <!-- tab for pdf content -->
+        <div id="confemail" class="tabcontent" [hidden]="show_conf_email">	
+          <div style="overflow-x:auto;">
+          <strong>Submit the text to be shown when the PDF containing the orders will be downloaded.</strong>
+          
+          <div class="aboutLeft mt-4">
+            <label class="titleCustom">Body text:</label>
+            <textarea id="conf_text" name="introduction"  rows="6" cols="15"
+               class="formCssTextArea" #confmsg>{{conf_text_readonly}}</textarea>
+
+        </div>
+              
+        
+         
+          </div>
+         <div class="mt-4">
+          <button type="submit" class="btn btn-default saveCustom" (click)="post_conf_msg(confmsg.value)">Submit</button> &nbsp;
+
+         </div>
+    
+        </div> 
+        <!-- tab for pdf content ends -->
+      </div>
+    
+          </div>
+          
+     <app-footer></app-footer>
+        
+        </div>	        
+        
+        <!-- <?php echo file_get_contents("footer.html"); ?>	 -->
+      
+    
+      <!-- Footer -->
+
+
+
+            <!-- <script>
+                function openCity(evt, cityName) {
+                  var i, tabcontent, tablinks;
+                  tabcontent = document.getElementsByClassName("tabcontent");
+                  for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                  }
+                  tablinks = document.getElementsByClassName("tablinks");
+                  for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+                  }
+                  document.getElementById(cityName).style.display = "block";
+                  evt.currentTarget.className += " active";
+                }
+                </script>	
+                <script>
+                // Get the element with id="defaultOpen" and click on it
+                document.getElementById("defaultOpen").click();
+                </script>		 -->
+                    
+                
+                  <!-- End page content -->
+                
+                <!-- <script>
+                // Get the Sidebar
+                var mySidebar = document.getElementById("mySidebar");
+                
+                // Get the DIV with overlay effect
+                var overlayBg = document.getElementById("myOverlay");
+                
+                // Toggle between showing and hiding the sidebar, and add overlay effect
+                function w3_open() {
+                  if (mySidebar.style.display === 'block') {
+                    mySidebar.style.display = 'none';
+                    overlayBg.style.display = "none";
+                  } else {
+                    mySidebar.style.display = 'block';
+                    overlayBg.style.display = "block";
+                  }
+                }
+                
+                // Close the sidebar with the close button
+                function w3_close() {
+                  mySidebar.style.display = "none";
+                  overlayBg.style.display = "none";
+                }
+                </script> -->
+
+                <div id="snackbar">{{m}}</div>
+
+
+                <!-- <div id="id01" class="w3-modal">
+                <div class="w3-modal-content">
+              
+                  <div class="modal-dialog">
+              
+                    <div class="modal-content">
+              
+                      
+              
+                      <div class="modal-body">
+                    <div class="row">
+                        <div class="col-2 text-center">
+                            <i class="fa fa-minus-circle fa-2x " type="button" [hidden]="ZoomIn"  (click)="zoomOut()"></i>
+                        </div>
+                        <div class="col-9">
+                            <i class="fa fa-plus-circle fa-2x " type="button" [hidden]="Zoomout" (click)="zoomIn()"></i>
+                        </div>
+                        <div class="col-1">
+                            <button class="cropCloseBtn" (click)="close_modal_on_crop()">&times;</button>
+                        </div>
+                    </div>
+                       
+                        <image-cropper [hidden]="hide" [imageChangedEvent]="img_cover"
+                        [maintainAspectRatio]="true" 
+                      
+                        [onlyScaleDown]="false" 
+                       
+                        [cropperMaxWidth]="crop_width"
+                        [cropperMaxHeight]="crop_height"
+                        
+                        
+                        (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+                        (cropperReady)="cropperReady($event)"
+                        (loadImageFailed)="loadImageFailed()"
+                        [style.display]="showCropper ? null: 'none'" [transform]="transform">
+                      </image-cropper>
+              
+                      </div>
+                      <footer class="w3-container w3-right">
+                        <button class="btn btn-danger" style="margin-left: 45%;"  
+                        (click)="click_it()">Save</button>
+                      </footer>
+              
+                    </div>
+              
+                  </div>
+              
+                </div>
+              </div> -->
+              <!-- ngx spinner -->
+        <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "timer" [fullScreen] = "true"><p style="color: white" > Processing... </p></ngx-spinner>
+             <!-- cropper -->
+              <div id="id01" class="w3-modal">
+                <div class="w3-modal-content cropModulContent">
+              
+                  <div class="modal-dialog">
+              
+                    <div class="modal-content modal_contentCustom">
+              
+                      
+              
+                      <div class="modal-body">
+                    <!-- <div class="row">
+                        <div class="col-2 text-center">
+                            <i class="fa fa-minus-circle fa-2x " type="button" [hidden]="ZoomIn"  (click)="zoomOut()"></i>
+                        </div>
+                        <div class="col-2">
+                            <i class="fa fa-plus-circle fa-2x " type="button" [hidden]="Zoomout" (click)="zoomIn()"></i>
+                        </div>
+                        <div class="col-2">
+                            <button class="float-right" (click)="close_modal_on_crop()">&times;</button>
+                        </div>
+                    </div> -->
+            
+                    <ul class="cropBtnTop">
+                        <li><i class="fa fa-minus-circle fa-2x " type="button" [hidden]="ZoomIn"  (click)="zoomOut()"></i></li>
+            <li>                <i class="fa fa-plus-circle fa-2x " type="button" [hidden]="Zoomout" (click)="zoomIn()"></i></li>
+                    <li>                <button class="cropCloseBtn" (click)="close_modal_on_crop()">&times;</button></li>
+                    
+            </ul>
+            
+                       
+                        <image-cropper [hidden]="hide" [imageChangedEvent]="img_cover"
+                        [maintainAspectRatio]="true" 
+                      
+                        [onlyScaleDown]="false" 
+                       
+                        [cropperMaxWidth]="crop_width"
+                        [cropperMaxHeight]="crop_height"
+                        
+                        
+                        (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+                        (cropperReady)="cropperReady($event)"
+                        (loadImageFailed)="loadImageFailed()"
+                        [style.display]="showCropper ? null: 'none'" [transform]="transform">
+                      </image-cropper>
+              
+                      </div>
+                      <footer class="w3-container w3-right cropFooter">
+                        <button class="btn btn-danger"   
+                        (click)="click_it()">Save</button>
+                      </footer>
+              
+                    </div>
+              
+                  </div>
+              
+                </div>
+              </div>
+              <!-- cropper ends -->
+              <!-- preview of images -->
+              <div id="id02" class="w3-modal">
+                <div class="w3-modal-content">
+              
+                  <!-- <div class="modal-dialog"> -->
+              
+                    <div class="modal-content">
+              
+                     
+              
+                      <div class="modal-body">
+                    <div class="row">
+                      <div class="col-2 text-center">
+                        <!-- <i class="fa fa-minus-circle fa-2x " type="button" [hidden]="ZoomIn"  (click)="zoomOut()"></i> -->
+                    </div>
+                    <div class="col-9">
+                        <!-- <i class="fa fa-plus-circle fa-2x " type="button" [hidden]="Zoomout" (click)="zoomIn()"></i> -->
+                    </div>
+                        <div class="col-1">
+                          <ul class="cropBtnTop">
+                            <!-- <button class="pull-right shiftEnd" >&times;</button> -->
+                    <li>  <button class="cropCloseBtn" (click)="close_preview_modal()">&times;</button></li>
+                          </ul>
+
+                            <!-- <i class="fa fa-times-circle fa-2x" type="button" (click)="close_preview_modal()" aria-hidden="true"></i> -->
+                        </div>
+                    </div>
+                       
+                       
+                      </div>
+                      <div class="text-center mb-3">
+                        <img src="{{previewImg}}" height="300" width="300" alt="">
+
+                      </div>
+                     
+                    </div>
+              
+                  <!-- </div> -->
+              
+                </div>
+              </div>
+              <!-- preview ends -->
+              <!-- warning modal before deletion -->
+              <div id="id03" class="w3-modal">
+                <div class="w3-modal-content cropModulContent rounded">
+              
+                  <!-- <div class="modal-dialog"> -->
+              
+                    <!-- <div class="modal-content"> -->
+              
+                     
+              
+                      <div class="modal-body text-center">
+                      Are you sure you want to delete? 
+                      <button type="submit" class="btn btn-default saveCustom" (click)="closeDeleteModal()">No</button>
+ &nbsp; <button type="submit" class="btn btn-default saveCustom" (click)="delete_stock_image();closeDeleteModal();">Yes</button>
+                      
+                      <!-- <div class="row">
+                         <div class="col-6">
+                          
+
+                         </div>
+                         <div class="col-6">
+                          
+
+                         </div>
+                       </div> -->
+                       
+                      </div>
+                      
+                     
+                    <!-- </div> -->
+              
+                  <!-- </div> -->
+              
+                </div>
+              </div>
+              
+              <div id="myModal_delete" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+              
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <!-- <button type="button" class="close" data-bs-dismiss="modal">&times;</button> -->
+                      <h4 class="modal-title">Alert!!</h4>
+                    </div>
+                    <div class="modal-body">
+                      <p>Are you sure you want to delete the image?</p>
+                    </div>
+                    <div class="modal-footer">
+                       <button type="submit" class="btn btn-default saveCustom"  data-bs-dismiss="modal">No</button>
+                      &nbsp; <button type="submit" class="btn btn-default saveCustom"  data-bs-dismiss="modal" (click)="delete_stock_image();">Yes</button>
+                    </div>
+                  </div>
+              
+                </div>
+              </div>
+
+<!-- warning modal ends -->
+

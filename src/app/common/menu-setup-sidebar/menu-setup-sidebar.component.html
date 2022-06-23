@@ -1,0 +1,50 @@
+<nav class="w3-sidebar w3-collapse w3-highway-blue w3-animate-left" style="z-index:3;width:200px;" id="mySidebar"><br>
+
+    <div class="w3-container">
+       <img src="assets/images/sll_logo.png" width="65%" height="auto"><br><br>
+      <h6 style="font-weight: bold">Restaurant Setup</h6>
+    </div>
+    <div class="w3-bar-block" id="side_nav_bar">
+      <!-- <a routerLink="/menu" routerLinkActive="true" class="w3-bar-item w3-button w3-padding setup"><i class="fa fa-bars fa-fw"></i> &nbsp;Menu Images </a> -->
+
+      <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-highway-blue w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>Close Menu</a>
+  <!--<a href="rest-order.php" class="w3-bar-item w3-button w3-padding order"><i class="fa fa-wpforms fa-fw"></i>  Order</a>
+      <a href="payment.php" class="w3-bar-item w3-button w3-padding payment"><i class="fa fa-credit-card fa-fw"></i>  Payment</a> -->
+      <a routerLink="/CreateMenus" routerLinkActive="true" class="w3-bar-item w3-button w3-padding setup" *ngIf="No_of_menu=='U'"><i class="fa fa-plus fa-fw"></i>&nbsp;Create Menu</a>
+
+      <a routerLink="/menu_setup" routerLinkActive="true" class="w3-bar-item w3-button w3-padding setup">
+        <i class="fa fa-cutlery fa-fw" aria-hidden="true"></i>  Menu Setup</a>
+  <a routerLink="/logo-setup" routerlinkActive="true" class="w3-bar-item w3-button w3-padding account"><i class="fa fa-bars fa-fw"></i>  Logo</a>
+       
+      <!-- <a routerLink="/sectionimage" routerLinkActive="true" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bars fa-fw"></i>  Section Image</a>  -->
+        <!-- <a routerLink="/displaydayandtime" routerLinkActive="true" class="w3-bar-item w3-button w3-padding setup"><i class="fa fa-bars fa-fw"></i>  Display Day & Times</a> -->
+  
+
+        <a routerLink="/menudata" routerLinkActive="true" class="w3-bar-item w3-button w3-padding setup"><i class="fa fa-bars fa-fw"></i>  Menu Data</a>
+        <!-- <a routerLink="/" routerLinkActive="true" class="w3-bar-item w3-button w3-padding setup"><i class="fa fa-bars fa-fw"></i>  Menu Data</a> -->
+
+        <!-- <a routerLink="/menudata" routerLinkActive="true" class="w3-bar-item w3-button w3-padding setup"><i class="fa fa-sign-out fa-fw"></i>  Sign Out</a> -->
+        <a (click)="go_t_logOut()" class="w3-bar-item w3-button w3-padding setup"><i class="fa fa-sign-out fa-fw"></i>  Sign Out</a>
+        
+   
+      </div>
+      
+      <br><br>
+      <!-- <p class="w3-small" align="center">Powered by<br><br> 
+        Shop Local Laguna<br>&amp;<br>The Dynamic QR<br>
+                  </p> -->
+  </nav>
+
+  <script>
+    var manageActiveMenuItem = function (menuItemToActive) {
+      
+        $("#side_nav_bar a").removeClass("m-menu__item--active");
+        $("#side_nav_bar a." + menuItemToActive).addClass("m-menu__item--active");
+    }
+
+    jQuery.validator.addMethod('mobileUK', function (phone_number, element) {
+        return this.optional(element) || phone_number.length > 9 &&
+            phone_number.match(/^((0|\+44)7(0|4|5|6|7|8|9){1}\d{2}\s?\d{6})$/);
+    }, 'Please specify a valid mobile number');
+
+</script>

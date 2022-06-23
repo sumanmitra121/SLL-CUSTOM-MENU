@@ -1,0 +1,170 @@
+
+<div class="header">
+    <strong>REGISTER YOUR BUSINESS</strong>
+  </div>
+  
+  <div class="mainContainer">
+  <div class="menUlogoSec">
+  <!--<div class="w3-container w3-center"><br>-->
+      <section class="logo"><img src="/assets/images/sll-logo.png" height="auto"><br></section>
+      
+  <!--		<div class="w3-container w3-display-middle">-->
+       <section class="menuSec">
+      <p align="center"><button onclick="document.getElementById('restaurant').style.display='block'" class="w3-button w3-highway-blue"><strong>Restaurant</strong></button></p>
+      <p align="center"><button onclick="document.getElementById('artist').style.display='block'" class="w3-button w3-highway-blue"><strong>Artist</strong></button></p>
+      <p align="center"><button onclick="document.getElementById('merchant').style.display='block'" class="w3-button w3-highway-blue"><strong>Merchant</strong></button></p>
+  <!--	<p align="center"><button onclick="document.getElementById('packages').style.display='block'" class="w3-button w3-highway-red"><strong>Packages</strong></button></p> -->
+       </section>
+  <!--  </div>-->
+      
+      <!--</div>-->
+  </div>	
+  </div>	
+  <div class="footer"><br>
+  <p class="w3-medium">Restaurants | Artists | Merchants</p>
+  
+  </div>
+      
+      
+  
+  
+  <!-- Restaurants Modal -->
+  <div id="restaurant" class="w3-modal">
+    <div class="w3-modal-content w3-animate-zoom">
+        <div class="w3-container w3-highway-blue h-20">
+        <span onclick="document.getElementById('restaurant').style.display='none'" class="w3-button w3-display-topright w3-font-size small">x</span>
+        <p></p><h4>Restaurant Registration Form</h4>
+      </div>
+      <!-- form starts here (template driven form) -->
+      <div class="w3-container">
+        <!-- <p>Please complete and submit to register your restaurant:</p> -->
+        <form #regForm="ngForm" (ngSubmit)="regSubmit(regForm.value)">
+          <div class="row mt-4">
+          <div class="col-6">
+            <input  class="form-control p-3" type="text" placeholder="Restaurant Name" required name="Name" #Name="ngModel" ngModel
+            >
+          <div *ngIf="Name.errors?.required && (Name.dirty || Name.touched)" class="text-danger">Name is required</div>
+          </div>
+          <div class="col-6"><input class="form-control p-3"  type="text" placeholder="Contact Name" required name="Contact" #Contact="ngModel" ngModel>
+            <div *ngIf="Contact.errors?.required && (Contact.dirty || Contact.touched)" class="text-danger">Contact is required</div>
+          </div>
+          </div>
+          <div class="row mt-4">
+          <div class="col-6"><input  class="form-control p-3" id="tel" type="text"  placeholder="Telephone" required name="Telephone" #Telephone="ngModel" ngModel  (change)="check_mail($event)">
+            <div *ngIf="Telephone.errors?.required && (Telephone.dirty || Telephone.touched)" class="text-danger">Telephone is required</div>
+          <!-- validation messages -->
+          </div>
+          <div class="col-6"><input class="form-control p-3" id="em" type="text" placeholder="Email" pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" required name="Email" #Email="ngModel" ngModel  (change)="check_mail($event)"> 
+            <div *ngIf="Email.errors?.required  && (Email.dirty || Email.touched)" class="text-danger">
+              <div class="text-danger" [hidden]="!Email.errors?.required">
+              Email is required
+             </div>
+            </div>
+           <div *ngIf="Email.touched">
+            <div class="text-danger" *ngIf="Email.errors?.pattern">
+              Not a valid email
+           </div>
+          </div>
+          <!-- <div *ngIf="show_msg==true" class="text-danger">Email already exists</div> -->
+          </div>
+          </div>
+          <div class="row mt-4">
+          <div class="col-6"><input class="form-control p-3" type="text" placeholder="Address 1" required name="Address1" #Address1="ngModel" ngModel>
+          
+            <div *ngIf="Address1.errors?.required && (Address1.dirty || Address1.touched)" class="text-danger">Address is required</div>
+          </div>
+          <div class="col-6"><input class="form-control p-3" type="text" placeholder="Address 2" name="Address2" #Address2="ngModel" ngModel ></div>
+          </div>
+          <div class="row mt-4">
+          <div class="col-6"><input class="form-control p-3" type="text" placeholder="City/State" required name="cityState" #cityState="ngModel" ngModel>
+            <div *ngIf="cityState.errors?.required && (cityState.dirty || cityState.touched)" class="text-danger">City/State is required</div>
+          
+          </div>
+          <div class="col-6"><input class="form-control p-3" type="text" placeholder="Zip/Postal code*"  required name="zip" #zip="ngModel" ngModel>
+            <div *ngIf="zip.errors?.required && (zip.dirty || zip.touched)" class="text-danger">Zip code is required</div>
+          
+          </div>
+          </div>
+            
+          <div class="row mt-4">
+          <div class="col-6">
+          <select class="form-select p-3" name="country"  #country="ngModel" ngModel required>
+            <option value="">Select Country</option>
+            <option *ngFor="let c of counry" value="{{c.id}}">{{c.name}}</option>
+          </select>
+            <!-- <option value="select2">Select 2</option>
+            <option value="select3">Select 3</option> -->
+          
+          <div *ngIf="country.errors?.required && (country.dirty || country.touched)" class="text-danger">Country is required</div>
+
+          </div>
+          
+          <div class="col-6"><input class="form-control p-3" type="text" placeholder="Website"  name="Website" #Website="ngModel" ngModel>
+            <!-- <div *ngIf="Website.errors?.required && (Website.dirty || Website.touched)" class="text-danger">Website is required</div> -->
+          
+          </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-12">
+            <select class="form-select p-3" name="time_zone"  #time_zone="ngModel" ngModel required>
+              <option value="">Select Timezone</option>
+              <option *ngFor="let d of timezone" value="{{d.name}}">{{d.time_zone}}</option>
+            </select>
+          
+            
+            <div *ngIf="time_zone.errors?.required && (time_zone.dirty || time_zone.touched)" class="text-danger">timezone is required</div>
+  
+            </div>
+          </div>
+         
+          <div class="rowCustom">
+            <!-- {{regForm.invalid}}|{{this.invalid_data}} -->
+          <div class="fieldFull"><button class="w3-button w3-highway-blue" [disabled]="regForm.invalid || invalid_data || exist_number">SUBMIT</button></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+    <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "ball-clip-rotate" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>
+
+  <!-- snackbar to show failure message -->
+  <div id="snackbar">Error while inserting...</div>
+  <!-- <button type="button" hidden id="openmod" class="btn btn-info btn-lg" data-toggle="modal" data-target="#openmodal">Open Small Modal</button>  -->
+  <!-- <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title text-center">Alert!!</h4>
+        </div>
+        <div class="modal-body">
+          <p>This mail id is already in use</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <!-- <button type="button" id="openmod" hidden class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Launch demo modal
+  </button> -->
+  
+  <!-- Modal -->
+  <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div> -->

@@ -1,0 +1,289 @@
+<app-header></app-header>
+<app-side-bar></app-side-bar>
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer"
+    title="close side menu" id="myOverlay">fgbdfg</div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:300px;margin-top:43px;">
+
+
+    <!-- Header -->
+    <header class="w3-container" style="padding-top:22px"><br>
+
+        <h5><b><i class="fa fa-wpforms"></i> Restaurant - PLACE YOUR ORDER</b></h5>
+
+        <!--
+	  <p><strong>Thank You for your payment and participation!</strong><br>
+You can now begin to set-up your platform. Please follow the simple steps below. If you have any problems, please do not hesitate to email us: <a href="mailto:Support@shoplocallaguna.com">Support@ShopLocalLaguna.com</a></p>
+-->
+    </header>
+
+
+    <div class="w3-container w3-white w3-padding-24">
+        <div class="w3-container">
+
+            <div class="w3-cell-row">
+                <div class="w3-container w3-full w3-cell w3-mobile">
+
+                    <label for="vehicle1"><strong>Menu Platform - THREE packages to select from!</strong></label><br>
+                    <strong>ALL packages include:</strong><br>
+                    A custom designed Menu QR Code, displaying your editable menus.
+                    Custom designed tabletop sign (front and back printouts per table included - you can order the
+                    number of tabletop or wall sign acrylic holders below.)
+                    A custom designed Birthday/Anniversary QR Code (placed onto your Menu sign.)
+                    An editable Event/Entertainment Calendar.
+                    A Contact Information QR Code sign for your FRONT COUNTER (your contact information and all menus
+                    are saved to the user's phone)
+                    A 6" x 10" Window Cling with your Contact Information QR Code for your FRONT WINDOW/FRONT GLASS
+                    DOOR.<br><br>
+                    <!-- tabs start here -->
+                    <div class="tab">
+                        <button class="tablinks" (click)="openCity('packages')"
+                            id="defaultOpen" >Packages</button>
+                        <button id="defaultOpen1" class="tablinks" (click)="openCity('birthday')">Birthday/Anniversary</button>
+                        <button  id="defaultOpen2" class="tablinks" (click)="openCity('entertainment')">Entertainment / Event
+                            Calendar</button>
+                        <button id="defaultOpen3" class="tablinks" (click)="openCity('wallSignHolder')">Wall or Tabletop Signs/Window Cling</button>
+                        <!-- <button class="tablinks" (click)="openCity('windowCling')">Window Cling</button> -->
+                    </div>
+            <!-- tabs end here -->
+            <!-- tab for selecting packages -->
+                    <div id="packages" class="tabcontent" [hidden]="mode1!='packages'">
+                        <br>
+
+                        <div class="packageMainBox">
+                            <div class="packageBox">
+                                <h3>Standard</h3>
+                                <div class="priceSecBox">
+                                    <p class="priceSec"><span class="priceUnite">$</span>{{sp_monthly}}<span
+                                            class="month">/month</span></p>
+                                    <p class="setup">(Plus ${{sp_setup}} Set Up Fee)</p>
+                                </div>
+                                <div class="menuSec">
+                                    <span>{{menus_first}}</span>
+                                    
+                                </div>
+
+                                <div class="description">
+                                    <ul>
+                                        <li [hidden]="stnd_spl_menu">Special Menu</li>
+                                        <li>Calendar 
+                                            <!-- - <p class="text-muted">{{this.price_e}}</p> -->
+                                        </li>
+                                        <li>Birthday/Anniversary Promotion 
+                                            <!-- - <span>{{this.price_b}}</span> -->
+                                        </li>
+                                    </ul>
+                                </div>
+                                <button type="button" (click)="enable_package_next(1)" [hidden]="standard">Select</button>
+                              <div [hidden]="!standard" style="margin-top: -23px;">
+                                <svg class="checkmark" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 52 52"><circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
+                              </div>  
+
+                            </div>
+
+                            <div class="packageBox">
+                                <h3>Standard+</h3>
+                                <div class="priceSecBox">
+                                    <p class="priceSec"><span class="priceUnite">$</span>{{spp_monthly}}<span
+                                            class="month">/month</span></p>
+                                    <p class="setup">(Plus ${{spp_setup}} Set Up Fee)</p>
+                                </div>
+                                <div class="menuSec">
+                                   <span>{{menus_second}}</span>
+                                </div>
+
+                                <div class="description">
+                                    <ul>
+                                        <li [hidden]="stnd_plus_spl_menu">Special Menu</li>
+                                        <li>Calendar 
+                                            <!-- -<span>{{this.price_e}}</span> -->
+                                        </li>
+                                        <li>Birthday/Anniversary Promotion 
+                                            <!-- -<span>{{this.price_b}}</span> -->
+                                        </li>
+                                    </ul>
+                                </div>
+                                <button type="button" (click)="enable_package_next(2)" [hidden]="standardplus">Select</button>
+                              <div style="margin-top: -23px;" [hidden]="!standardplus">
+                                <svg class="checkmark"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
+                              </div>  
+                            </div>
+
+                            <div class="packageBox">
+                                <h3>Premium </h3>
+                                <div class="priceSecBox">
+                                    <p class="priceSec"><span class="priceUnite">$</span>{{p_monthly}}<span
+                                            class="month">/month</span></p>
+                                    <p class="setup">(Plus ${{p_setup}} Set Up Fee)</p>
+                                </div>
+                                <div class="menuSec">
+                                   <span>{{menus_third}}</span>
+                                </div>
+
+                                <div class="description">
+                                    <ul>
+                                        <li [hidden]="premium_spl_menu">Special Menu </li>
+                                        <li>Calendar 
+                                            <!-- -<span>{{this.price_e}}</span> -->
+                                        </li>
+                                        <li>Birthday/Anniversary Promotion 
+                                            <!-- -<span>{{this.price_b}}</span> -->
+                                        </li>
+                                    </ul>
+                                </div>
+                                <button type="button" (click)="enable_package_next(3)" [hidden]="premium">Select</button>
+                             <div style="margin-top: -23px;" [hidden]="!premium">
+                                <svg class="checkmark"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
+                             </div>   
+
+                            </div>
+
+
+                        </div>
+                        <br>
+
+                        <button class="w3-button w3-green" type="submit" [disabled]="enable_next" (click)="enable_birthday()">Next</button>
+
+
+
+                    </div>
+<!-- tab for selecting packages ends here -->
+<!-- tab for birthday/anniversary facility -->
+                    <div id="birthday" class="tabcontent" [hidden]="mode1!='birthday'">
+                        <label class="titleCustom" for="option1a"><input checked type="checkbox" id="option1a" name="option1a"
+                             #option1a   value="Calendar">
+                            <strong>Birthday/Anniversary - {{price_b}}</strong></label>
+                        Your diners ( while awaiting their meal ) can tap the Birthday/Anniversary tab, read the details
+                        and then fill out the form (agreeing to the Privacy Policy and T&amp;Cs for using their data),
+                        click Submit, and FOUR things happen...<br><br>
+
+
+                        <!-- <p>Your diners ( while awaiting their meal ) can tap the Birthday/Anniversary tab, read the
+                            details and then fill out the form (agreeing to the Privacy Policy and T&amp;Cs for using
+                            their data), click Submit, and FOUR things happen...<br><br> -->
+                          <div [innerHTML]="editorText1">
+
+                          </div>
+                            <br><br>
+
+
+                        <button class="w3-button w3-green" type="submit" (click)="enable_event(option1a.checked)">Next</button>
+                    </div>
+<!-- tab for entertainment facility -->
+                    <div id="entertainment" class="tabcontent" [hidden]="mode1!='entertainment'">
+                        <label class="titleCustom" for="option2a"><input checked type="checkbox" id="option2a" name="option2a"
+                            #option2a    value="Calendar">
+                            <strong>Entertainment / Event Calendar - {{price_e}}</strong></label>
+                        <div [innerHTML]="editorText2">
+
+                        </div> <br><br>
+
+                        <button class="w3-button w3-green" type="submit"(click)="enable_wall(option2a.checked)">Next</button>
+
+
+                    </div>
+<!-- tab for entertainment ends -->
+<!-- tab for wall sign holder -->
+                    <div id="wallSignHolder" class="tabcontent" [hidden]="mode1!='wallSignHolder'">
+                        <label class="titleCustom" for="option3"> 
+                            
+                            <strong>Acrylic Two-Sided Tabletop or Wall Sign Holder</strong></label>
+                        Includes your printed, Menu + Birthday/Anniversary QR Code signage, placed on both sides of the
+                        tabletop holder, or a single printed Menu + Birthday/Anniversary QR Code sign for the wall
+                        mounted holder.<br>
+                        Please add the number of sign holders that you would like:<br><br>
+
+                        <input type="text" id="tblsign" name="tblsign" [(ngModel)]="Tabletop_Sign_Holder" size="4" #tblsign>
+                        <label for="tblsign">5" x 7" Tabletop Sign Holder - {{cling_data1}} </label>
+                        <br><br>
+                        <input type="text" id="wallsign1" name="wallsign1" [(ngModel)]="Wall_Mount_Sign_Holder1" size="4" #wallsign1>
+                        <label for="wallsign1">5" x 7" Wall Mount Sign Holder - {{cling_data2}}</label>
+                        <br><br>
+                        <input type="text" id="wallsign2" name="wallsign2" [(ngModel)]="Wall_Mount_Sign_Holder2" size="4" #wallsign2>
+                        <label for="wallsign2">8.5" x 11" Wall Mount Sign Holder - {{cling_data3}}</label>
+                        <br><br>
+
+                       
+
+                       
+                            <label class="titleCustom" for="option4">
+                        
+                                <strong>Self-adhering 6" x 10" Window Cling</strong></label>
+                            Includes your custom Contact Information QR Code and the Laguna Beach FUN Directory QR Code.
+                            One is included in your Menu Platform package, order here for additional pieces.<br><br>
+    
+                            <input type="text" id="selfcling" name="selfcling" [(ngModel)]="Window_Clings" size="4" #selfcling>
+                            <label for="selfcling">6" x 10" Window Clings - {{cling_data4}}</label><br>
+                            <br>
+    
+                            <button class="w3-button w3-green" type="submit" (click)="submit_text_data(tblsign.value,wallsign1.value,wallsign2.value,selfcling.value)">Submit</button>
+                        
+                    </div>
+<!-- tab for wallsignholder ends -->
+                    
+                    <br>
+                    <br>
+<!-- help section -->
+                    <div class="helpSec"><strong>HELP</strong><br>
+                        Use the tabs below to get more information:<br><br>
+
+                        <div class="w3-bar w3-highway-blue">
+                            <button class="w3-bar-item w3-button" (click)="openCityHelp('London')">Menu</button>
+                            <button class="w3-bar-item w3-button" (click)="openCityHelp('Paris')">Calendar</button>
+                            <button class="w3-bar-item w3-button" (click)="openCityHelp('Tokyo')">QR Code
+                                Signage</button>
+                            <button class="w3-bar-item w3-button"
+                                (click)="openCityHelp('Lyon')">Birthday/Anniversary</button>
+                            <button class="w3-bar-item w3-button" (click)="openCityHelp('Dublin')">Contact Information
+                                QR Code</button>
+                        </div>
+
+                        <div id="London" class="w3-container city" [hidden]="mode!='London'">
+                            <p>{{menu_readonly}}</p>
+                        </div>
+
+                        <div id="Paris" class="w3-container city" [hidden]="mode!='Paris'">
+                            <p>{{calendar_readonly}}.</p>
+                        </div>
+
+                        <div id="Tokyo" class="w3-container city" [hidden]="mode!='Tokyo'">
+                            <p>{{qrcs_readonly}}.</p>
+                        </div>
+
+                        <div id="Lyon" class="w3-container city" [hidden]="mode!='Lyon'">
+                            <p>{{bdad_readonly}}.</p>
+                        </div>
+
+                        <div id="Dublin" class="w3-container city" [hidden]="mode!='Dublin'">
+                            <p>{{circ_readonly}}.</p>
+                        </div>
+                    </div>
+<!-- help section ends -->
+                   
+                    <br><br><br>
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+<!-- snackbar -->
+
+<div id="snackbar">Error while inserting...</div>

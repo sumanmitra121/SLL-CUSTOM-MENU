@@ -1,0 +1,214 @@
+<div class="w3-white">
+    <app-afterloginheader></app-afterloginheader>
+    <app-afterloginsidebar></app-afterloginsidebar>
+  
+    <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:300px;margin-top:43px;">
+    
+      <!-- Header -->
+      
+      <header class="w3-container" style="padding-top:22px">
+        <h5><b><i class="fa fa-users fa-fw"></i> Account</b></h5>
+      </header>
+        <div class="w3-container w3-white w3-padding-32">
+            <div class="w3-container">
+        <!-- <span>	To view the Birthday/Anniversary form click here  <a href="https://shoplocallaguna.com/restaurants/the-cliff/dinner.php" 
+      target="popup" 
+      onclick="window.open('https://shoplocallaguna.com/restaurants/the-cliff/dinner.php','popup','width=400,height=600'); return false;">
+     <strong> VIEW</strong></a>	then click 'Birthday/Anniversary' on the top menu</span> -->
+     <div class="w3-bar">	
+		
+        <p>Select appropriate TAB to view data and usage.</p>
+    <!-- tabs -->
+    <div class="tab">
+      <button class="tablinks" [ngClass]="this.id==='data'?'tab_button_active':''" (click)="openCity('data')" >Data</button>
+      <button class="tablinks"  [ngClass]="this.id==='usage'?'tab_button_active':''" (click)="openCity('usage')">Usage</button>
+   
+    </div>
+
+<!-- tab for account data -->
+<div id="data" *ngIf="id==='data'" class="tabcontent">
+        <div style="overflow-x:auto;">
+      
+            <table width="100%" cellspacing="15">
+                <tr>
+                    <th scope="col">RESTAURANT NAME</th>
+                    <th scope="col">CONTACT NAME</th>
+              
+                </tr>
+                <tr bgcolor="#fff" align="center">
+                    <td bgcolor="#f1f1f1">
+                        <script>
+                            function msg() {
+                                alert("Click on File Record to view details");
+                            }
+                        </script>{{rest_nm}}
+                    </td>
+                    <td>{{rest_contact}} </td>
+                
+                </tr>
+          
+            
+           
+          
+                <tr style="background: white;">
+                    
+                    <th scope="col">ADDRESS</th>
+                    <th scope="col">PHONE</th>
+                    
+                </tr>
+                <tr style="background:rgb(240, 239, 239)" align="center">
+                    
+                    <td>{{rest_add}}</td>
+                    <td>{{rest_phone}}</td>
+                
+                </tr>
+            
+                <tr>
+                
+                    <th scope="col">EMAIL</th>
+                    <th scope="col">WEBSITE</th>
+                </tr>
+                <tr bgcolor="#fff" align="center">
+                   
+                    <td>{{rest_em}}</td>
+               <td>{{rest_web}}</td>     
+               
+                    
+
+                </tr>
+            </table>
+        
+        <div style="overflow-x:auto;">
+            <table width="100%" cellspacing="15">
+                <tr>
+                    <th scope="col">LIVE DATE</th>
+                    <th scope="col">SETUP FEE</th>
+                    <th scope="col">MONTHLY FEE</th>
+                    <th scope="col">LAST PAID</th>
+                    <th scope="col">CANCEL DATE</th>
+                </tr>
+                <tr bgcolor="#fff" align="center">
+                    <td bgcolor="#f1f1f1">07/30/2021</td>
+                    <td>${{rest_setup}}</td>
+                    <td>${{rest_monthly}}</td>
+                    <td>08/30/2021</td>
+                    <td>00/00/0000</td>
+                </tr>
+            </table> <br>
+        </div>
+   
+    </div>
+       
+    </div>
+    <!-- tab for account data ends -->
+<!-- tab for usage -->
+    <div id="usage" *ngIf="id==='usage'" class="tabcontent">
+        <div style="overflow-x:auto;">
+            <table width="100%" cellspacing="15">
+          <tr>
+            <th scope="col">Monthly Subscription</th>
+            <th scope="col">No Users</th>
+            <th scope="col">Free SMS</th>
+            <th scope="col">Total Usage</th>
+            <th scope="col">Excess Usage</th>
+            <th scope="col">Excess Charge</th>
+            <th scope="col">Month</th>
+          </tr>
+          <tr bgcolor="#fff" align="center">
+            <td bgcolor="#f1f1f1">20.00</td>
+            <td>2</td>
+            <td>300</td>
+            <td>350</td>
+            <td>50</td>
+            <td>4.00</td>
+            <td>August 2021</td>
+          </tr>
+        </table><br><br>
+            </div>
+            
+            <div style="overflow-x:auto;">
+          <table>
+            <tr>
+              <th>CURRENT USAGE</th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th>Paul</th>
+              <th>Sandra</th>
+              <th>Total Used</th>
+            </tr>
+            <tr>
+              <td>Reminder</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>50</td>
+              <td>80</td>
+              <td>180</td>
+            </tr>
+            <tr>
+              <td>Messages</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>60</td>
+              <td>40</td>
+              <td>220</td>
+            </tr>
+            <tr>
+              <td>Total</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>400</td>
+            </tr>
+            <tr>
+              <td>Credit</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>300</td>
+            </tr>
+             <tr>
+              <td>Excess</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>100</td>
+            </tr>
+            <tr>
+              <td>Rate @</td>
+              <td>0.08</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td style="font-weight: 600">£8.00</td>
+            </tr>
+            <tr>
+              <td>Usage up to:</td>
+              <td>15.08.2021</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table><br><br>
+          <em>If an Excess payment is shown this will be collected under the arrangements we have in place and will be shown on your next monthly statement </em><br><br><br>
+        </div>
+    </div>
+ </div>
+</div>
+</div>
+</div>
+</div>

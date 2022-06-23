@@ -1,0 +1,87 @@
+
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+  }
+  
+  /* Style the buttons inside the tab */
+  .tab button {
+    /* background-color: inherit; */
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: #b8c1f4;
+  }
+  
+  /* Create an active/current tablink class */
+  /* .tab button.active {
+    background-color: #3F51B5;
+    color: #fff;
+  } */
+/*   
+ 
+   
+/* .tab_button_active{
+    background-color: #3F51B5;
+    color: #fff;
+} */
+  /* Style the tab content */
+  .tab_button_active{
+    background-color: #3F51B5;
+    color: #fff;
+}
+  .tabcontent {
+   padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+  }
+  .mainContainer{display: flex;
+    min-height: 100%;
+    flex-direction: column; display: grid; flex: 1 0 auto; align-items: center; padding: 0 15px;background-image: url("/assets/images/breakfast_bg_image.jpg");}	
+.bgimg {
+  background-image: url('/assets/images/sunrise-view.jpg');
+  min-height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+	
+
+
+.font_icon a i{
+    color: white;
+    padding: 11px;
+}
+	
+
+/* snackbar */
+#snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+  }
+  
+  #snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }

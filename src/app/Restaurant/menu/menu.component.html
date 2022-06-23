@@ -1,0 +1,198 @@
+<div class="w3-white">
+
+    <!-- Top container -->
+    <app-header></app-header>
+
+    <!-- <?php echo file_get_contents("navigation-setup.html"); ?> -->
+    <app-menu-setup-sidebar></app-menu-setup-sidebar>
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer"
+        title="close side menu" id="myOverlay"></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:300px;margin-top:43px;">
+
+        <!-- Header -->
+        <header class="w3-container" style="padding-top:22px"><br>
+            <p><strong>Thank You for your payment and participation!</strong><br>
+                You can now begin to set-up your platform. Please follow the simple steps below. If you have any
+                problems, please do not hesitate to email us: <a
+                    href="mailto:Support@shoplocallaguna.com">Support@ShopLocalLaguna.com</a></p>
+            <h5><b><i class="fa fa-wpforms"></i> Restaurant - MENU Platform SET-UP</b></h5>
+        </header>
+        <div class="w3-container w3-white w3-padding-24">
+
+
+            <div class="w3-cell-row">
+                <!-- <div class="secDifer"> -->
+                <div class="row">
+
+                    <div class="col-2">
+                        <label for="menuImg"><strong>Select Menu</strong></label>
+                    </div>
+                    <div class="col-3">
+
+                        
+                        <select class='form-select' #name (change)="detectchange(name.value)">
+                            <!-- <option value="">Select</option> -->
+                            <option value="B" selected>Breakfast</option>
+                            <option value="L">Lunch</option>
+                            <option value="D">Dinner</option>
+                            <option value="BR">Brunch</option>
+
+                        </select>
+
+                        <!-- </div> -->
+                    </div>
+
+
+
+                </div>
+
+                <br>
+                <div id="London" class="tabcontent">
+
+                    <label class="titleCustom" for="bkmenu"> <strong>{{id}}</strong></label>
+                    With the content that you provide to us below, we will design your menu platform. If you offer a
+                    different menu for Breakfast, Lunch, Dinner, Brunch, etc., you can provide us with that
+                    information, and we will create your dynamic menu platform, displaying the appropriate menu, at
+                    your desired times/days. If you offer the same menu every day, simply add the content to the
+                    appropriate option.<br><br>
+
+                    After we set-up your platform the first time, you can then browse and change photos and edit
+                    your menu items and pricing, as needed. The Cover Image is non-editable.<br><br>
+
+
+
+
+
+                    <div class="secDifer">
+                        <div class="row">
+
+                            <div class="col-5">
+                                <label class="titleCustom"><strong>MENU:</strong></label>
+                                Upload a PDF file of your Breakfast menu.<br>
+                                Please be sure to include your Kids, Desert and Beverage menus, if you have one.<br>
+
+                                <label for="menuImg"> <strong>File (you can add multiple files)</strong></label><br>
+                                <input type="file" id="myfile" name="myfile" 
+                                    (change)="changeBreakmenubreak($event)"><br><br>
+                            </div>
+                            <div class="col-5" id="input_url">
+                                <br><br>
+                                <label for="menuImg"> <strong>Your Web Site Address/URL:</strong></label><br>
+                                Or, please provide a web site address/url where we can collect your menu content:
+                                <form>
+                                    <label for="url">Enter the url:</label>
+                                    <input type="text" id="url" name="Url"  size="28" #MENUURL>
+                                <!-- <input type="text" [(ngModel)]="value.value" #name="ngModel" name="value{{i}}"> -->
+
+                                </form>
+                                
+                            </div>
+                            <div class="col-1"></div>
+                            <div class="col-1">
+                             <button class="w3-button w3-blue"  (click)="addvalue()">Add Rows</button>
+
+                                <!-- <br><br> -->
+                                <!-- <button  class="w3-button w3-red m-1" (click)="removevalue(i)">Remove</button> -->
+                            </div>
+                            <br><br>
+
+                            <!-- <div >  -->
+                                <!-- <input type="text" [(ngModel)]="value.value" #name="ngModel" name="value{{i}}"> -->
+                                
+                              <!-- </div> -->
+                              
+                              <!-- <h2>Result</h2>
+                              <div *ngFor="let value of values;">
+                                {{ value.value }}
+                              </div> -->
+                            
+                        </div>
+
+                        <div class="row" *ngFor="let value of values; let i = index">
+
+                            <div class="col-5">
+                                <label class="titleCustom"><strong>MENU:</strong></label>
+                                Upload a PDF file of your Breakfast menu.<br>
+                                Please be sure to include your Kids, Desert and Beverage menus, if you have one.<br>
+
+                                <label for="menuImg"> <strong>File (you can add multiple files)</strong></label><br>
+                                <input type="file" id="myfile" name="myfile" multiple
+                                    (change)="changeBreakmenubreak1($event)"><br><br>
+                            </div>
+                            <div class="col-5" id="input_url">
+                                <br><br>
+                                <label for="menuImg"> <strong>Your Web Site Address/URL:</strong></label><br>
+                                Or, please provide a web site address/url where we can collect your menu content:
+                                <form>
+                                    <label for="url">Enter the url:</label>
+                                    <!-- <input type="text" id="url" name="Url"  size="28" #MENUURL> -->
+                                <input type="text" [(ngModel)]="value.value" #name="ngModel"  size="28" name="value{{i}}">
+
+                                </form>
+                                
+                            </div>
+                            <div class="col-1"></div>
+                            <div class="col-1">
+                                <br><br>
+                                <button  class="w3-button w3-red m-1" (click)="removevalue(i)">Remove</button>
+                            </div>
+                            <br><br>
+
+                            <!-- <div >  -->
+                                <!-- <input type="text" [(ngModel)]="value.value" #name="ngModel" name="value{{i}}"> -->
+                                
+                              <!-- </div> -->
+                              
+                              <!-- <h2>Result</h2>
+                              <div *ngFor="let value of values;">
+                                {{ value.value }}
+                              </div> -->
+                            
+                        </div>
+                 
+                 
+   
+                      
+                    </div>
+
+                          
+                     
+                    <!-- <button class="btn btn-primary btn-lg" (click)="add(MENUURL.value)">Add</button> -->
+                    <!-- <br><br> -->
+                    <br>
+                   <p style="font-style: italic">If we cannot collect the content from your web site, we will
+                       contact you</p>
+                   
+                    <button class="w3-button w3-green m-1" type="submit"
+                        (click)="opennextab(MENUURL.value)">Submit</button>
+                </div>
+
+
+
+                <br><br><br>
+
+
+            </div>
+
+
+
+
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+    <br>
+    <!-- Footer -->
+</div>
+
+<!-- End page content -->

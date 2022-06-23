@@ -1,0 +1,131 @@
+<div id="packages" class="tabcontent">
+<div class="packageMainBox">
+    <div class="packageBox">
+        <h3>Standard</h3>
+        <div class="priceSecBox">
+            <p class="priceSec"><span class="priceUnite">$</span>{{sp_monthly}}<span
+                    class="month">/month</span></p>
+            <p class="setup">(Plus ${{sp_setup}} Set Up Fee)</p>
+        </div>
+        <div class="menuSec">
+            <span>{{menus_first}}</span>
+            
+        </div>
+
+        <div class="description">
+            <ul>
+                <li [hidden]="stnd_spl_menu">Special Menu</li>
+                <li>Calendar 
+                    <!-- - <p class="text-muted">{{this.price_e}}</p> -->
+                </li>
+                <li>Birthday/Anniversary Promotion 
+                    <!-- - <span>{{this.price_b}}</span> -->
+                </li>
+            </ul>
+        </div>
+        <!-- <button type="button" (click)="enable_package_next(1)" [hidden]="standard">Select</button> -->
+      
+
+    </div>
+
+    <div class="packageBox">
+        <h3>Standard+</h3>
+        <div class="priceSecBox">
+            <p class="priceSec"><span class="priceUnite">$</span>{{spp_monthly}}<span
+                    class="month">/month</span></p>
+            <p class="setup">(Plus ${{spp_setup}} Set Up Fee)</p>
+        </div>
+        <div class="menuSec">
+           <span>{{menus_second}}</span>
+        </div>
+
+        <div class="description">
+            <ul>
+                <li [hidden]="stnd_plus_spl_menu">Special Menu</li>
+                <li>Calendar 
+                    <!-- -<span>{{this.price_e}}</span> -->
+                </li>
+                <li>Birthday/Anniversary Promotion 
+                    <!-- -<span>{{this.price_b}}</span> -->
+                </li>
+            </ul>
+        </div>
+        <!-- <button type="button" (click)="enable_package_next(2)" [hidden]="standardplus">Select</button> -->
+     
+    </div>
+
+    <div class="packageBox">
+        <h3>Premium </h3>
+        <div class="priceSecBox">
+            <p class="priceSec"><span class="priceUnite">$</span>{{p_monthly}}<span
+                    class="month">/month</span></p>
+            <p class="setup">(Plus ${{p_setup}} Set Up Fee)</p>
+        </div>
+        <div class="menuSec">
+           <span>{{menus_third}}</span>
+        </div>
+
+        <div class="description">
+            <ul>
+                <li [hidden]="premium_spl_menu">Special Menu </li>
+                <li>Calendar 
+                    <!-- -<span>{{this.price_e}}</span> -->
+                </li>
+                <li>Birthday/Anniversary Promotion 
+                    <!-- -<span>{{this.price_b}}</span> -->
+                </li>
+            </ul>
+        </div>
+        <!-- <button type="button" (click)="enable_package_next(3)" [hidden]="premium">Select</button> -->
+      
+
+    </div>
+    <div class="packageBox">
+        <h3>Custom </h3>
+        <!-- <div class="priceSecBox">
+            
+        </div> -->
+        <div  class="mt-2">
+         <!-- <span class="packageBox"><h3> Bespoke Price  </h3>  </span>  -->
+         <span><h3> Bespoke Price  </h3>  </span> 
+
+           
+        </div>
+
+        <div class="description">
+            <ul>
+                <li>Built to your specifications</li>
+                <li>Unlimited Bars/Rooms</li>
+                <li>Each Bar/Room own menu
+                    <!-- -<span>{{this.price_e}}</span> -->
+                </li>
+                <li>Each Bar/Room Special Menus
+                    <!-- -<span>{{this.price_b}}</span> -->
+                </li>
+                <li>Bespoke Promotions
+                    <!-- -<span>{{this.price_b}}</span> -->
+                </li>
+                <li>Bespoke Calendars
+                    <!-- -<span>{{this.price_b}}</span> -->
+                </li>
+                <li>etc.etc
+                    <!-- -<span>{{this.price_b}}</span> -->
+                </li>
+            </ul>
+        </div>
+    <!-- <button type="button" >Select</button> -->
+      
+
+    </div>
+
+
+</div>
+<div class="row">
+    <div class="col-9 pt-3" style="padding-right:20px;">
+    <button class="btn btn-primary btn-block"  type="button" aria-pressed="true" style="width: 100%;">Click here to apply for Standard, Standard+ or Premium</button>
+    </div>
+    <div class="col-3 pt-3" style="padding-left:50px">
+    <button class="btn btn-primary btn-block" routerLinkActive="true" routerLink="/registration" type="button" aria-pressed="true" style="width: 100%;">Click here to apply for Custom</button>
+    </div>
+</div>
+</div>

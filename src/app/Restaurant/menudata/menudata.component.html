@@ -1,0 +1,271 @@
+<div class="w3-white">
+
+    <!-- Top container -->
+    <!-- <div class="w3-bar w3-top w3-highway-blue w3-large" style="z-index:4">
+        <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey"
+            onclick="w3_open();"><i class="fa fa-bars"></i>  Help</button>
+        <span class="w3-bar-item w3-right">SLL Platform</span>
+    </div> -->
+
+    <div class="w3-bar w3-top w3-highway-blue w3-large" style="z-index:4;height:42px">
+        <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Help</button>
+        <span class="w3-bar-item w3-left">Welcome, {{this.name}}</span>
+        <span class="w3-bar-item w3-right">SLL Platform</span>
+      </div>
+
+    <!-- <?php echo file_get_contents("navigation-setup.html"); ?> -->
+
+    <app-menu-setup-sidebar></app-menu-setup-sidebar>
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer"
+        title="close side menu" id="myOverlay"></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:300px;margin-top:43px;">
+
+        <!-- Header -->
+        <header class="w3-container" style="padding-top:22px">
+            <h5><b><i class="fa fa-wpforms"></i> Restaurant - MENU Platform Data</b></h5>
+        </header>
+
+        <div class="w3-container w3-white w3-padding-24">
+               <!-- <h3 class="text-danger text-center" [hidden]="show_toast">As aming is setting your order, you can not modified</h3> -->
+
+<!-- when the setup mode is on, the restaurant can't modify the existing the data -->
+               <div class="alert alert-danger text-center" role="alert"  [hidden]="show_toast">
+                <strong>Setup mode is on.</strong>
+                <p>Admin is setting up your menu, you can not modify</p> 
+              </div>
+<!-- changing tabs for about us and notice -->
+            <div class="w3-cell-row">
+                <div class="w3-container w3-full w3-cell w3-mobile">
+                    <div class="tab">
+                        <button class="tablinks" [disabled]='abut' (click)="openCity('aboutUs')" id="defaultOpen">About Us</button>
+                        <button class="tablinks" [disabled]='not' (click)="openCity('notices')" id="defaultOpen1"> Notices </button>
+
+                    </div>
+
+                    <div id="aboutUs" class="tabcontent" [hidden]="tab1">
+                        <div class="aboutLeft">
+                            <label class="titleCustom"><strong>ABOUT US</strong></label>
+                            <!-- about us section starts -->
+                            <!-- This should include a word calculator, then below this some of the Registration content will also display:
+    Address, phone, email. The About Us "text" content will be also added to the vCard set-up.   -->
+
+                            Please add a short bio of your restaurant: cuisine type, days/hours, safety, etc., <br>
+                            <br>
+                            <form>
+                                <div class="rowCustomFour">
+                                    <div class="fieldSecFull">
+                                        <label>Write Bio here <strong>({{this.role}}/150):</strong></label>
+                                        <textarea 
+                                        [disabled]="break_button"
+                                        [(ngModel)]="this.val"
+                                        maxlength="150" (input)="prevent_null($event)"  (keyup)="prevent_null($event)" (change)="prevent_null($event)" id="about" name="abouteee" class="aboutTextarea" rows="5" cols="50" #bio></textarea>
+                                       
+                                    </div>
+                                </div>
+                            </form>
+                            
+
+                            <button class="w3-button w3-green"
+                           
+                                (click)="nexttab('notices',bio.value)" [disabled]="this.disabled_about">Save</button>
+                        </div>
+                        <div class="aboutRight"><label class="titleCustom"><strong>ENTERTAINMENT/EVENT
+                                    CALENDAR</strong></label>
+
+                            <!-- This section is where the restaurant registers for access to the Calendar  -->
+                            You can select the month, then add/delete the date/time/description content as needed, 24/7.
+                            Content is automatically deleted after each published event/entertainment date.<br>
+                            <br>You will be able to edit this Calendar after we set-up your initial menu. This is just a
+                            view-only example.<br><br>
+                            <img src="assets/images/events-cal-view.jpg" width="" height="auto" class="calendarImg"><br
+                                clear="all">
+                        </div>
+                        <br clear="all">
+
+
+
+                    </div>
+<!-- notice content -->
+                    <div id="notices" class="tabcontent" [hidden]="tab2">
+
+                        <label class="titleCustom">
+                            <input type="checkbox" [disabled]="break_button" id="noticechecked" (change)="checknotice($event)"><strong class="m-1">NOTICES</strong> </label>
+                        This is where you provide details of any notices that need to be displayed on your menus. They
+                        could be regulatory notices required by law, food allergy comments, disclaimers or comments
+                        which relate to specific localized circumstances.<br>
+                        <br>Using the drop down selectors choose a Menu and Position of the Notice. You then select the
+                        Header Title and the color of the Font followed by the Description. You must then SAVE this
+                        before entering another Notice.<br><br>
+
+                        <div class="formTable" (mouseenter)="see_validation()" >
+
+
+                            <form class="form-inline" >
+                                <div class="rowCustomFour">
+                                    <div class="fieldSecFull">
+                                        <label>Venue</label>
+                                        <select #select_venue (click)="open_venue(select_venue.value)" class="form-select" >
+                                            <option value="">Select One</option>
+                                            <option *ngFor="let x of getVenues.msg; let i=index;" value="{{x.id}}" >{{x.venue_name}}</option>
+                                        
+                                          </select>
+                                    </div>
+                                    <div class="fieldSecHalf">
+                                        <label>Menu</label>
+                                        <select id="pickup_place" name="pickup_place" id="menuselect" class="formCss" #Menu
+                                            (change)="pickup_place(Menu.value)">
+                                           
+                                            <option value="" selected="selected">Select One</option>
+                                            <option *ngFor="let n of getMenus" [hidden]="n.active_flag=='N'" value="{{n.id}}">{{n.menu_name}}</option>
+                                        </select>
+
+                                    </div>
+
+                                    <div class="fieldSecHalf">
+                                        <label>Position</label>
+                                        <select id="pos" [disabled]="deSelect" name="pos1" class="formCss" #position
+                                            (change)="getposition(position.value)">
+                                            <option value="">Select One</option>
+                                            <option value="1" [selected]="this.position_id=='1'">Top under Header Image</option>
+                                            <option value="2" [selected]="this.position_id=='2'">Bottom after last Section </option>
+                                            <option value="3" [selected]="this.position_id=='3'">After each Section</option>
+                                        </select>
+
+                                    </div>
+
+                                </div>
+                            </form>
+                            <form >
+                                <div class="rowCustomFour" >
+                                    <div class="fieldSecFull">
+                                        <label for="headTitle">Header Title:</label>
+                                        <input type="text" [disabled]="deSelect" 
+                                        value="{{header_title}}" (keyup)="checkvalidity($event)" (change)="checkvalidity($event)"  id="headTitle" name="headTitle1"  class="formCss"
+                                         #title>
+                                    </div>
+                                </div>
+                            </form>
+                            <form class="form-inline" >
+                                <div class="rowCustomFour">
+                                    <div class="fieldSecHalf">
+                                        <label for="favcolor">Select your front color:</label>
+                                        <input type="color" [disabled]="deSelect" id="colorPicker" class="colorPickerCustom" name="favcolor"
+                                        value="{{font_color}}" #code1 (change)="changecolor($event,'back')">
+                                    </div>
+
+                                    <div class="fieldSecHalf">
+                                        <label for="code">Color Code:</label>
+                                        <input type="text" readonly id="box" name="code1" class="formCss" #code2
+                                        value="{{font_color}}"
+                                        (change)="checkvalidity($event)">
+                                    </div>
+                                </div>
+
+                            </form>
+                            <form class="form-inline" >
+                                <div class="rowCustomFour">
+                                    <div class="fieldSecHalf">
+                                        <label for="favcolor">Select your background color:</label>
+                                        <input type="color" [disabled]="deSelect" id="colorPicker2" class="colorPickerCustom" value="{{back_color}}"
+                                            #code3 (change)="changecolor($event,'font')">
+                                    </div>
+                                    <div class="fieldSecHalf">
+                                        <label for="code">Color Code:</label>
+                                        <input type="text" readonly  id="box2" name="code" value="{{back_color}}" class="formCss" #code4  (change)="checkvalidity($event)">
+                                    </div>
+                                </div>
+                            </form>
+                            <form class="form-inline">
+                                <div class="rowCustomFour">
+                                    <div class="fieldSecFull">
+                                        <label for="vehicle2"> Notice Content<strong> ({{this.role_notice_content}}/100):</strong></label>
+                                        <textarea id="spclMore" name="spclMore1" rows="5" cols="60"
+                                        [(ngModel)]="notice_content"
+                                        maxlength="100"
+                                            class="formCssTextArea" #notice
+                                            (keyup)="checkvalidity($event)" [disabled]="deSelect" (change)="checkvalidity($event)"></textarea>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+               
+
+
+
+
+
+                        <br>
+
+
+
+
+
+                        <div class="row">
+                            <div class="col-5">
+                                <button class="w3-button w3-green float-left"
+                            
+                            [disabled]="value_position || value_Headertitle ||value_font||value_background  || value_text || deSelect"
+                                (click)="nexttab1('about',Menu.value,title.value,code1.value,code2.value,code3.value,code4.value,notice.value,select_venue.value)">Save</button>
+                           
+                            <!-- <div class="col-6 float-start"> -->
+                                <button class="w3-button w3-green float-end"
+                            
+                          
+                                (click)="go_to_thankyou_page()" [disabled]="!show_toast">Continue</button>
+                            <!-- </div> -->
+                        </div>
+                            
+
+                              
+                        </div>
+
+
+                    </div>
+
+                    <!--
+        Color Picker: <input type="color" 
+                id="colorPicker" value="#6a5acd">
+      
+             To display hex code of the color 
+            Hex Code: <input type="text" id="box">  
+    -->
+
+                    <br><br><br>
+
+
+                </div>
+
+
+
+
+
+
+            </div>
+        </div>
+        <!-- <?php echo file_get_contents("footer.html"); ?>	 -->
+
+
+
+
+
+
+        <br>
+        <!-- Footer -->
+    </div>
+
+    <!-- End page content -->
+
+
+
+
+</div>
+<!-- snackbar -->
+<div id="snackbar">Successfully Inserted</div>
+<div id="snackbar1">Successfully Updated</div>
+<div id="snackbar2" [hidden]="!show_toast"><i class="fa fa-warning" style="font-size:15px;color:white;padding-right:5px"></i>Please select the check box to proceed further</div>
+
+

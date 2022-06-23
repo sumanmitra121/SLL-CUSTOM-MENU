@@ -1,0 +1,201 @@
+<!-- <div class="w3-white">
+    <app-afterloginheader></app-afterloginheader>
+    <app-afterloginsidebar></app-afterloginsidebar>
+    
+    <div class="w3-main" style="margin-left:300px;margin-top:43px;">
+    
+        <header class="w3-container" style="padding-top:22px">
+            <h5><b><i class="fa fa-calendar fa-fw"></i>Events Calendar</b></h5>
+        </header>
+        <div class="w3-container w3-white w3-padding-32">
+            <div class="w3-container adminResturentTab">
+        
+          
+
+
+
+            </div>
+        
+        </div>
+    </div>
+</div> -->
+
+<div class="w3-light-grey">
+
+    <!-- Top container -->
+    <!-- <div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
+      <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+      <span class="w3-bar-item w3-right">SLL Platform</span>
+    </div>
+     -->
+    <!-- <?php echo file_get_contents("navigation-account.html"); ?> -->
+    
+    <app-afterloginheader></app-afterloginheader>
+    <app-afterloginsidebar></app-afterloginsidebar>
+    
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+    
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:300px;margin-top:43px; padding: 5%;">
+    
+      <!-- Header -->
+      <header class="w3-container" style="padding-top:22px">
+        <h5><b><i class="fa fa-calendar fa-fw"></i>  Events Calendar</b></h5>
+      </header>
+      <!-- radio button to choose from restaurant or user calendar -->
+        <div class="w3-container w3-light-grey w3-padding-32">
+           <div class="row">
+             <div class="col-2">
+               <label>
+               <input type="radio" name="rest" checked id="restaurant" value="1" (change)="getrestaurantcalendar($event,'restaurant','1')">&nbsp;<strong>By Restaurant</strong></label>
+             </div>
+             <div class="col-2">
+              <label>
+              <input type="radio" name="rest" id="user" value="0" (change)="getrestaurantcalendar($event,'user','0')">&nbsp;<strong>By User</strong></label>
+            </div>
+           </div>
+           <div class="calenderResturent">
+          <full-calendar  [options]="calendarOptions"></full-calendar></div></div>
+                
+            
+                <!-- <?php echo file_get_contents("footer.html"); ?>	  -->
+    </div>
+    <!-- <div id="snackbar">{{this.m}}</div> -->
+      <br>
+      <!-- Footer -->
+            
+    
+      <!-- End page content -->
+        
+    
+      <button hidden type="button" id="modalbutton" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+        Open modal
+      </button>
+    
+</div>
+
+
+<!-- The modal for adding events-->
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header color-head">
+          <h4 class="modal-title head-font">Events/Calendar</h4>
+          <!-- <button type="button" class="close" data-bs-dismiss="modal">&times;</button> -->
+         <a type="button" class="close text-white" data-bs-dismiss="modal" (click)="resetall()"><i class="fa fa-close"></i></a> 
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+        <label>Add Events:</label>
+         <input type='text' id="event" class="form-control" [(ngModel)]="event_name" />
+       
+         <div class="row">
+             <div class="col-6">
+                <label>Date:</label>
+                <input type="text" readonly id="date" class="form-control" value="{{this.start_date| date:'dd/MM/YYYY'}}"
+                >
+             </div>
+             <div class="col-6">
+                <label>Time:</label>
+                <input type="time" id="time" #end_date  class="form-control form_cont_Cust" 
+                (change)="changedatetime($event)">
+             </div>
+         </div>
+        
+       
+         <label>Title:</label>
+         <input type="text" id="head" class="form-control" [(ngModel)]="headliner">
+
+         <label>Ticket URL:</label>
+         <input type="text" id="url" class="form-control" [(ngModel)]="Url">
+
+         <label>Description ({{this.role}}/100):</label>
+         <textarea  id="description" rows="4" cols="5" maxlength="100" class="form-control" [(ngModel)]="desc" (input)="getdescription($event)"></textarea>
+       </div>
+       <div>
+        <div class="prvImgCustom" *ngIf="show_event_img">
+          <img id="imgeve" height="100" width="100" alt="" src="{{img_cover}}">
+      </div>
+        <button hidden  id="logo_crop" (click)="open_crop_modal()" ></button>
+      
+        <input type="file" class="form-control" style="margin-left:3%" id="myfile" class="uploadField" name="myfile" (change)="upload_logo($event)">
+      </div>
+
+
+      <!-- cropper -->
+<div id="id01" class="w3-modal">
+  <div class="w3-modal-content cropModulContent">
+
+    <div class="modal-dialog">
+
+      <div class="modal-content modal_contentCustom">
+
+        
+
+        <div class="modal-body">
+      <!-- <div class="row">
+          <div class="col-2 text-center">
+              <i class="fa fa-minus-circle fa-2x " type="button" [hidden]="ZoomIn"  (click)="zoomOut()"></i>
+          </div>
+          <div class="col-2">
+              <i class="fa fa-plus-circle fa-2x " type="button" [hidden]="Zoomout" (click)="zoomIn()"></i>
+          </div>
+          <div class="col-2">
+              <button class="float-right" (click)="close_modal_on_crop()">&times;</button>
+          </div>
+      </div> -->
+
+      <ul class="cropBtnTop">
+          <li><i class="fa fa-minus-circle fa-2x " type="button" [hidden]="ZoomIn"  (click)="zoomOut()"></i></li>
+<li>                <i class="fa fa-plus-circle fa-2x " type="button" [hidden]="Zoomout" (click)="zoomIn()"></i></li>
+      <li>                <button class="cropCloseBtn" (click)="close_modal_on_crop()">&times;</button></li>
+      
+</ul>
+
+         
+          <image-cropper [hidden]="hide" [imageChangedEvent]="img_cover"
+          [maintainAspectRatio]="true" 
+        
+          [onlyScaleDown]="false" 
+          
+          [cropperMaxWidth]="crop_width"
+          [cropperMaxHeight]="crop_height"
+          
+          
+          (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+          (cropperReady)="cropperReady($event)"
+          (loadImageFailed)="loadImageFailed()"
+          [style.display]="showCropper ? null: 'none'" [transform]="transform">
+        </image-cropper>
+
+        </div>
+        <footer class="w3-container w3-right cropFooter">
+          <button class="btn btn-danger"   
+          (click)="click_it()">Save</button>
+        </footer>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<!-- cropper -->
+       
+
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="w3-button w3-red" data-bs-dismiss="modal" (click)="approve_event()" *ngIf="cal_flag=='N'">Approve</button>
+          <button type="button"class="w3-button w3-green" data-bs-dismiss="modal" (click)="addevent(end_date.value)">Save</button>
+  
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  

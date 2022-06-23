@@ -1,0 +1,435 @@
+
+* {
+  box-sizing: border-box;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
+body {font-family: Raleway, sans-serif;
+}
+/* * {box-sizing: border-box;} */
+
+.form-inline {  
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+.form-inline label {
+  margin: 5px 10px 5px 0;
+}
+
+.form-inline input {
+  vertical-align: middle;
+  margin: 5px 5px 5px 0;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.form-inline button {
+  padding: 10px 20px;
+  background-color: dodgerblue;
+  border: 1px solid #ddd;
+  color: white;
+  cursor: pointer;
+}
+
+.form-inline button:hover {
+  background-color: royalblue;
+}
+
+@media (max-width: 800px) {
+  .form-inline input {
+    margin: 10px 0;
+  }
+  
+  .form-inline {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px; 
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
+
+
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  margin: 0 -16px;
+}
+
+.col-25 {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+}
+
+.col-50 {
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
+}
+
+.col-75 {
+  -ms-flex: 75%; /* IE10 */
+  flex: 75%;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+  padding: 0 16px;
+}
+
+.container {
+  background-color: #f2f2f2;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+}
+
+input[type=text] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.icon-container {
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 24px;
+}
+
+.btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.btn:hover {
+  background-color: #45a049;
+}
+
+a {
+  color: #2196F3;
+}
+
+hr {
+  border: 1px solid lightgrey;
+}
+
+span.price {
+  float: right;
+  color: grey;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+@media (max-width: 800px) {
+  .row {
+    flex-direction: column-reverse;
+  }
+  .col-25 {
+    margin-bottom: 20px;
+  }
+ 
+}
+.build-font{
+  font-size: 1.44rem !important;
+}
+.color-head{
+  background-color: indigo;
+    color: white;
+    font-size: larger;
+    padding: 2%;
+}
+.head-font{
+  font-size: large;
+}
+
+/* CALENDAR STYLE */
+#calendar table {
+  display: table;
+  border: none !important;
+}
+
+.calendar-example {
+  line-height: 1.3;
+}
+
+.calendar-example h2 {
+  font-size: 22px;
+}
+
+.calendar-example a[data-goto] {
+  color: #444;
+}
+
+.fc-title {
+  font-size: 12px !important; 
+}
+
+.fc-center h2 {
+ font-size: 22px; 
+ color: #00c983;
+ font-weight: 400;
+}
+
+#calendar thead {
+  border: none !important; 
+}
+
+.fc-day-header {
+  border: none !important;
+  font-size: 13px;
+}
+
+.fc-head {
+  line-height: 40px;
+  border: none !important;
+}
+
+.fc-body {
+  background-color: #f8f8f8;
+}
+
+.fc-day {
+  /*border-left: none !important;
+  border-right: none !important;*/
+}
+
+.fc-head-container {
+  /*border-right: none !important;
+  border-left: none !important;*/
+}
+
+.fc-day-number {
+  font-size: 13px;
+  margin-right: 4px;
+  margin-top: 4px;
+  width: 24px;
+  height: 24px;
+  border-radius: 3px;
+  line-height: 24px;
+  text-align: center;
+  color: #777;
+}
+
+.fc-day-number:hover {
+  text-decoration: none !important;
+  color: #777;
+}
+
+.fc-today {
+  background-color: #E6FAF3 !important; 
+}
+
+.fc-today .fc-day-number {
+  background-color: #00c983; 
+  font-weight: 700;
+  color: #fff;
+}
+
+.fc-widget-content {
+  border-right: solid 8px #f8f8f8 !important;
+  border-left: solid 8px #f8f8f8 !important;
+}
+
+.fc-more-cell > div {
+ text-align: right;
+  margin-right: 8px;
+  font-size: 14px;
+  color: #777;
+}
+
+.fc-more-cell > div > a:hover {
+  text-decoration: none;
+  color: #333;
+}
+
+.fc-content {
+  padding: 1px 4px;
+}
+
+.fc-widget-header {
+  border: none !important; 
+}
+
+.fc-time {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.fc-time.fc-widget-content {
+  border: none;
+}
+
+.fc-time-grid .fc-slats .fc-minor td {
+  border-top-style: none !important; 
+}
+
+.fc-axis.fc-time.fc-widget-content {
+  transform: translate(-8px, -12px);
+}
+
+.fc-popover.fc-more-popover,
+.fc-popover.fc-more-popover .fc-widget-header,
+.fc-popover.fc-more-popover .fc-widget-content {
+  background-color: #fff !important; 
+}
+
+.fc-axis.fc-widget-content {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+#calendar .dot-event {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 10px;
+    vertical-align: text-bottom;
+}
+
+.red {
+  width: 10px;
+  height: 10px;
+  background-color: "#000";
+}
+/* snackbar */
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;} 
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;} 
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+/*  */
+
+.d1{
+  width: 15%;
+
+}
+.d2{
+  width: 25%;
+
+}
+.nameoverflow{
+  white-space: nowrap; 
+  width: 180px;
+overflow: hidden;
+text-overflow: ellipsis;}
+
+/* loader */
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid blue;
+  border-bottom: 16px solid blue;
+  width: 80px;
+  height: 80px;
+  margin-left:40%;
+  margin-top:4%;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+

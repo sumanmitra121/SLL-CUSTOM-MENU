@@ -1,0 +1,641 @@
+<!-- Sidebar/menu -->
+
+<div class="w3-white">
+    <app-afterloginheader></app-afterloginheader>
+    <app-afterloginsidebar></app-afterloginsidebar>
+  
+    <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:300px;margin-top:43px;">
+    
+      <!-- Header -->
+      <header class="w3-container" style="padding-top:22px">
+        <h5><b><i class="fa fa-bullhorn fa-fw"></i> Promotions</b></h5>
+      </header>
+        <div class="w3-container w3-white w3-padding-32">
+            <div class="w3-container">
+        <span>	To view the Birthday/Anniversary form click here  <a  style="cursor:pointer"
+     (click)="openwindow()" 
+      >
+     <strong> VIEW</strong></a>	then click 'Birthday/Anniversary' on the top menu</span>
+     <div class="w3-bar">	
+		
+        <p>Select appropriate TAB to amend the form and change/add questions.</p>
+    <!-- tabs -->
+    <div class="tab">
+      <button class="tablinks" [ngClass]="this.id==='Intro'?'tab_button_active':''" (click)="openCity('Intro')" id="defaultOpen">Introduction Message</button>
+      <button class="tablinks" [ngClass]="this.id==='Confirm'?'tab_button_active':''" (click)="openCity('Confirm')">Confirmation Email</button>
+      <button class="tablinks" [ngClass]="this.id==='Image'?'tab_button_active':''" (click)="openCity('Image')">Image</button>
+      <button class="tablinks" [ngClass]="this.id==='Offer'?'tab_button_active':''" (click)="openCity('Offer')">Popup Offer</button>
+      <button class="tablinks" [ngClass]="this.id==='Questions'?'tab_button_active':''" (click)="openCity('Questions')">Questions</button>
+      <button class="tablinks" [ngClass]="this.id==='Status'?'tab_button_active':''" (click)="openCity('Status')">Status</button>
+      <button class="tablinks" [ngClass]="this.id==='Mailing'?'tab_button_active':''" (click)="openCity('Mailing')">Mailing Email</button>
+      <button class="tablinks" [ngClass]="this.id==='Customers'?'tab_button_active':''" (click)="openCity('Customers')">Customer Database</button>
+    </div>
+   <!-- tabs end -->
+   <!-- introductory message that appears on the form in the landing page-->
+    <div  *ngIf="id==='Intro'" class="tabcontent">
+        <!-- <form > -->
+              <!-- <button></button> -->
+                
+                <div class="form-inline">
+              <label>Introduction (current)
+              <textarea  rows="6" cols="25" readonly [(ngModel)]="this.intro_current"></textarea>
+              </label>
+                
+              <label>Introduction (update) ({{this.role}}/150):
+              <textarea  maxlength="150" rows="6" cols="25" [(ngModel)]="this.intro_update"  (input)="prevent_limited_length($event)"  (keyup)="prevent_limited_length($event)" (change)="prevent_limited_length($event)"></textarea>
+              </label>
+
+              <button class="w3-button w3-green"  (click)="selectwhichtab('Intro')" data-bs-target="#myModal16" data-bs-toggle="modal">Get Data From Admin</button>
+
+
+                 </div>
+      <!-- </form>  -->
+         Please check that your update is correct before you press SUBMIT as the change will take effect immediately
+         
+                <br>
+              <br>  
+              <form class="form-inline" >
+             <button type="submit" class="w3-button w3-green"  (click)="submitpromotion('introduction')" [disabled]="this.intro_update==''">SUBMIT</button>
+            <button type="reset" class="w3-button w3-green reset" value="Reset" (click)="this.intro_update='';this.role=0" style="background-color:#F00">Clear</button> 
+            </form>
+
+              <!-- <div class="form-inline"> -->
+              <!-- </div> -->
+            <!-- <br><br>
+               <br> -->
+   </div>
+<!-- introduction message section ends -->
+<!-- section for confimation email -->
+   <div *ngIf="id==='Confirm'" class="tabcontent">
+    <!-- <form> -->
+            
+          <br>	  
+          This is the email that's sent to a customer who registers for the Birthday/Anniversary Offer. It also qualifies them for your Free Offer<br> 
+          Your staff will ask to see this email in order to verify that they've registered.<br>
+        
+          <div class="form-inline">
+              
+          <label>Confirmation Email (current)
+          <textarea name="introduction" maxlength="500" rows="6" cols="25" readonly [(ngModel)]="confirm_mail_current"></textarea>
+          </label>
+            
+          <label>Confirmation Email (update)
+          <textarea name="introduction" maxlength="500" rows="6" cols="25" [(ngModel)]="confirm_mail_update"></textarea>
+          </label>
+          <button class="w3-button w3-green"  (click)="selectwhichtab('Confirm')" data-bs-target="#myModal16" data-bs-toggle="modal">Get Data From Admin</button>
+
+
+          
+          </div>
+  <!-- </form>  -->
+          
+      
+      Please check that your update is correct before you press SUBMIT as the change will take effect immediately
+     
+            <br>
+          <br>  <form class="form-inline" >
+      <button type="submit" class="w3-button w3-green" (click)="submitpromotion('confirm')" [disabled]="this.confirm_mail_update==''">SUBMIT</button>
+        <button type="reset" value="Reset" class="w3-button w3-green reset" (click)="confirm_mail_update='';" style="background-color:#F00">Clear</button> 
+        </form>
+            
+    </div>
+<!-- section for confirmation email ends -->
+<!-- uploading image for promotions -->
+    <div *ngIf="id==='Image'" class="tabcontent">
+        <form >
+           <br> 
+            Use the VIEW button above to see the image placed at the top of the promotion.<br>
+            <br>This is where you can select the image you want to display on your promotion by choosing from our range of options on the gallery below.<br><br><br>
+            
+                    <strong>STOCK IMAGES</strong> | <i>&copy; These are images our designers have created and can be used for your Menu Promotion. They are copyright protected for other use.</i><br><br>
+      
+              <div class="slideshow-container">
+                <!-- <form  class="form-inline">
+
+
+                    <div class="aboutLeft">
+                        <label class="titleCustom">Description </label>
+                        <textarea name="introduction" maxlength="150" rows="6" cols="25" class="formCssTextArea splMenuDescrip"
+                           readonly>{{spdesc_text_readonly}}</textarea>
+    
+                    </div>
+                    <div class="aboutLeft">
+                        <label class="titleCustom">Description (update) </label>
+                        <textarea id="ab_us" name="introduction"  rows="6" cols="25"
+                      class="formCssTextArea splMenuDescrip" #sp_write_txt></textarea>
+    
+                    </div>
+                </form> -->
+                <br>
+                
+                <!-- <label _ngcontent-vbf-c210="" class="titleCustom">About Us </label> -->
+                <div class="specialMenuImg">
+                       <!-- {{stockImg1}} -->
+                    <div class="imgSectionSpecial"><img src="{{stockImg1}}" data-bs-toggle="modal" data-bs-target="#myModal15"/></div>
+                    <div class="buttonChangeImg">
+                            <button type="submit" class="w3-button w3-green" (click)="openstockmodal()">Change Image</button>
+                    </div>
+                </div>
+                  
+                  </div>
+              
+              <br><div class="form-inline">
+                <!-- On finding an image that you want to use just enter the image code here: -->
+              <!-- <section style="width:150px"> -->
+              <!-- <input type="text" id="imgcode" name="imgcode" value="" size="4"> -->
+             </div>
+                    <br>
+              
+      
+              </form> 
+          
+          <form class="form-inline" >
+          <button type="submit" class="w3-button w3-green" (click)="submitpromotion('Image')">SUBMIT</button>
+            <button type="reset" class="w3-button w3-green reset" value="Reset" style="background-color:#F00">Clear</button> 
+            </form>
+    </div>
+ <!--uploading image for promotions ends here  -->
+<!-- submitting data for offers -->
+    <div *ngIf="id==='Offer'" class="tabcontent">
+	
+        <br>
+        You can change your promotion at anytime. Just amend the details of your offer below.
+        <!-- <form>
+          
+               -->
+              <div class="form-inline">
+            <label>Free Offer Title (current)
+            <textarea name="introduction"  rows="1" cols="25" readonly [(ngModel)]="Free_Offer_Title_current"></textarea>
+            </label>
+              
+            <label>Free Offer Title (update) ({{role_offer_title}}/150):
+            <textarea name="introduction" maxlength="150" rows="1" cols="25" [(ngModel)]="Free_Offer_Title_update" (input)="checkoffer($event,'offertittle')"></textarea>
+            </label>
+
+
+
+            </div>
+        <!-- </form>  -->
+             
+          
+             <!-- <form> -->
+              <div class="form-inline">
+            <label>Free Offer Body Text (current)
+            <textarea name="introduction"  rows="2" cols="20" readonly [(ngModel)]="Free_Offer_Body_Text_current"></textarea>
+            </label>
+              
+            <label>Free Offer Body Text (update) ({{role_offer_body}}/150):
+            <textarea name="introduction" maxlength="150" rows="2" cols="20" [(ngModel)]="Free_Offer_Body_Text_update" (input)="checkoffer($event,'offerbody')"></textarea>
+            </label>
+            <button class="w3-button w3-green"  (click)="selectwhichtab('offer')" data-bs-target="#myModal16" data-bs-toggle="modal">Get Data From Admin</button>
+
+           </div>
+            <!-- </form> -->
+    
+        
+        Please check that the details are correct before you SUBMIT as the change will take effect immediately.<br><br>
+        <form class="form-inline" >
+        <button type="submit" class="w3-button w3-green" (click)="submitpromotion('offer')" [disabled]="Free_Offer_Title_update=='' && Free_Offer_Body_Text_update==''">SUBMIT</button>
+          <button type="reset" class="w3-button w3-green reset" (click)="this.role_offer_body=0;this.role_offer_title=0;this.Free_Offer_Body_Text_update='';this.Free_Offer_Title_update=''" value="Reset" style="background-color:#F00">Clear</button> 
+          </form>
+                 
+                 
+    </div>	
+          <!-- </div> -->
+<!-- submitting data for offers ends -->
+<!-- section for submitting questions -->
+    <div *ngIf="id==='Questions'" class="tabcontent">
+		
+            <br>The default questions of First Name, Last Name, Email, Birthday Date, Anniversary Date and Moble cannot be changed!<br>
+                <br>You can add up to three further questions, placed underneath the default questions. They will be optional for the User to complete unlike the default questions.<br>
+                
+                
+          
+                  <div class="form-inline">
+                <label>Additional Question 1 (current)
+                <textarea name="introduction"  rows="1" cols="20" readonly [(ngModel)]="Additional_Question_1_current"></textarea>
+                </label>
+                  
+                <label>Update ({{this.role_q1}}/50):
+                <textarea name="introduction" maxlength="50" rows="1" cols="20" [(ngModel)]="Additional_Question_1_update" (input)="check_question_length($event,'Q1')"></textarea>
+                </label>
+                   </div>
+       
+                
+                 
+                  
+                  <div class="form-inline">
+                <label>Additional Question 2 (current)
+                <textarea name="introduction"  rows="2" cols="20" readonly [(ngModel)]="Additional_Question_2_current"></textarea>
+                </label>
+                  
+                <label>Update ({{this.role_q2}}/50):
+                <textarea name="introduction" maxlength="50" rows="2" cols="20" [(ngModel)]="Additional_Question_2_update" (input)="check_question_length($event,'Q2')"></textarea>
+                </label>
+            </div>
+               
+              
+                  <div class="form-inline">
+                <label>Additional Question 3 (current)
+                <textarea name="introduction"  rows="2" cols="20" readonly [(ngModel)]="Additional_Question_3_current"></textarea>
+                </label>
+                  
+                <label>Update ({{this.role_q3}}/50):
+                <textarea name="introduction" maxlength="50" rows="2" cols="20" [(ngModel)]="Additional_Question_3_update" (input)="check_question_length($event,'Q3')"></textarea>
+                </label>
+
+                <button class="w3-button w3-green"  (click)="selectwhichtab('Questions')" data-bs-target="#myModal16" data-bs-toggle="modal">Get Data From Admin</button>
+
+
+            </div>
+        
+         
+                Please check that the questions are correct as the change will take effect immediately.<br><br>
+           <br> <form class="form-inline">
+            <button type="submit" class="w3-button w3-green" (click)="submitpromotion('Questions')">SUBMIT</button>
+              <button type="reset" class="w3-button w3-green reset" (click)="this.role_q1=0;this.role_q2=0;this.role_q3=0;this.Additional_Question_3_update='';this.Additional_Question_2_update='';this.Additional_Question_1_update=''" value="Reset" style="background-color:#F00">Clear</button> 
+              </form>
+                
+                
+    </div>
+<!-- section for submitting questios ends -->
+<!-- section for updating (enable/disable) status -->
+
+    <div *ngIf="id==='Status'" class="tabcontent">
+	
+		<br>By default the promotion is run EVERY time the Menu QR Code is scanned. But you may not want it to run every day or every menu. <br>
+		<br>However, we have provided you with complete flexibility to switch the promotion on and off depending on your requirements.<br>
+		<br>Just select "ENABLE" or "DISABLE" from the options shown below...<br>
+		
+		<!-- (Update) -->
+		<!-- <form> -->
+	  <div class="form-inline">
+		<!-- <form class="myForm"> -->
+
+		<!-- <p> -->
+ 
+		<label>Menu
+		<select id="pickup_place" name="pickup_place" #menu_id (change)="getval(menu_id.value,'menu')">
+    <option value=""  [selected]="this.Menu_id==''">Select One</option>
+    <option value="0" [selected]="this.Menu_id=='0'">ALL Menus</option>
+    <option value="1"  [selected]="this.Menu_id=='1'">Breakfast</option>
+    <option value="2"  [selected]="this.Menu_id=='2'">Lunch</option>
+    <option value="3"  [selected]="this.Menu_id=='3'">Dinner</option>
+    <option value="4"  [selected]="this.Menu_id=='4'">Brunch</option>
+    <option value="5"  [selected]="this.Menu_id=='5'">Specials</option>
+    <option value="6"  [selected]="this.Menu_id=='6'">Beverage</option>
+		</select>
+		</label> 
+
+		<label>Day
+		<select id="day" name="day" #sect_id (change)="getval(sect_id.value,'section')">
+		<option value="" [selected]="this.Section_id==''">Select One</option>
+		<option value="1" [selected]="this.Section_id=='1'">ALL Days</option>
+		<option value="2" [selected]="this.Section_id=='2'">Monday</option>
+		<option value="3" [selected]="this.Section_id=='3'">Tuesday</option>
+		<option value="4" [selected]="this.Section_id=='4'">Wednesday</option>
+		<option value="5" [selected]="this.Section_id=='5'">Thursday</option>
+		<option value="6" [selected]="this.Section_id=='6'">Friday</option>
+		<option value="7" [selected]="this.Section_id=='7'">Saturday</option>
+		<option value="8" [selected]="this.Section_id=='8'">Sunday</option>
+		</select>
+		</label> 
+        
+		<label>Status
+		<select id="status" name="status" #stat_id (change)="getval(stat_id.value,'status')">
+		<option value="" selected="selected">Select One</option>
+		<option value="0" [selected]="this.status_id=='0'">Enable</option>
+		<option value="1" [selected]="this.status_id=='1'">Disable</option>
+		</select>
+		</label> 
+	    <!-- </form> -->
+		 
+		<form class="form-inline">
+    <button type="submit" class="w3-button w3-green" (click)="submitpromotion('status')" [disabled]="this.menu=='' && this.section=='' && this.Status==''">SUBMIT</button>
+  	<button type="reset" value="Reset" class="w3-button w3-green reset" (click)="this.menu='';this.section='';this.Status=''" style="background-color:#F00">Clear</button> 
+    	</form>
+    </div>
+
+	
+	
+
+	</div>
+	    <!-- section for updating status ends  -->
+<!-- section for submitting mailing email -->
+
+    <div *ngIf="id==='Mailing'" class="tabcontent">
+			
+  
+                
+              <br>	  
+              This is the email that's sent to a customer around two weeks before their Birthday/Anniversary. It also qualifies them for the Free Offer.<br> 
+              Your staff will ask customers to see this email in order to verify that they've registered.<br>
+              You can change this message at anytime however be aware that the amended email will be the one that is sent to ALL registered customers.<br>
+              <div class="alert alert-warning" role="alert">
+                <h3><strong>Please mention the parameters (as defined below) to config your mail template</strong></h3>
+                
+                <strong>## Salutation ##</strong><br>
+                [User Name]! : Registered User Name Display; 
+                <br>
+                <strong>## Content ##</strong>
+                <br>
+                [Birthday/Anniversary]! : Greeting in Email; 
+                <br>
+                <strong>## Complementary Close ##</strong>
+                <br>
+                [Restaurant's Contact Name]! : Contact Name of Restaurant;<br>
+                [Name of Restaurant]! : Restaurant name;<br> 
+                [Address]!: Restaurant Address;<br> 
+                [Phone]!: Restaurant Phone;<br> 
+                [Email]!: Restaurant Email;<br> 
+                [Menu Url]! : Restaurant QR Menu URL;<br>
+              
+              </div>
+              
+              <br>
+              <div class="form-inline">
+                  
+              <label>Mailing Email (current)
+              <textarea name="introduction" maxlength="500" rows="4" cols="35" readonly [(ngModel)]="Mailing_Email_current">
+      
+      
+                  </textarea>
+              </label>
+                
+              <label>Mailing Email (update)
+              <textarea name="introduction" maxlength="500" rows="4" cols="35" [(ngModel)]="Mailing_Email_update"></textarea>
+              </label>
+
+              </div>
+    
+                 This is the text that is shown at the top of the email and is called the Subject Line. Your customer will recognize immediately what the message is about. We would recommend leaving this set to the default text but you can change it by entering the new text in the box provided.<br>BUT keep in mind that this would be changed on ALL emails sent to customers.
+            <br>
+          <!-- <form> -->
+              <div class="form-inline">
+                  
+              <label>Subject Line (current)
+              <textarea name="introduction" maxlength="50" rows="1" cols="35" readonly [(ngModel)]="Mailing_Email_subject_current">
+      
+                  </textarea>
+              </label>
+                
+              <label>Subject Line (update)
+              <textarea name="introduction" maxlength="50" rows="1" cols="35" [(ngModel)]="Mailing_Email_subject_update"></textarea>
+              </label>
+
+              <button class="w3-button w3-green"  (click)="selectwhichtab('Mailing')" data-bs-target="#myModal16" data-bs-toggle="modal">Get Data From Admin</button>
+
+           </div>
+        <!-- </form>  -->
+          Please check that your update is correct before you press SUBMIT as the change will take effect immediately
+         
+                <br>
+              <br>  <form class="form-inline" >
+          <button type="submit" class="w3-button w3-green" (click)="submitpromotion('Mailing')" [disabled]="Mailing_Email_subject_update=='' && Mailing_Email_update==''">SUBMIT</button>
+            <button type="reset" (click)="this.Mailing_Email_subject_update='';this.Mailing_Email_update=''" value="Reset" class="w3-button w3-green reset" style="background-color:#F00">Clear</button> 
+            </form>
+              </div>
+         <!-- </div>	 -->
+            <!-- section for submitting mailing email ends -->
+            <!-- section for displaying the registered customers -->
+
+ <div *ngIf="id==='Customers'" class="tabcontent">
+			
+			<h5><strong>Client Database</strong></h5>
+			
+			This is the list of every person who has registered for your promotion during the last 30 days. This data will be automatically exported to the email address we hold on our records after the 30 days have expired. This is to comply with CCPA regulations as the Data Processor and which is set out in our Terms and Privacy Agreement.<br>
+			<br>You can manually export any of these records prior to the 30 days by highlighting the record and clicking EXPORT. This file will be sent as a CSV file which you can download to your own system.<br>
+			<br>You can locate a record by entering any of the criteria shown below and pressing SEARCH<br>
+<strong>Once submitted you can see your updated menu by using the VIEW button at the top of the page</strong>
+
+<div class="row m-2">
+  <!-- <div class="col-1"></div> -->
+
+  <div class="col-4">
+    
+    <label><strong>From</strong></label>
+    <input type="date" class="form-control" #date_from>
+  </div>
+  <!-- <div class="col-1"></div> -->
+
+  <div class="col-4">
+    <label><strong>To</strong></label>
+    <input type="date" class="form-control" #date_to>
+  </div>
+  <div class="col-2">
+    <label>&nbsp;</label><br>
+    <button class="w3-button w3-green" (click)="get_corrospond_data(date_from.value,date_to.value)">Search</button>
+  </div>
+</div>
+
+<mat-form-field appearance="outline">
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+
+    <table mat-table [dataSource]="dataSource" matSort #exporter="matTableExporter" matTableExporter [hiddenColumns]="[0]">
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> # </th>
+      <td mat-cell *matCellDef="let row;let i=index"> {{i+1}} </td>
+    </ng-container>
+
+    <!-- Progress Column -->
+    <ng-container matColumnDef="customer_Name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+      <td mat-cell *matCellDef="let row"> {{row.first_name}} {{row.last_name}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="Email">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+      <td mat-cell *matCellDef="let row"> {{row.email}} </td>
+    </ng-container>
+
+
+     <!-- Name Column -->
+     <ng-container matColumnDef="Mobile_No">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Mobile </th>
+      <td mat-cell *matCellDef="let row"> {{row.mobile_no}} </td>
+    </ng-container>
+
+    <!-- Fruit Column -->
+    <ng-container matColumnDef="Birthday">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Birthday </th>
+      <td mat-cell *matCellDef="let row"> {{row.birth_dt | date:'dd/MM/YYYY' }} </td>
+    </ng-container>
+
+    <!-- Fruit Column -->
+    <ng-container matColumnDef="Anniversery">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Anniversery </th>
+      <td mat-cell *matCellDef="let row"> {{row.anniversary_dt | date:'dd/MM/YYYY' }} </td>
+    </ng-container>
+
+     <!-- Fruit Column -->
+     <ng-container matColumnDef="view">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> View </th>
+      <td mat-cell *matCellDef="let row"><i class="fa fa-eye" aria-hidden="true"></i>  </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
+  </table>
+
+  <mat-paginator showFirstLastButtons [pageSizeOptions]="[30, 60, 100]" aria-label="Select page of users"></mat-paginator>
+</div>
+<center>
+<button class="w3-button w3-green m-2 " (click)="exporter.exportTable('csv')">Download CSV</button>
+</center>			
+</div>
+<!-- section for submitting registered customers ends -->
+</div>   
+ </div>       
+</div>
+
+<!-- <div id="snackbar">Successfully Submited</div> -->
+
+</div>  
+
+<!-- <div id="snackbar1">{{m}}</div> -->
+<!-- cropper -->
+<div id="id02" class="w3-modal">
+    <div class="w3-modal-content cropModulContent">
+  
+      <div class="modal-dialog">
+  
+        <div class="modal-content modal_contentCustom">
+
+          <div class="modal-header">
+            <!-- <h4 class="modal-title">Image</h4> -->
+            <!-- <button type="button" class="btn-close" data-bs-dismiss="modal"></button> -->
+           
+            <h4>Select Image</h4>
+            <a  type="button" (click)="save_it('close')">
+              <i class="fa fa-close"></i>
+            </a>
+          </div>
+         
+            <!-- Modal body -->
+  <div class="modal-body">
+    <div class="main_Brouse mainImgBrowse">
+      <div class="titleImgBrowse">
+ 
+        <div id="myBtnContainer" class="dropDownImg">
+        <select #cats (change)="getStockimageonselectcategory(cats.value)">
+          <!-- <option value="">Show all</option> -->
+          <option *ngFor="let cat of category_name" [selected]="cat.id==24"  value="{{cat.id}}">{{cat.name}}</option>
+        
+        </select>
+     
+      </div>
+        </div>
+
+
+
+
+      <!-- Portfolio Gallery Grid -->
+      <div class="row_Brouse">
+        <!-- class="column_Brouse nature" -->
+        <div  class="column_Brouse nature"   *ngFor="let stock of st_img;let i=index">
+          <div class="content_Brouse" >
+        
+            <!-- <img src="/assets/images/mountains.jpg" alt="Mountains" style="width:100%"> -->
+           <!-- {{apiurlset +'stock/' + stock.img_path}} -->
+            <img [src]="apiurlset+'stock/' + stock.img_path"   alt="" id="image_{{i}}" (click)="selectedimage(i,stock.img_path,stock.img_catg,st_img.length)">
+          </div>
+        </div>
+    
+      </div>
+
+      <!-- END MAIN -->
+      </div>
+  </div>
+ <div class="modal-footer">
+  <button type="button" class="btn btn-primary"  (click)="save_it('save')">Save Changes</button>
+
+</div>
+  
+  
+      </div>
+  
+    </div>
+  </div>
+</div>
+<!-- image preview -->
+<div class="modal fade in" id="myModal15">
+  <div class="modal-dialog">
+
+    <div class="modal-content" >
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Image</h4>
+        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal"></button> -->
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body text-center" >
+        <img src="{{stockImg1}}"  class="img-fluid">
+
+        </div>
+
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+<!-- warning shown in modal before the restaurant overrides admin's data -->
+<div class="modal fade in" id="myModal16">
+  <div class="modal-dialog">
+
+    <div class="modal-content" >
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Alert</h4>
+        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal"></button> -->
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body text-center" >
+
+       <h4>Your previously entered data will lost.Do you want to continue? </h4>
+
+        </div>
+
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="w3-button w3-red" data-bs-dismiss="modal">No</button>
+        <button type="button" class="w3-button w3-green" data-bs-dismiss="modal" (click)="getdatafromadmin()">Yes</button>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- spinner -->
+  <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "ball-pulse" [fullScreen] = "true"><p style="color: white" > Searching... </p></ngx-spinner>

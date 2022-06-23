@@ -1,0 +1,555 @@
+<div class="w3-white">
+
+    <!-- Top container -->
+    <div class="w3-bar w3-top w3-highway-blue w3-large" style="z-index:4">
+        <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey"
+            onclick="w3_open();"><i class="fa fa-bars"></i>  Help</button>
+        <span class="w3-bar-item w3-right">SLL Platform</span>
+    </div>
+
+    <!-- <?php echo file_get_contents("navigation-setup.html"); ?> -->
+    <app-menu-setup-sidebar></app-menu-setup-sidebar>
+
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer"
+        title="close side menu" id="myOverlay"></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:300px;margin-top:43px;">
+
+        <!-- Header -->
+        <header class="w3-container" style="padding-top:22px"><br>
+            <p><strong>Thank You for your payment and participation!</strong><br>
+                You can now begin to set-up your platform. Please follow the simple steps below. If you have any
+                problems, please do not hesitate to email us: <a
+                    href="mailto:Support@shoplocallaguna.com">Support@ShopLocalLaguna.com</a></p>
+            <h5><b><i class="fa fa-wpforms"></i> Restaurant - MENU Platform SET-UP</b></h5>
+        </header>
+        <div class="w3-container w3-white w3-padding-24">
+
+
+            <div class="w3-cell-row">
+                <div class="w3-container w3-full w3-cell w3-mobile">
+                    <div class="tab">
+                        <button class="tablinks" (click)="openCity('London')" id="defaultOpen">Breakfast</button>
+                        <button class="tablinks" (click)="openCity('Paris')">Lunch</button>
+                        <button class="tablinks" (click)="openCity('Tokyo')">Dinner</button>
+                        <button class="tablinks" (click)="openCity('Laguna')">Brunch</button>
+                        <button class="tablinks" (click)="openCity('Shrewsbury')">Specials</button>
+                    </div>
+
+                    <div id="London" class="tabcontent" [hidden]="tab1">
+
+                        <label class="titleCustom" for="bkmenu"><input type="checkbox" id="bkmenu" name="bkmenu"
+                                value="bkMenu"> <strong>Breakfast Menu</strong></label>
+                        With the content that you provide to us below, we will design your menu platform. If you offer a
+                        different menu for Breakfast, Lunch, Dinner, Brunch, etc., you can provide us with that
+                        information, and we will create your dynamic menu platform, displaying the appropriate menu, at
+                        your desired times/days. If you offer the same menu every day, simply add the content to the
+                        appropriate option.<br><br>
+
+                        After we set-up your platform the first time, you can then browse and change photos and edit
+                        your menu items and pricing, as needed. The Cover Image is non-editable.<br><br>
+
+
+                        <div class="secDifer">
+                            <label class="titleCustom"><strong>DISPLAY DAY &AMP; TIMES:</strong></label>
+                            Your "dynamic" Menu will automatically change to your breakfast menu, based on your day/time
+                            of day instructions below.<br>
+
+                            Select the days and times to display your Breakfast menu, every week:<br><br>
+
+
+                            <form >
+                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                <label for="vehicle1"> Every Day</label><br>
+                            </form>
+
+                            <form class="form-inline" >
+                                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                <label for="vehicle2"> Monday</label><br>
+                                <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                                <label for="vehicle3"> Tuesday</label><br>
+                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                <label for="vehicle1"> Wednesday</label><br>
+                            </form>
+                            <form class="form-inline" >
+                                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                <label for="vehicle2"> Thursday</label><br>
+                                <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                                <label for="vehicle3"> Friday</label><br>
+                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                <label for="vehicle1"> Saturday</label><br>
+                                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                <label for="vehicle2"> Sunday</label><br>
+                            </form>
+
+                            <form class="form-inline" action="">
+                                <label for="selfcling">Start Time:</label>
+                                <input type="text" id="selfcling" name="selfcling" value="" size="4"><br><br>
+                                <label for="selfcling">End Time:</label>
+                                <input type="text" id="selfcling" name="selfcling" value="" size="4">
+                            </form>
+
+
+                        </div>
+
+                        <button class="w3-button w3-green" type="submit" (click)="clickon('London')">Submit</button>
+                    </div>
+
+                    <div id="Paris" class="tabcontent" [hidden]="tab2">
+                        <label class="titleCustom" for="bkmenu"><input type="checkbox" id="bkmenu" name="bkmenu"
+                                value="bkMenu">
+                            <strong>Lunch Menu</strong></label>
+                        With the content that you provide to us below, we will design your menu platform. If you offer a
+                        different menu for Breakfast, Lunch, Dinner, Brunch, etc., you can provide us with that
+                        information, and we will create your dynamic menu platform, displaying the appropriate menu, at
+                        your desired times/days. If you offer the same menu every day, simply add the content to the
+                        appropriate option.<br><br>
+
+                        After we set-up your platform the first time, you can then browse and change photos and edit
+                        your menu items and pricing, as needed. The Cover Image is non-editable.<br><br>
+
+
+
+                        <div class="secDifer">
+                            <label class="titleCustom"><strong>DISPLAY DAY &AMP; TIMES:</strong></label>
+                            Your "dynamic" Menu will automatically change to your breakfast menu, based on your day/time
+                            of day instructions below.<br>
+
+                            Select the days and times to display your Breakfast menu, every week:<br><br>
+
+
+                            <form >
+                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                <label for="vehicle1"> Every Day</label><br>
+                            </form>
+
+                            <form class="form-inline" >
+                                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                <label for="vehicle2"> Monday</label><br>
+                                <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                                <label for="vehicle3"> Tuesday</label><br>
+                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                <label for="vehicle1"> Wednesday</label><br>
+                            </form>
+                            <form class="form-inline" >
+                                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                <label for="vehicle2"> Thursday</label><br>
+                                <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                                <label for="vehicle3"> Friday</label><br>
+                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                <label for="vehicle1"> Saturday</label><br>
+                                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                <label for="vehicle2"> Sunday</label><br>
+                            </form>
+
+                            <form class="form-inline" >
+                                <label for="selfcling">Start Time:</label>
+                                <input type="text" id="selfcling" name="selfcling" value="" size="4"><br><br>
+                                <label for="selfcling">End Time:</label>
+                                <input type="text" id="selfcling" name="selfcling" value="" size="4">
+                            </form>
+
+
+                        </div>
+
+                        <button class="w3-button w3-green" type="submit" (click)="clickon('Paris')">Submit</button>
+                    </div>
+
+                    <div id="Tokyo" class="tabcontent" [hidden]="tab3">
+                        <label class="titleCustom" for="bkmenu"><input type="checkbox" id="bkmenu" name="bkmenu"
+                                value="bkMenu">
+                            <strong>Dinner Menu</strong></label>
+                        With the content that you provide to us below, we will design your menu platform. If you offer a
+                        different menu for Breakfast, Lunch, Dinner, Brunch, etc., you can provide us with that
+                        information, and we will create your dynamic menu platform, displaying the appropriate menu, at
+                        your desired times/days. If you offer the same menu every day, simply add the content to the
+                        appropriate option.<br><br>
+
+                        After we set-up your platform the first time, you can then browse and change photos and edit
+                        your menu items and pricing, as needed. The Cover Image is non-editable.<br><br>
+
+
+                        <div class="secDifer">
+                            <label class="titleCustom"><strong>DISPLAY DAY &AMP; TIMES:</strong></label>
+                            Your "dynamic" Menu will automatically change to your breakfast menu, based on your day/time
+                            of day instructions below.<br>
+
+                            Select the days and times to display your Breakfast menu, every week:<br><br>
+
+
+                            <form action="">
+                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                <label for="vehicle1"> Every Day</label><br>
+                            </form>
+
+                            <form class="form-inline" >
+                                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                <label for="vehicle2"> Monday</label><br>
+                                <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                                <label for="vehicle3"> Tuesday</label><br>
+                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                <label for="vehicle1"> Wednesday</label><br>
+                            </form>
+                            <form class="form-inline" >
+                                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                <label for="vehicle2"> Thursday</label><br>
+                                <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                                <label for="vehicle3"> Friday</label><br>
+                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                <label for="vehicle1"> Saturday</label><br>
+                                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                <label for="vehicle2"> Sunday</label><br>
+                            </form>
+
+                            <form class="form-inline">
+                                <label for="selfcling">Start Time:</label>
+                                <input type="text" id="selfcling" name="selfcling" value="" size="4"><br><br>
+                                <label for="selfcling">End Time:</label>
+                                <input type="text" id="selfcling" name="selfcling" value="" size="4">
+                            </form>
+
+
+                        </div>
+
+                        <button class="w3-button w3-green" type="submit" (click)="clickon('Tokyo')">Submit</button>
+                    </div>
+
+                    <div id="Laguna" class="tabcontent" [hidden]="tab4">
+                        <label class="titleCustom" for="bkmenu"> <input type="checkbox" id="bkmenu" name="bkmenu"
+                                value="bkMenu">
+                            <strong>Brunch Menu</strong></label>
+                        With the content that you provide to us below, we will design your menu platform. If you offer a
+                        different menu for Breakfast, Lunch, Dinner, Brunch, etc., you can provide us with that
+                        information, and we will create your dynamic menu platform, displaying the appropriate menu, at
+                        your desired times/days. If you offer the same menu every day, simply add the content to the
+                        appropriate option. <br><br>
+
+                        After we set-up your platform the first time, you can then browse and change photos and edit
+                        your menu items and pricing, as needed. The Cover Image is non-editable.<br><br>
+
+                        <br><strong>NOTE:</strong> This Brunch selection will supersede any of the daily selections you
+                        may have selected. Example, if you selected Sunday for the Breakfast menu to display, and then
+                        you select the same day (Sunday) for the Brunch menu to display, the most recent Brunch
+                        selection will apply to Sunday.<br>
+                        <br>
+
+                        <div class="secDifer">
+                            <label class="titleCustom"><strong>DISPLAY DAY &AMP; TIMES:</strong></label>
+                            Your "dynamic" Menu will automatically change to your breakfast menu, based on your day/time
+                            of day instructions below.<br>
+
+                            Select the days and times to display your Breakfast menu, every week:<br><br>
+
+
+                            <form >
+                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                <label for="vehicle1"> Every Day</label><br>
+                            </form>
+
+                            <form class="form-inline" >
+                                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                <label for="vehicle2"> Monday</label><br>
+                                <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                                <label for="vehicle3"> Tuesday</label><br>
+                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                <label for="vehicle1"> Wednesday</label><br>
+                            </form>
+                            <form class="form-inline" >
+                                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                <label for="vehicle2"> Thursday</label><br>
+                                <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                                <label for="vehicle3"> Friday</label><br>
+                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                <label for="vehicle1"> Saturday</label><br>
+                                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                <label for="vehicle2"> Sunday</label><br>
+                            </form>
+
+                            <form class="form-inline" >
+                                <label for="selfcling">Start Time:</label>
+                                <input type="text" id="selfcling" name="selfcling" value="" size="4"><br><br>
+                                <label for="selfcling">End Time:</label>
+                                <input type="text" id="selfcling" name="selfcling" value="" size="4">
+                            </form>
+
+
+                        </div>
+
+                        <button class="w3-button w3-green" type="submit" (click)="clickon('Laguna')">Submit</button>
+                    </div>
+
+                    <div id="Shrewsbury" class="tabcontent" [hidden]="tab5">
+                        <label class="titleCustom" for="bkmenu"><input type="checkbox" id="bkmenu" name="bkmenu"
+                                value="bkMenu">
+                            <strong>Specials Menu</strong></label>
+                        After we set-up your platform the first time, you can then browse and change photos and edit
+                        your menu items and pricing, as needed. The Cover Image is non-editable.<br>
+                        <br>If you do not have a Specials menu that you would like to include onto your platform now,
+                        please skip this area. You can always add a Specials menu from your back office, 24/7.<br> <br>
+
+
+                        <div class="secDifer">
+                            <label class="titleCustom"><strong>MENU:</strong></label>
+                            Upload a PDF file of your Specials menu.<br>
+
+                            <input type="checkbox" id="menuImg" name="menuImg" value="menuImg">
+                            <label for="menuImg"> <strong>File</strong></label><br>
+                            <form >
+                                <label for="myfile">Select file/s:</label>
+                                <input type="file" id="myfile" name="myfile" multiple><br>
+                            </form><br>
+
+                            <input type="checkbox" id="menuImg" name="menuImg" value="menuImg">
+                            <label for="menuImg"> <strong>Your Web Site Address/URL:</strong></label><br>
+                            Or, please provide a web site address/url where we can collect your menu content:
+                            <form>
+                                <label for="url">Enter the url:</label> <input type="text" id="url" name="url" value=""
+                                    size="28">
+                            </form>
+                            <p style="font-style: italic">If we cannot collect the content from your web site, we will
+                                contact you</p>
+
+
+                            <p>Please select your SPECIALS menu image from our gallery.<br>
+                                When you select your SPECIALS menu image, it will include a color coordinated pop-up
+                                (per the below, if you would like your SPECIALS menu to display WITH your normally
+                                scheduled menu, a "pop-up" will display.)</p>
+                        </div>
+
+                        <div class="secDifer">
+                            <label class="titleCustom"><strong>DISPLAY DAY &amp; TIMES:</strong></label>
+                            When you select your <strong>SPECIALS</strong> menu's day/times, a new TAB will display at
+                            the top of your menu platform to alert your customers that a Specials menu is available.<br>
+
+                            <br><strong>NOTE:</strong> If you would like to schedule "more than one"
+                            <strong>SPECIALS</strong> menu at a time, please complete one (and submit), then start
+                            another. Always do one at a time.<br>
+                            <br>You have <strong>"TWO OPTIONS"</strong> for how your <strong>SPECIALS</strong> menu will
+                            be displayed:<br>
+
+                            <br><strong>EXCLUSIVELY:</strong> Your <strong>SPECIALS</strong> menu will display<strong>
+                                "by itself"</strong> on your selected day/time (replacing your normally scheduled
+                            menus.) <br>
+
+                            <br><strong>IN ADDITION:</strong> Your <strong>SPECIALS</strong> Menu will be displayed
+                            <strong>"with"</strong> your normally scheduled menu, on your selected day/time.<br>
+
+                            <br>Additionally, a <strong>SPECIALS</strong> TAB will appear on the navigation bar to alert
+                            your customers that a Specials menu is available. <br>
+
+                            <br><strong>NOTE:</strong> If you would like to schedule "more than one"
+                            <strong>SPECIALS</strong> menu at a time, please complete one (and submit), then start
+                            another. Always do one at a time.<br><br>
+
+                            <input type="checkbox" id="exc" name="exc" value="exc">
+                            <label for="exc"> <strong>EXCLUSIVELY</strong></label><br>
+                            If you would like your <strong>SPECIALS</strong> menu to display
+                            <strong>EXCLUSIVELY</strong> (your "normally scheduled" menus <strong>will not</strong>
+                            display, and will be <strong>REPLACED</strong> with your <strong>SPECIALS</strong> menu),
+                            please select the display days/times:<br>
+
+
+
+                            <form action="">
+                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                <label for="vehicle1"> <strong>EVERY WEEK</strong></label><br> Select the day(s) to
+                                display your <strong>SPECIALS</strong> menu
+                            </form>
+                            <form class="form-inline" action="">
+                                <input type="checkbox" id="vehicle5" name="vehicle5" value="Plane">
+                                <label for="vehicle5"> Every Day</label><br>
+                                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                <label for="vehicle2"> Monday</label><br>
+                                <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                                <label for="vehicle3"> Tuesday</label><br>
+                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                <label for="vehicle1"> Wednesday</label><br>
+                            </form>
+                            <form class="form-inline" action="">
+                                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                <label for="vehicle2"> Thursday</label><br>
+                                <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                                <label for="vehicle3"> Friday</label><br>
+                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                <label for="vehicle1"> Saturday</label><br>
+                                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                <label for="vehicle2"> Sunday</label><br>
+                            </form>
+
+                            Select your normally scheduled menu to replace:<br>
+
+                            <form class="form-inline" action="">
+                                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                <label for="vehicle2"> Breakfast</label><br>
+                                <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                                <label for="vehicle3"> Lunch</label><br>
+                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                <label for="vehicle1"> Dinner</label><br>
+                                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                <label for="vehicle2"> Brunch</label><br>
+                            </form><br>
+                            <form action="">
+                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                <label for="vehicle1"> <strong>SPECIFIC DATE:</strong></label><br> Select the specific
+                                date that you would like your <strong>SPECIALS</strong> menu to display<br>
+
+                                <input type="date" id="special" name="special">
+                            </form> <br>
+                            TIME: Select the normally scheduled menu that your SPECIALS menu will display with:
+
+                            <form class="form-inline" action="">
+                                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                <label for="vehicle2"> Breakfast</label><br>
+                                <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                                <label for="vehicle3"> Lunch</label><br>
+                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                <label for="vehicle1"> Dinner</label><br>
+                                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                <label for="vehicle2"> Brunch</label><br>
+                            </form>
+                        </div>
+
+                        <!--
+    <hr style="height:2px; width:100%; border-width:0; color:red; background-color:red">
+    <hr style="height:2px; width:100%; border-width:0; color:red; background-color:red">
+    -->
+
+                        <div class="secDifer">
+                            <label for="exc" class="titleCustom">
+                                <input type="checkbox" id="exc" name="exc" value="exc">
+                                <strong>IN ADDITION</strong></label>
+                            If you would like your <strong>SPECIALS</strong> menu to display <strong>IN
+                                ADDITION</strong> to your "normally scheduled" menus (your <strong>SPECIALS </strong>
+                            menu will be displayed <strong>WITH</strong> your Specials menu), please select the display
+                            days/times:<br>
+                            <br>NOTE: When your customer views your normally scheduled menu, they will ALSO see a
+                            pop-up, indicating there is a SPECIALS menu to view. <br><br>
+
+                        </div>
+
+                        <div class="secDifer">
+
+                            <form action="">
+                                <label for="vehicle1" class="titleCustom"><input type="checkbox" id="vehicle1"
+                                        name="vehicle1" value="Bike">
+                                    <strong>EVERY WEEK</strong></label>Select the day(s) to display your
+                                <strong>SPECIALS</strong> menu
+                            </form>
+                            <form class="form-inline" action="">
+                                <input type="checkbox" id="vehicle5" name="vehicle5" value="Plane">
+                                <label for="vehicle5"> Every Day</label><br>
+                                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                <label for="vehicle2"> Monday</label><br>
+                                <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                                <label for="vehicle3"> Tuesday</label><br>
+                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                <label for="vehicle1"> Wednesday</label><br>
+                            </form>
+                            <form class="form-inline" action="">
+                                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                <label for="vehicle2"> Thursday</label><br>
+                                <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                                <label for="vehicle3"> Friday</label><br>
+                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                <label for="vehicle1"> Saturday</label><br>
+                                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                <label for="vehicle2"> Sunday</label><br>
+                            </form>
+
+                            <strong>TIME:</strong> Select the normally scheduled menu that your
+                            <strong>SPECIALS</strong> menu will display with:<br>
+
+                            <form class="form-inline" action="">
+                                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                <label for="vehicle2"> Breakfast</label><br>
+                                <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                                <label for="vehicle3"> Lunch</label><br>
+                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                <label for="vehicle1"> Dinner</label><br>
+                                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                <label for="vehicle2"> Brunch</label><br>
+                            </form><br>
+                            <form action="">
+                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                <label for="vehicle1"> <strong>SPECIFIC DATE:</strong></label><br> Select the specific
+                                date that you would like your <strong>SPECIALS</strong> menu to display<br>
+                                <br>Date for Specials Menu:
+                                <input type="date" id="special" name="special">
+                            </form><br>
+                            <strong>TIME:</strong> Select the normally scheduled menu that your SPECIALS menu will
+                            display with:<br>
+
+                            <form class="form-inline" action="">
+                                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                <label for="vehicle2"> Breakfast</label><br>
+                                <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                                <label for="vehicle3"> Lunch</label><br>
+                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                <label for="vehicle1"> Dinner</label><br>
+                                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                <label for="vehicle2"> Brunch</label><br>
+                            </form><br>
+                        </div>
+                        <button class="w3-button w3-green" type="submit">Previous</button> <button
+                            class="w3-button w3-green" type="submit">Next & Continue</button>
+                    </div>
+
+                    <br><br><br>
+
+
+                </div>
+
+
+                <!-- <?php /*?> -->
+                <!-- <div class="w3-container w3-half w3-cell w3-mobile">
+                    <div class="logoRightSec">
+                        <label class="titleCustom"><strong>LOGO</strong></label>
+
+                        <input type="checkbox" id="logo" name="logo" value="Logo">
+                        <label for="logo"><strong>Logo File</strong></label><br>
+                        <p>Upload your logo which needs to be in JPG or PNG format :</p>
+                
+                            <label for="myfile">Select files:</label>
+                            <input type="file" id="myfile" name="myfile" multiple><br>
+
+
+                            <strong><u>OR</u></strong><br>
+
+                            <input type="checkbox" id="logo2" name="logo2" value="Logo Link">
+                            <label for="logo2"> <strong>Logo Url</strong></label>
+                            <p>Please provide a url/website address where we can collect your logo.</p>
+                            <form>
+                                <label for="url">Enter the url:</label>
+                                <input type="text" id="url" name="url" value="" size="28"><br>
+                            </form>
+                            <p style="font-style: italic">If we cannot collect the logo from your web site, we will
+                                contact you</p>
+
+                            <form action="menu-setup-2.php" target="_self">
+                                <button class="w3-button w3-green" type="submit">SAVE and continue</button>
+                            </form>
+                    </div>
+                </div> -->
+
+
+
+            </div>
+        </div>
+        <!-- <?php echo file_get_contents("footer.html"); ?>	 -->
+
+
+
+
+
+
+        <br>
+        <!-- Footer -->
+    </div>
+
+    <!-- End page content -->
+
+
+</div>

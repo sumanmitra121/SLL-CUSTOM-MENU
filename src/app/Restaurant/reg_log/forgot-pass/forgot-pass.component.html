@@ -1,0 +1,40 @@
+<div class="mainContainer">
+
+    <!--<div class="row">
+      <div class="column left" style="background-color:">
+      </div>-->
+        <div class="loginSec">
+      <div class="column middle" >
+         <form #forgotForm="ngForm" (ngSubmit)="send_email(forgotForm.value)">
+      <div class="imgcontainer">
+        <img src="/assets/images/sll_logo.png" alt="Avatar" class="avatar">
+      </div>
+    <!-- form starts here -->
+      <div class="container">
+        <label for="uname"><b style="color: white">Email Id</b></label>
+        <input type="email" (keyup)="check_mail($event)" placeholder="Enter Email Id" autocomplete="off" pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" id="uname" name="email1" required #email1="ngModel" ngModel>
+        <div *ngIf="email1.errors?.required  && (email1.dirty || email1.touched)" class="text-danger"><div class="text-danger" [hidden]="!email1.errors?.required">
+          Email is required
+        </div>
+       <div class="text-danger" [hidden]="!email1.errors?.pattern">
+          Not a valid email
+       </div></div>
+      <div class="text-danger" *ngIf="show_msg==true">Email doesn't exist</div>
+    
+        
+          
+        
+    
+        <button type="submit" [disabled]="forgotForm.invalid || invalid_data">Submit</button>
+      </div>
+    
+      <div class="container" >
+      </div>
+    </form> 
+      </div>
+        </div>
+      <!--<div class="column right" style="background-color:">
+      </div>
+    </div>-->	
+    </div>	
+        

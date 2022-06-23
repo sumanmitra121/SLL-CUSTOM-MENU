@@ -1,0 +1,468 @@
+<div class="w3-light-grey">
+
+    <!-- Top container -->
+    <div class="w3-bar w3-top w3-indigo w3-large" style="z-index:4">
+        <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i> &nbsp;Menu</button>
+        <span class="w3-bar-item w3-right">Restaurant Project</span>
+        </div>
+            
+        <!-- <?php echo file_get_contents("navigation-admin.html"); ?> -->
+        <app-Header></app-Header>
+    
+   
+    
+    
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+    
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:300px;margin-top:43px; padding: 5%;">
+    
+      <!-- Header -->
+      <header class="w3-container" style="padding-top:22px">
+        <h5><b><i class="fa fa-bullhorn fa-fw"></i> Promotions</b></h5>
+      </header>
+
+      <div class="w3-bar">	
+		
+        <p>Select appropriate TAB to amend the form.</p>
+    <!-- show tabs -->
+    <div class="tab">
+      <button class="tablinks" [ngClass]="this.id==='Intro'?'tab_button_active':''" (click)="openCity('Intro')" id="defaultOpen">Introduction Message</button>
+      <button class="tablinks" [ngClass]="this.id==='Confirm'?'tab_button_active':''" (click)="openCity('Confirm')">Confirmation Email</button>
+      <!-- <button class="tablinks" [ngClass]="this.id==='Image'?'tab_button_active':''" (click)="openCity('Image')">Image</button> -->
+      <button class="tablinks" [ngClass]="this.id==='Offer'?'tab_button_active':''" (click)="openCity('Offer')">Popup Offer</button>
+      <button class="tablinks" [ngClass]="this.id==='Questions'?'tab_button_active':''" (click)="openCity('Questions')">Questions</button>
+      <!-- <button class="tablinks" [ngClass]="this.id==='Status'?'tab_button_active':''" (click)="openCity('Status')">Status</button> -->
+      <button class="tablinks" [ngClass]="this.id==='Mailing'?'tab_button_active':''" (click)="openCity('Mailing')">Mailing Email</button>
+      <button class="tablinks" [ngClass]="this.id==='Privacy'?'tab_button_active':''" (click)="openCity('Privacy')"><small> Privacy and Authorization</small></button>
+      <!-- <button class="tablinks" [ngClass]="this.id==='Customers'?'tab_button_active':''" (click)="openCity('Customers')">Customer Database</button> -->
+    </div>
+   <!-- tabs end -->
+   <!-- tab for introduction -->
+    <div  *ngIf="id=='Intro'" class="tabcontent">
+        <form >
+            
+                
+                <div class="form-inline">
+              <label class="titleCustom">Introduction (current) </label>
+              <textarea name="introduction"  rows="6" cols="25" readonly>{{intro_readonly}}</textarea>
+             
+                
+              <label class="titleCustom">Introduction (update)({{this.role}}/150): </label>
+              <textarea name="introduction" (input)="getdatalength($event)" id="introtext" #intro_text maxlength="150" rows="6" cols="25"></textarea>
+             
+                 </div>
+      </form> 
+         Please check that your update is correct before you press SUBMIT as the change will take effect immediately
+         
+                <br>
+              <br>  
+              <form class="form-inline" >
+                <div class="formBtn">
+                    <button type="submit" class="w3-button w3-green" (click)="submit_intro(intro_text.value)">SUBMIT</button>
+                    <button type="reset" class="w3-button w3-green reset" value="Reset" id="clickreset" (click)="reset_intro()" class="w3-button w3-green reset">Clear</button>
+                </div>
+             <!-- <button type="submit" class="btn btn-success" >SUBMIT</button>
+            <button type="reset" value="Reset" style="background-color:#F00">Clear</button>  -->
+            </form>
+   </div>
+<!-- tab for introduction ends -->
+<!-- tab for confirmation email -->
+   <div *ngIf="id=='Confirm'" class="tabcontent">
+    <form>
+            
+          <br>	  
+          This is the email that's sent to a customer who registers for the Birthday/Anniversary Offer. It also qualifies them for your Free Offer<br> 
+          Your staff will ask to see this email in order to verify that they've registered.<br>
+        
+          <div class="form-inline">
+              
+          <label class="titleCustom">Confirmation Email (current) </label>
+          <textarea name="introduction" maxlength="500" rows="6" cols="25" readonly>{{conf_readonly}}</textarea>
+         
+            
+          <label class="titleCustom">Confirmation Email (update)</label>
+          <textarea id="conftext" #conf_text name="introduction"  maxlength="500" rows="6" cols="25"></textarea>
+          
+          </div>
+  </form> 
+          
+      
+      Please check that your update is correct before you press SUBMIT as the change will take effect immediately
+     
+            <br>
+          <br>  <form class="form-inline" >
+            <div class="formBtn">
+                <button type="submit" class="w3-button w3-green" (click)="submit_conf(conf_text.value)">SUBMIT</button>
+                <button type="reset" class="w3-button w3-green reset" value="Reset" id="clickreset" (click)="reset_conf()" class="w3-button w3-green reset">Clear</button>
+            </div>
+      <!-- <button type="submit" class="btn btn-default" >SUBMIT</button>
+        <button type="reset" value="Reset" style="background-color:#F00" >Clear</button>  -->
+        </form>
+            
+    </div>
+<!-- not needed -->
+    <div *ngIf="id=='Image'" class="tabcontent">
+        <form >
+           <br> 
+            <!-- Use the VIEW button above to see the image placed at the top of the promotion.<br> -->
+            <br>This is where you can select the image you want to display on your promotion by choosing from our range of options on the gallery below.<br><br><br>
+            
+                    <strong>STOCK IMAGES</strong> | <i>&copy; These are images our designers have created and can be used for your Menu Promotion. They are copyright protected for other use.</i><br><br>
+<!--       
+              <div class="slideshow-container">
+      
+              <div class="mySlides fade">
+                <div class="numbertext">1 / 3</div>
+                <img src="../images/gallery-1.jpg" style="width:100%">
+                <div class="text">Code: 101</div>
+              </div>
+      
+              <div class="mySlides fade">
+                <div class="numbertext">2 / 3</div>
+                <img src="../images/gallery-2.jpg" style="width:100%">
+                <div class="text">Code: 202</div>
+              </div>
+      
+              <div class="mySlides fade">
+                <div class="numbertext">3 / 3</div>
+                <img src="../images/gallery-3.jpg" style="width:100%">
+                <div class="text">Code: 303</div>
+              </div>
+      
+              <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+              <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      
+              
+    
+                  </div> -->
+                  <div class="specialMenuImg">
+                           
+                    <div class="imgSectionSpecial"><img src="{{spstockImg}}"/></div>
+                    <div class="buttonChangeImg">
+                            <button type="submit" class="w3-button w3-green" (click)="openstockmodal()">Change Image</button>
+                    </div>
+                </div>
+              
+              <br>
+              <!-- <div class="form-inline">
+                On finding an image that you want to use just enter the image code here:
+              <section style="width:150px"> 
+              <input type="text" id="imgcode" name="imgcode" value="" size="4">
+             </div> -->
+                    <br>
+              
+      
+              </form> 
+          
+          <form class="form-inline" >
+            <div class="formBtn">
+                <button type="submit" class="w3-button w3-green" (click)="submit_image()">SUBMIT</button>
+                <!-- <button type="reset" class="w3-button w3-green reset" value="Reset" id="clickreset" (click)="reset_conf()" class="w3-button w3-green reset">Clear</button> -->
+            </div>
+
+            </form>
+    </div>
+<!--  -->
+<!-- tab for offers -->
+    <div *ngIf="id=='Offer'" class="tabcontent">
+	
+        <br>
+        You can change your promotion at anytime. Just amend the details of your offer below.
+        <form>
+          
+              
+              <div class="form-inline">
+            <label class="titleCustom">Free Offer Title (current)</label>
+            <textarea name="introduction"  rows="1" cols="25" readonly>{{offer_title_readonly}}</textarea>
+            
+              
+            <label class="titleCustom">Free Offer Title (update)({{role_offer_title}}/150): </label>
+            <textarea #offer_title id="offertitle" name="introduction" maxlength="150"  (input)="checkpopupoffer($event,'offertitle')" rows="1" cols="25">{{offer_title_readonly}}</textarea>
+           
+            </div>
+        </form> 
+             
+          
+             <form>
+              <div class="form-inline">
+            <label class="titleCustom">Free Offer Body Text (current)</label>
+            <textarea name="introduction"  rows="2" cols="20" readonly >{{offer_body_readonly}}</textarea>
+            
+              
+            <label class="titleCustom">Free Offer Body Text (update) ({{role_offer_body}}/150):</label>
+            <textarea #offer_body id="offerbody" name="introduction" maxlength="150" rows="2" cols="20" (input)="checkpopupoffer($event,'offerbody')">{{offer_body_readonly}}</textarea>
+            
+           </div>
+            </form>
+    
+        
+        Please check that the details are correct before you SUBMIT as the change will take effect immediately.<br><br>
+        <form class="form-inline" >
+            <div class="formBtn">
+                <button type="submit" class="w3-button w3-green" (click)="submit_offer(offer_title.value,offer_body.value)">SUBMIT</button>
+                <button type="reset" class="w3-button w3-green reset" value="Reset" id="clickreset" (click)="reset_offer()" class="w3-button w3-green reset">Clear</button>
+            </div>
+        <!-- <button type="submit" class="btn btn-default" >SUBMIT</button>
+          <button type="reset" value="Reset" style="background-color:#F00" >Clear</button>  -->
+          </form>
+                 
+                 
+    </div>	
+  <!-- tab for offers ends -->
+          <!-- </div> -->
+<!-- tab for questions -->
+    <div *ngIf="id=='Questions'" class="tabcontent">
+		
+            <br>The default questions of First Name, Last Name, Email, Birthday Date, Anniversary Date and Moble cannot be changed!<br>
+                <br>You can add up to three further questions, placed underneath the default questions. They will be optional for the User to complete unlike the default questions.<br>
+                
+                
+            <form >
+              
+                  
+                  <div class="form-inline">
+                <label class="titleCustom">Additional Question 1 (current)</label>
+                <textarea name="introduction"  rows="1" cols="20" readonly>{{q1_readonly}} </textarea>
+                
+                  
+                <label class="titleCustom">Update ({{this.role_q1}}/50):</label>
+                <textarea #q_1 id="q1" name="introduction" maxlength="50" rows="1" cols="20" (input)="check_question_length($event,'Q1')">{{q1_readonly}}</textarea>
+                
+                   </div>
+        </form> 
+                
+                 <form >
+              
+                  
+                  <div class="form-inline">
+                <label class="titleCustom">Additional Question 2 (current) </label>
+                <textarea name="introduction"  rows="2" cols="20" readonly>{{q2_readonly}}</textarea>
+               
+                  
+                <label class="titleCustom">Update ({{this.role_q2}}/50):</label>
+                <textarea #q_2 id="q2" name="introduction" maxlength="50" rows="2" cols="20" (input)="check_question_length($event,'Q2')">{{q2_readonly}}</textarea>
+                
+            </div>
+               
+                 </form>
+                <form >
+              
+                  
+                  <div class="form-inline">
+                <label class="titleCustom">Additional Question 3 (current)</label>
+                <textarea name="introduction"  rows="2" cols="20" readonly>{{q3_readonly}}</textarea>
+                
+                  
+                <label class="titleCustom">Update ({{this.role_q3}}/50): </label>
+                <textarea #q_3 id="q3" name="introduction" maxlength="50" rows="2" cols="20" (input)="check_question_length($event,'Q3')">{{q3_readonly}}</textarea>
+               
+            </div>
+        
+                </form>
+                Please check that the questions are correct as the change will take effect immediately.<br><br>
+           <br> <form class="form-inline">
+            <div class="formBtn">
+                <button type="submit" class="w3-button w3-green" (click)="submit_qsn(q_1.value,q_2.value,q_3.value)">SUBMIT</button>
+                <button type="reset" class="w3-button w3-green reset" value="Reset" id="clickreset" (click)="reset_qsn()"  class="w3-button w3-green reset">Clear</button>
+            </div>
+            <!-- <button type="submit" class="btn btn-default" >SUBMIT</button>
+              <button type="reset" value="Reset" style="background-color:#F00" >Clear</button>  -->
+              </form>
+                
+                
+    </div>
+<!-- tab for questions ends -->
+
+
+    
+<!-- tab for mailing mal -->
+
+    <div *ngIf="id=='Mailing'" class="tabcontent">
+			
+        <form>
+                
+              <br>	  
+              This is the email that's sent to a customer around two weeks before their Birthday/Anniversary. It also qualifies them for the Free Offer.<br> 
+              Your staff will ask customers to see this email in order to verify that they've registered.<br>
+              You can change this message at anytime however be aware that the amended email will be the one that is sent to ALL registered customers.<br><br>
+              <div class="form-inline">
+                  
+              <label class="titleCustom">Mailing Email (current) </label>
+              <textarea name="introduction" maxlength="500" rows="4" cols="35" readonly>
+  {{mail_readonly}}
+      
+                  </textarea>
+             
+                
+              <label class="titleCustom">Mailing Email (update) </label>
+              <textarea #mail_val id="mailval" name="introduction" maxlength="500" rows="4" cols="35"></textarea>
+             
+              </div>
+      </form> 
+                 This is the text that is shown at the top of the email and is called the Subject Line. Your customer will recognize immediately what the message is about. We would recommend leaving this set to the default text but you can change it by entering the new text in the box provided.<br>BUT keep in mind that this would be changed on ALL emails sent to customers.
+            <br>
+          <form>
+              <div class="form-inline">
+                  
+              <label class="titleCustom">Subject Line (current)  </label>
+              <textarea name="introduction" maxlength="50" rows="1" cols="35" readonly>{{subject_readonly}}
+      
+                  </textarea>
+            
+                
+              <label class="titleCustom">Subject Line (update) </label>
+              <textarea #subject_line id="subjectline" name="introduction" maxlength="50" rows="1" cols="35"></textarea>
+             
+           </div>
+        </form> 
+          Please check that your update is correct before you press SUBMIT as the change will take effect immediately
+         
+                <br>
+              <br>  <form class="form-inline" >
+                <div class="formBtn">
+                    <button type="submit" class="w3-button w3-green" (click)="submit_email(mail_val.value,subject_line.value)">SUBMIT</button>
+                    <button type="reset" class="w3-button w3-green reset" value="Reset" id="clickreset" (click)="reset_email()" class="w3-button w3-green reset">Clear</button>
+                </div>
+         
+            </form>
+              </div>
+         <!-- </div>	 -->
+            <!--tab for mailing mail ends  -->
+            <!-- tab for privacy text -->
+         <div *ngIf="id=='Privacy'" class="tabcontent">
+			
+          <form>
+                  
+                <br>	  
+             
+                <div class="form-inline">
+                 This is the privacy notice displayed in Birthday/Anniversary modal.<br> 
+                 
+                <!-- <label>Privacy Notice (current) 
+                <textarea name="introduction"  maxlength="500" rows="4" cols="35" readonly>
+    {{privacy_readonly}}
+        
+                    </textarea>
+                </label> -->
+                 
+                <label class="titleCustom">Privacy Notice (update) ({{role1}}/200)</label>
+                <textarea #priv_div id="privval" (change)="getdatalength1($event)" (input)="getdatalength1($event)" name="priv" maxlength="200" rows="4" cols="35"> {{privacy_readonly}}</textarea>
+                
+                </div>
+        </form> 
+                   This is the text that is shown beside the authorization checkbox Your customer will recognize immediately what the message is about. We would recommend leaving this set to the default text but you can change it by entering the new text in the box provided.
+              <br>
+            <form>
+                <div class="form-inline">
+                    
+                <!-- <label>Authorization Text (current)
+                <textarea name="introduction" maxlength="50" rows="1" cols="35" readonly>{{auth_readonly}}
+        
+                    </textarea>
+                </label> -->
+                  
+                <label class="titleCustom">Authorization Text (update) ({{role2}}/100)</label>
+                <textarea #auth_div id="authval" (change)="getdatalength2($event)" (input)="getdatalength2($event)" name="auth" maxlength="100" rows="1" cols="35"> {{auth_readonly}}</textarea>
+                
+             </div>
+
+          </form> <br>
+          <form >
+            <div class="form-inline">
+              <label class="titleCustom" for="frmbgcol">Form background color:</label>
+              <input type="color" id="frmbgcol" [value]="bg_col" #frm_bg>
+            </div>
+          </form>
+            Please check that your update is correct before you press SUBMIT as the change will take effect immediately
+           
+                  <br>
+                <br>  <form class="form-inline" >
+                  <div class="formBtn">
+                      <button type="submit" class="w3-button w3-green" (click)="submit_priv(priv_div.value,auth_div.value,frm_bg.value)">SUBMIT</button>
+                      <button type="reset" class="w3-button w3-green reset" value="Reset" id="clickreset" (click)="reset_priv()" class="w3-button w3-green reset">Clear</button>
+                  </div>
+           
+              </form>
+                </div>
+<!-- tab for privacy text ends -->
+	
+  <br>
+  <!-- Footer -->
+		
+
+  <!-- End page content -->
+	
+
+
+
+</div> 
+
+       
+</div>
+<app-footer></app-footer>
+<!-- not needed -->
+<div id="id02" class="w3-modal">
+    <div class="w3-modal-content cropModulContent">
+  
+      <div class="modal-dialog">
+  
+        <div class="modal-content modal_contentCustom">
+  
+            <!-- Modal body -->
+  <div class="modal-body">
+    <div class="main_Brouse mainImgBrowse">
+      <div class="titleImgBrowse">
+        <h2>Choose image</h2>
+        <div id="myBtnContainer" class="dropDownImg">
+        <select #cats (change)="getStockimageonselectcategory(cats.value)">
+          <option value="">Show all</option>
+          <option *ngFor="let cat of category_name" value="{{cat.id}}">{{cat.name}}</option>
+        <!-- <option onclick="filterSelection('all')"> Show all</option>
+        <option onclick="filterSelection('nature')"> Nature</option>
+        <option onclick="filterSelection('cars')"> Cars</option>
+        <option onclick="filterSelection('people')"> People</option> -->
+        </select>
+     
+      </div>
+        </div>
+
+
+
+
+      <!-- Portfolio Gallery Grid -->
+      <div class="row_Brouse">
+        <!-- class="column_Brouse nature" -->
+        <div  class="column_Brouse nature"   *ngFor="let stock of st_img;let i=index">
+          <div class="content_Brouse" >
+        
+            <!-- <img src="/assets/images/mountains.jpg" alt="Mountains" style="width:100%"> -->
+           <!-- {{apiurlset +'stock/' + stock.img_path}} -->
+            <img [src]="apiurlset+'stock/' + stock.img_path"   alt="" (click)="selectedimage(i,stock.img_path,stock.img_catg,st_img.length)" id="image_{{i}}">
+          </div>
+        </div>
+    
+      </div>
+
+      <!-- END MAIN -->
+      </div>
+  </div>
+ <div class="modal-footer">
+  <button type="button" class="btn btn-danger"  (click)="save_it('close')">Close</button>
+  <button type="button" class="btn btn-primary"  (click)="save_it('save')">Save Changes</button>
+
+</div>
+  
+  
+      </div>
+  
+    </div>
+  </div>
+  </div>
+  <!--  -->
+<!-- spinner  -->
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "timer" [fullScreen] = "true"><p style="color: white" > Processing... </p></ngx-spinner>
+<!-- snackbar -->
+<div id="snackbar">{{m}}</div>
+    

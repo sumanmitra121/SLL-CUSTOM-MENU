@@ -1,0 +1,270 @@
+<div class="w3-light-grey">
+
+    <!-- Top container -->
+    <div class="w3-bar w3-top w3-indigo w3-large" style="z-index:4">
+        <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i> &nbsp;Menu</button>
+        <span class="w3-bar-item w3-right">Restaurant Project</span>
+        </div>
+            
+        <!-- <?php echo file_get_contents("navigation-admin.html"); ?> -->
+        <app-Header></app-Header>
+    
+   
+    
+    
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+    
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:300px;margin-top:43px; padding: 5%;">
+    
+      <!-- Header -->
+      <header class="w3-container" style="padding-top:22px">
+        <h5><b><i class="fa fa-qrcode fa-fw"></i> Event Calendar</b></h5>
+      </header>
+        <!-- <div class="w3-container w3-light-grey"> -->
+            <!-- <div class="w3-container w3-half w3-cell w3-mobile"> -->
+
+              <!-- option to choose between the calendar by user or restaurant -->
+              <div class="row">
+                <div class="col-2">
+                  <label>
+                  <input type="radio" name="rest" checked id="restaurant" value="1" (change)="getrestaurantcalendar($event,'restaurant','1')">&nbsp;<strong>By Restaurant</strong></label>
+                </div>
+                <div class="col-2">
+                 <label>
+                 <input type="radio" name="rest" id="user" value="0" (change)="getrestaurantcalendar($event,'user','0')">&nbsp;<strong>By User</strong></label>
+               </div>
+              </div>
+          <!-- <img src="/assets/images/events-cal-view.jpg" width="100%" height="auto"> -->
+          <full-calendar [options]="calendarOptions" ></full-calendar>
+            
+            <!-- </div> -->
+                
+            <!-- <div class="w3-container w3-half w3-cell w3-mobile">	 -->
+                
+         <!-- <strong>New Event Entry</strong><br><br>
+          Enter the data below and save to the Calendar.<br>
+     -->
+    <!-- <form class="form-inline">
+    
+        <div class="fieldSecFull">
+            <label for="event">Event Name:</label>
+            <input type="event" id="event" placeholder="" name="name"><br>
+        </div>
+        <div class="fieldSecFull">
+            <label for="pwd">Date:</label>
+            <input type="email" id="cnct" placeholder="" name="cnct"><br>
+        </div >
+
+  
+     <div class="fieldSecFull">
+        <label for="tel">Time:</label>
+        <input type="email" id="tel" placeholder="" name="tel"><br>
+     </div><br>
+     <div class="fieldSecFull">
+        <label for="add">Headliner:</label>
+        <input type="email" id="add" placeholder="" name="add"><br>
+     </div>
+     <div class="fieldSecFull">
+        <label for="web">Tickets URL:</label>
+        <input type="email" id="web" placeholder="" name="web"><br>
+         </div>
+
+         <div class="fieldSecFull">
+            <label for="descrip">Description (brief details about event)</label>
+            <textarea name="description" maxlength="500"></textarea>
+
+         </div>
+   
+    </form>
+        <form class="form-inline" action="">
+        <button type="submit" class="btn btn-default">SAVE TO CALENDAR</button>
+          <button type="reset" value="Reset" style="background-color:#F00">Clear</button> 
+          </form> -->
+                
+                
+                <!-- </div>	 -->
+                
+            
+                <!-- <?php echo file_get_contents("footer.html"); ?>	  -->
+    <!-- </div> -->
+        
+      <br>
+      <!-- Footer -->
+            
+    
+      <!-- End page content -->
+        
+    
+<!--         
+    <script>
+   r
+    var mySidebar = document.getElementById("mySidebar");
+    
+  
+    var overlayBg = document.getElementById("myOverlay");
+    
+   
+    function w3_open() {
+      if (mySidebar.style.display === 'block') {
+        mySidebar.style.display = 'none';
+        overlayBg.style.display = "none";
+      } else {
+        mySidebar.style.display = 'block';
+        overlayBg.style.display = "block";
+      }
+    }
+    
+ tton
+    function w3_close() {
+      mySidebar.style.display = "none";
+      overlayBg.style.display = "none";
+    }
+    </script> -->
+    <div id="snackbar">{{m}}</div>
+
+    
+</div>
+<app-footer></app-footer>
+
+<button hidden type="button" id="modalbutton" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#eventModal">
+    Open modal
+    </button>
+    <!-- The Modal -->
+   
+<!-- The Modal -->
+<!-- modal to add and update an event -->
+<div class="modal" id="eventModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header color-head">
+        <h4 class="modal-title head-font" >Events/Calendar</h4>
+        <!-- <button type="button" class="close" data-bs-dismiss="modal">&times;</button> -->
+       <a type="button" class="close" data-bs-dismiss="modal" ><i (click)="clear_all()" class="fa fa-close" style="color: white;"></i></a> 
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+      <label>Add Events:</label>
+       <input type='text' id="event" class="form-control" [(ngModel)]="event_name" />
+     
+       <div class="row">
+           <div class="col-6">
+              <label>Date:</label>
+              <input type="text" readonly id="date" class="form-control" value="{{this.start_date| date:'dd/MM/YYYY'}}"
+              >
+           </div>
+           <div class="col-6">
+              <label>Time:</label>
+              <input type="time" id="time" #end_date  class="form-control build-font form_cont_Cust" 
+              (change)="changedatetime($event)">
+           </div>
+       </div>
+       <label>Title:</label>
+       <input type="text" id="head" class="form-control" [(ngModel)]="headliner">
+
+       <label>Ticket URL:</label>
+       <input type="text" id="url" class="form-control" [(ngModel)]="Url">
+
+       <label>Description:</label>
+       <textarea  id="description" rows="4" cols="5"  class="form-control" [(ngModel)]="desc"></textarea>
+      </div>
+
+<div class="p-3">
+  <div class="prvImgCustom" *ngIf="show_event_img">
+    <img id="imgeve" height="100" width="100" alt="" src="{{img_cover}}">
+</div>
+  <button hidden  id="logo_crop" (click)="open_crop_modal()" ></button>
+
+  <input type="file" class="form-control" id="myfile" class="uploadField" name="myfile" (change)="upload_logo($event)">
+</div>
+     
+<!-- cropper -->
+<div id="id01" class="w3-modal">
+  <div class="w3-modal-content cropModulContent">
+
+    <div class="modal-dialog">
+
+      <div class="modal-content modal_contentCustom">
+
+        
+
+        <div class="modal-body">
+      <!-- <div class="row">
+          <div class="col-2 text-center">
+              <i class="fa fa-minus-circle fa-2x " type="button" [hidden]="ZoomIn"  (click)="zoomOut()"></i>
+          </div>
+          <div class="col-2">
+              <i class="fa fa-plus-circle fa-2x " type="button" [hidden]="Zoomout" (click)="zoomIn()"></i>
+          </div>
+          <div class="col-2">
+              <button class="float-right" (click)="close_modal_on_crop()">&times;</button>
+          </div>
+      </div> -->
+
+      <ul class="cropBtnTop">
+          <li><i class="fa fa-minus-circle fa-2x " type="button" [hidden]="ZoomIn"  (click)="zoomOut()"></i></li>
+<li>                <i class="fa fa-plus-circle fa-2x " type="button" [hidden]="Zoomout" (click)="zoomIn()"></i></li>
+      <li>                <button class="cropCloseBtn" (click)="close_modal_on_crop()">&times;</button></li>
+      
+</ul>
+
+         
+          <image-cropper [hidden]="hide" [imageChangedEvent]="img_cover"
+          [maintainAspectRatio]="true" 
+        
+          [onlyScaleDown]="false" 
+          
+          [cropperMaxWidth]="crop_width"
+          [cropperMaxHeight]="crop_height"
+          
+          
+          (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+          (cropperReady)="cropperReady($event)"
+          (loadImageFailed)="loadImageFailed()"
+          [style.display]="showCropper ? null: 'none'" [transform]="transform">
+        </image-cropper>
+
+        </div>
+        <footer class="w3-container w3-right cropFooter">
+          <button class="btn btn-danger"   
+          (click)="click_it()">Save</button>
+        </footer>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<!-- cropper -->
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <input type="text" hidden id="eventid">
+        <button type="button"class="btn1 btn-success btn-sm text-decoration-none" data-bs-dismiss="modal" *ngIf="cal_flag=='N'" (click)="approve_event()" >Approve</button>
+        <button type="button"class="btn1 btn-primary btn-sm text-decoration-none" data-bs-dismiss="modal" (click)="addevent(end_date.value)">Save</button>
+
+        <!-- <button type="button" class="btn1 btn-danger btn-sm text-decoration-none" data-bs-dismiss="modal">Close</button> -->
+      </div>
+
+    </div>
+  </div>
+</div>
+<button hidden mat-icon-button id="ev_dt" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+  <mat-icon>more_vert</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>
+    <!-- <mat-icon>dialpad</mat-icon> -->
+    <span>{{event_name}}</span>
+  </button>
+ 
+</mat-menu>
+<!-- spinner -->
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "timer" [fullScreen] = "true"><p style="color: white" > Processing... </p></ngx-spinner>
+
+
+    

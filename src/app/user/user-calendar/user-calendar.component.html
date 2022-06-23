@@ -1,0 +1,70 @@
+
+<!-- back button to move to the menu -->
+<!-- <button class="btn back_button" (click)="back_click()" > Back</button>  -->
+<app-common-section></app-common-section>
+<!-- spinner -->
+<ngx-spinner bdColor = "{{bgspinner}}" template="{{template_spinner}}" size = "medium" color = "#fff" type = "ball-climbing-dot" [fullScreen] = "true"><p style="color: white" >Opening our calendar... </p></ngx-spinner>
+<div id="main">
+    <div class="noMenuSecGroup popupCalender w3-animate-opacity">
+        <!-- user calendar -->
+    <full-calendar  [options]="calendarOptions"></full-calendar>
+    
+        <!-- <a mat-fab>Link</a> -->
+       
+       <!-- <img class="feedback" id="mybutton" src="/assets/images/eventmusic.jpg" alt="" height="700" width="400" > -->
+    
+    </div>
+    <div id="ev_dtls_modal" class="w3-modal modalCustom">
+        <div class="w3-modal-content modalDialogCustom w3-animate-zoom">
+      
+          <div class="modal-dialog modalDialogCustom">
+      
+            <div class="modal-content">
+      
+              <button type="button" class="close closeCustom" (click)="close_ev_dtls()">&times;</button>
+      
+      <!-- modal to show event list on a particular day -->
+              <div class="modal-body">
+                <div class="menuSecGroup" >
+                  <div class="menuSecGroupImg"><img _ngcontent-chx-c163="" alt="" src=""></div>
+                  <div class="menuSecGroupTitle">
+                    <h6 *ngIf="Event1.length!=0">Event(s) on {{ev_dt | date}}:</h6>
+                    <h6 *ngIf="Event1.length==0" >No Events on {{ev_dt | date}}</h6>
+                  </div>
+                  <div>
+                  <div class="menuSecGroupListNew">
+                    <div class="menuSecGroupListGroupNew">
+                      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="menuTable">
+      
+                        <tr matTooltip="click to view details of {{i.event_title}}"
+                        matTooltipPosition="after" *ngFor="let i of Event1" class="menuAllListTr" style="cursor: pointer;" (click)="eventclick(i.id)">
+                          <td style="padding:20px" class="menuAllList">
+                            <img  *ngIf="i.imageUrl" height="60" width='60' src="{{url1+'/'+i.imageUrl}}" alt="">
+                            <h3 class="ev-dtls">{{i.event_title}}</h3>
+                                      
+                           </td>
+                          
+                        </tr>
+      
+                      </table>
+                      <!-- <p class="descroption">{{m1.item_desc}}</p> -->
+                    </div>
+      
+      
+      
+                  </div>
+      </div>
+                </div>
+      
+      
+              </div>
+              
+      
+            </div>
+      
+          </div>
+      
+        </div>
+      </div>
+</div>
+

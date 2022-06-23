@@ -1,0 +1,37 @@
+<nav class="w3-sidebar w3-collapse w3-dark-grey w3-animate-left" style="z-index:3;width:200px;" id="mySidebar"><br>
+
+    <div class="w3-container">
+       <!-- <img src="assets/images/the_cliff_logo.png" width="100%" height="auto"><br> -->
+       <!-- <img src="{{logo_res}}" width="100%" height="auto"  class="rounded-circle"><br><br> -->
+
+       <div class="resturentLeftLogo"><img src="{{logo_res}}" width="100%" height="auto"  class="rounded-circle"></div>
+
+      <h5 style="font-weight: bold">MENU</h5>
+    </div>
+    <!-- sidebar -->
+    <div class="w3-bar-block" id="side_nav_bar">
+      <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
+      <a (click)="go_to_res()" class="w3-bar-item w3-button w3-padding search"><i class="fa fa-home fa-fw"></i>  Restaurant Menu</a>
+      <a routerLink="/EventCalendar" routerLinkActive="true" class="w3-bar-item w3-button w3-padding renew" [hidden]="event"><i class="fa fa-calendar fa-fw"></i>  Events Calendar</a>
+   <!--<a href="vcard-check.php" class="w3-bar-item w3-button w3-padding search"><i class="fa fa-id-card fa-fw"></i>  vCard</a> -->
+   <!--   <a href="" class="w3-bar-item w3-button w3-padding renew"><i class="fa fa-book fa-fw"></i>  Ebrochure</a>  -->
+   <!--   <a href="qrc.php" class="w3-bar-item w3-button w3-padding renew"><i class="fa fa-qrcode fa-fw"></i>  QRCode</a> -->
+      <a *ngIf="show_promo=='Y'" routerLink="/promotion" routerLinkActive="true" class="w3-bar-item w3-button w3-padding message" ><i class="fa fa-bullhorn fa-fw"></i>  Promotions</a>
+      <a routerLink="/additionalproduct" routerLinkActive="true" class="w3-bar-item w3-button w3-padding account"><i class="fa fa-credit-card fa-fw"></i>  Additional Products</a>
+      <a routerLink="/account" routerLinkActive="true" class="w3-bar-item w3-button w3-padding account"><i class="fa fa-credit-card fa-fw"></i>  Account</a>
+      <!-- <a  class="w3-bar-item w3-button w3-padding" (click)="go_out()"><i class="fa fa-history fa-fw"></i>  Sign Out</a> -->
+    </div>
+      <!-- sidebar ends -->
+      <br>
+      <section class="resturentLeftFooter"><p>Powered by... <a href="https:www.shoplocallaguna.com"><img src="assets/images/sll_logo.png" target="_blank" alt="image" width="40%"></a></p>
+  
+        <!-- <a href="https:www.fozzysites.com"><img src="assets/images/powered_by_white-fozzy.png" target="_blank" alt="image" width="50%" id="powered_by_white.png" /></a>		 -->
+            </section>	
+
+
+
+      <!-- <section align="center"><br><br>powered by...<br><br>
+  <a href="https:www.shoplocallaguna.com"><img src="assets/images/sll_logo.png" target="_blank" alt="image" width="40%"></a><br><br>
+ 
+      </section>	 -->
+  </nav>

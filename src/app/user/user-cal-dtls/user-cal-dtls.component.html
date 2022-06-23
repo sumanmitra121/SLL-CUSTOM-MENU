@@ -1,0 +1,128 @@
+<div class="w3-content" style="max-width:1200px">
+
+    <!-- Top menu on small screens -->
+    <header class="w3-bar w3-top  w3-black w3-large">
+        <!--    <div align="left" style="margin-left:10px"><img src="images/logo-3.png"></div> -->
+        <div class="w3-bar-item w3-padding-8">Entertainment</div>
+        <a style="cursor: pointer;" (click)="go_to_user_cal()" class="mt-2 w3-bar-item w3-button w3-padding-8 w3-right">
+            <i class="fa fa-arrow-left pull-right" aria-hidden="true"></i>
+        </a>
+    </header>
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu"
+        id="myOverlay"></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:250px">
+
+        <!-- Push down content on small screens -->
+        <div class="w3-hide-large" style="margin-top:30px"></div>
+
+        <!-- Top header -->
+        <header class="w3-container w3-large">
+        </header>
+
+        <!-- Image header -->
+        <div class="w3-display-container w3-container">
+            <!--   <img src="images/shops-header.jpg" alt="Laguna Village Shops" style="width:100%">  -->
+
+        </div>
+<!-- event details -->
+        <div id="amr" class="w3-container w3-third"> <br>
+            <div *ngIf="eventTitle!=''" class="w3-container w3-black w3-display-container">
+                <a>
+                    <h3 class="move-back">
+                 
+                       
+                            <font color="#FFFFFF"><strong>{{eventTitle}}</strong></font>
+                        
+                        
+                           
+                       
+                 
+                      
+                       
+                    </h3>
+                   
+                </a>
+            </div>
+            <div class="w3-row w3-border">
+
+                <img src="{{eventImg}}"
+                   id="eventimageID" style="width:100%">
+                <button onclick="myFunction('Demo2')" class="w3-btn w3-block w3-black w3-left-align">{{eventName}}</button>
+                <!-- <div id="Demo2" class="w3-container w3-hide">  -->
+                <div class="tab">
+                    <button class="tablinks" (click)="openCity($event, 'date')" id="defaultOpen_date">Date</button>
+
+                    <!-- <button class="tablinks" onclick="openCity(event, 'about')" id="defaultOpen">Event Date</button> -->
+                    <button class="tablinks" (click)="openCity($event, 'about')" id="defaultOpen_about">About</button>
+                    <!-- <button class="tablinks" onclick="openCity(event, 'website')">Website</button> -->
+                    <!-- <button class="tablinks" onclick="openCity(event, 'map')">Video</button> -->
+                </div>
+
+                <div id="date" class="tabcontent" [hidden]="showDate">
+                    <p><strong>Date: {{eventDate | date:'dd-MM-YYYY'}}</strong>
+                    </p>
+                    <p><strong>Time: {{eventTime}}</strong>
+                    </p>
+                </div>
+                <div id="about" class="tabcontent" [hidden]="!showDate">
+                    <p *ngIf="eventDesc!=''" ><strong>{{eventDesc}}</strong>
+                    </p>
+                    <p *ngIf="eventDesc==''" ><strong>No description available...</strong>
+                    </p>
+                </div>
+
+                <!-- <div id="offer" class="tabcontent">
+                    <p></p>
+                </div> -->
+<!-- 
+                <div id="website" class="tabcontent">
+                    <strong>Website</strong>
+                    <p> <a href="https://www.facebook.com/FAMILYSTYLEUSA" target="_blank">Our Facebook Page</a><br><br>
+
+                    </p>
+                </div>
+
+                <div id="map" class="tabcontent">
+                    <video width="100%" height="312" controls>
+                        <source
+                            src="https://mifrends.com/restaurants/the-cliff/laguna-beach-fun-directory/acts/videos/family-style.mp4"
+                            type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div> -->
+                <br> <a href="{{eventTKTURL}}" target="_blank"><button class="w3-button w3-round-large w3-blue-gray">BOOK TICKETS</button></a>
+                <div id="cal"></div>
+                <hr class="new2">
+
+            </div>
+
+
+            <!-- Product grid -->
+            <!-- <div class="w3-row">
+               
+
+
+              
+                <footer class="w3-padding-64 w3-black w3-small w3-center" id="footer">
+
+
+
+
+                   
+            </div> -->
+
+          
+
+
+
+
+        </div>
+<!-- event detail ends -->
+    </div>
+    </div>
+    <!-- spinner -->
+ <ngx-spinner bdColor = "{{bgspinner}}"  size = "medium" color = "#fff" type = "ball-climbing-dot" [fullScreen] = "true" template="{{template_spinner}}"><p style="color: white" >Let's see what we've got... </p></ngx-spinner>

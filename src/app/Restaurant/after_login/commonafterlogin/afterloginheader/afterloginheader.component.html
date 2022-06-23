@@ -1,0 +1,159 @@
+
+<div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
+    <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i> &nbsp;Menu</button>
+    <span class="w3-bar-item w3-left">SLL PLATFORM</span>
+    <span class="w3-bar-item w3-right font_icon">
+
+      <a type="button"  [matMenuTriggerFor]="menu"><i class="fa fa-cog " aria-hidden="true"></i></a>
+      <!-- <a></a> -->
+
+      <mat-menu #menu="matMenu" class="p-3">
+<!-- dropdown at the right corner -->
+        <button mat-menu-item onclick="document.getElementById('restaurant').style.display='block'">
+          <!-- <mat-icon>dialpad</mat-icon> -->
+          <i class="fa fa-user p-3"></i>
+          <strong>My profile</strong>
+        </button>
+      
+        <button mat-menu-item (click)="log_out()">
+          <!-- <mat-icon>notifications_off</mat-icon> -->
+          <i class="fa fa-sign-out p-3"></i>
+          <strong>Log Out</strong>
+        </button>
+      </mat-menu>
+      </span>
+    <!-- <span class="w3-bar-item w3-right font_icon"><a><i class="fa fa-bell-o" aria-hidden="true"></i></a></span> -->
+
+  </div>
+
+    <!-- Restaurants Modal for profile settings -->
+    <div id="restaurant" class="w3-modal">
+      <div class="w3-modal-content  w3-animate-zoom">
+          <div class="w3-container h-20">
+          <span onclick="document.getElementById('restaurant').style.display='none'" class="w3-button w3-display-topright w3-font-size small">x</span>
+          <p></p><h4>Profile Settings</h4>
+        </div>
+        <!-- form starts here (template driven form) -->
+        <div class="w3-container">
+          <!-- <p>Please complete and submit to register your restaurant:</p> -->
+          <!-- <form> -->
+            <div class="tab">
+              <button class="tablinks" id="sett" [ngClass]="this.Id==='settings'?'tab_button_active':''" (click)="openCity('settings')" >Profile Setting</button>
+              <button class="tablinks" [ngClass]="this.Id==='change'?'tab_button_active':''" (click)="openCity('change')">Change Password</button>
+            </div>
+
+            <div  *ngIf="Id==='settings'" class="tabcontent">
+            <div class="row mt-3">
+            <div class="col-6">
+              <label><strong>Restaurant Name</strong></label>
+              <input  class="form-control p-3" type="text" placeholder="Restaurant Name" required name="Name" 
+              [(ngModel)]="res_name">
+          
+            </div>
+            <div class="col-6">
+              <label><strong>Contact</strong></label>
+              <input class="form-control p-3"
+              [(ngModel)]="res_contact__name"
+              type="text" placeholder="Contact Name" required name="Contact" >
+             
+            </div>
+            </div>
+            <div class="row mt-3">
+            <div class="col-6">
+              <label><strong>Telephone</strong></label>
+              <input 
+              [(ngModel)]="res_tel_no"
+              
+              class="form-control p-3" id="tel" type="text"  placeholder="Telephone" required name="Telephone">
+            
+            
+            </div>
+            <div class="col-6">
+              <label><strong>Email</strong></label>
+              <input class="form-control p-3" id="em" type="text" [(ngModel)]="Email" placeholder="Email" name="Email"  readonly> 
+           
+        
+            </div>
+            <!-- <div *ngIf="show_msg==true" class="text-danger">Email already exists</div> -->
+            </div>
+            <!-- </div> -->
+            <div class="row mt-3">
+            <div class="col-6">
+              <label><strong>Address1</strong></label>
+              <input class="form-control p-3" type="text" placeholder="Address 1"
+              [(ngModel)]="add1"
+              required name="Address1">
+           </div>
+            <div class="col-6">
+              <label><strong>Address2</strong></label>
+              
+              <input [(ngModel)]="add2" class="form-control p-3" type="text" placeholder="Address 2" name="Address2" ></div>
+            </div>
+            <div class="row mt-3">
+            <div class="col-6">
+              <label><strong>City</strong></label>
+              <input
+              [(ngModel)]="city"
+              class="form-control p-3" type="text" placeholder="City/State"  name="cityState">
+              
+            
+            </div>
+            <div class="col-6">
+              <label><strong>Zip/Postal Code</strong></label>
+              <input 
+              [(ngModel)]="zip"
+              class="form-control p-3" type="text" placeholder="zip/Postal code*"   name="zip">
+             
+            
+            </div>
+            </div> 
+            <div class="row mt-3">
+              <div class="col-12">
+               <label><strong>Website</strong></label>
+                  <input
+                  [(ngModel)]="website"
+                  class="form-control p-3" type="text" placeholder="Website"  name="website">
+                </div>
+            </div>  
+            <div class="rowCustom">
+              <!-- {{regForm.invalid}}|{{this.invalid_data}} -->
+            <div class="fieldFull">
+              <button class="m-3 w3-button w3-highway-blue w3-right" (click)="submit_profile_data()">SUBMIT</button></div>
+            </div>
+            </div>
+            <div  *ngIf="Id==='change'" class="tabcontent">
+              <div class="row mt-4">
+                <div class="col-6">
+                  <label><strong>Old Password</strong></label>
+                  <input  class="form-control p-3" id="Pass1" type="password" placeholder="Old Password" [(ngModel)]="old_pass" name="old_password" 
+                  >
+              
+                </div>
+                <div class="col-6">
+                  <label><strong>New Password</strong></label>
+                  <input class="form-control p-3"  id="pass2" [(ngModel)]="new_pass" type="password" placeholder="New Password"  name="new_password" >  
+                </div>
+                </div>
+                <div class="row mt-4">
+                  <div class="col-6">
+                    <label><strong>Confirm Password</strong></label>
+                    <input class="form-control p-3"  id="pass3" [(ngModel)]="con_pass" type="password" placeholder="Confirm Password"  name="confirm_password" >  
+                  </div>
+                  <div class="col-4"></div>
+                  <div class="col-2 mt-5">
+                    <input type="checkbox" (change)="show_hide($event)"><strong class="p-1">Show Password</strong> 
+                  </div>
+                </div>
+                <div class="rowCustom">
+                  <!-- {{regForm.invalid}}|{{this.invalid_data}} -->
+                <div class="fieldFull">
+                  <button class="m-3 w3-button w3-highway-blue w3-right" (click)="submit_password()" [disabled]="this.old_pass==''||this.new_pass==''||this.con_pass==''">SUBMIT</button></div>
+                </div>
+            </div>
+          <!-- </form> -->
+<div id="snackbar">{{pass_user}}</div>
+
+
+        </div>
+      </div>
+    </div>

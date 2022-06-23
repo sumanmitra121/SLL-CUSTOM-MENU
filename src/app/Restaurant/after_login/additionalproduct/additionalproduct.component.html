@@ -1,0 +1,222 @@
+<div class="w3-white">
+    <app-afterloginheader></app-afterloginheader>
+    <app-afterloginsidebar></app-afterloginsidebar>
+  
+    <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:300px;margin-top:43px;">
+    
+      <!-- Header -->
+      <header class="w3-container" style="padding-top:22px">
+        <h5><b><i class="fa fa-users fa-fw"></i> Account</b></h5>
+      </header>
+        <div class="w3-container w3-white w3-padding-32">
+            <div class="w3-container">
+        <!-- <span>	To view the Birthday/Anniversary form click here  <a href="https://shoplocallaguna.com/restaurants/the-cliff/dinner.php" 
+      target="popup" 
+      onclick="window.open('https://shoplocallaguna.com/restaurants/the-cliff/dinner.php','popup','width=400,height=600'); return false;">
+     <strong> VIEW</strong></a>	then click 'Birthday/Anniversary' on the top menu</span> -->
+     <div class="w3-bar">	
+		
+        <p>Select appropriate TAB to view data and usage.</p>
+    
+    <div class="tab">
+      <button class="tablinks" [ngClass]="this.id==='updatepackage'?'tab_button_active':''" (click)="openCity('updatepackage')" >Update Package</button>
+      <button class="tablinks"  [ngClass]="this.id==='updateproduct'?'tab_button_active':''" (click)="openCity('updateproduct')">Update Products</button>
+   
+    </div>
+<!-- tab for package update -->
+
+<div id="updatepackage" *ngIf="id==='updatepackage'" class="tabcontent">
+    <br>
+
+    <div class="packageMainBox">
+        <div class="packageBox">
+            <h3>Standard</h3>
+            <div class="priceSecBox">
+                <p class="priceSec"><span class="priceUnite">$</span>{{sp_monthly}}<span
+                        class="month">/month</span></p>
+                <p class="setup">(Additional ${{sp_setup}} Set-Up)</p>
+            </div>
+            <div class="menuSec">
+                <span>{{menus_first}}</span>
+                
+            </div>
+
+            <div class="description">
+                <ul>
+                    <li [hidden]="stnd_spl_menu">Special Menu</li>
+                    <li>Calendar 
+                        <!-- - <p class="text-muted">{{this.price_e}}</p> -->
+                    </li>
+                    <li>Birthday/Anniversary Promotion 
+                        <!-- - <span>{{this.price_b}}</span> -->
+                    </li>
+                </ul>
+            </div>
+            
+            <button type="button"  (click)="enable_package_next(1)" [hidden]="standard">Select</button>
+          <div [hidden]="!standard" style="margin-top: -23px;">
+            <svg class="checkmark" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 52 52"><circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
+          </div>  
+
+        </div>
+
+        <div class="packageBox">
+            <h3>Standard+</h3>
+            <div class="priceSecBox">
+                <p class="priceSec"><span class="priceUnite">$</span>{{spp_monthly}}<span
+                        class="month">/month</span></p>
+                <p class="setup">(Additional ${{spp_setup}} Set-Up)</p>
+            </div>
+            <div class="menuSec">
+               <span>{{menus_second}}</span>
+            </div>
+
+            <div class="description">
+                <ul>
+                    <li [hidden]="stnd_plus_spl_menu">Special Menu</li>
+                    <li>Calendar 
+                        <!-- -<span>{{this.price_e}}</span> -->
+                    </li>
+                    <li>Birthday/Anniversary Promotion 
+                        <!-- -<span>{{this.price_b}}</span> -->
+                    </li>
+                </ul>
+            </div>
+            <button type="button" (click)="enable_package_next(2)" [hidden]="standardplus">Select</button>
+          <div style="margin-top: -23px;" [hidden]="!standardplus">
+            <svg class="checkmark"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
+          </div>  
+        </div>
+
+        <div class="packageBox">
+            <h3>Premium </h3>
+            <div class="priceSecBox">
+                <p class="priceSec"><span class="priceUnite">$</span>{{p_monthly}}<span
+                        class="month">/month</span></p>
+                <p class="setup">(Additional ${{p_setup}} Set-Up)</p>
+            </div>
+            <div class="menuSec">
+               <span>{{menus_third}}</span>
+            </div>
+
+            <div class="description">
+                <ul>
+                    <li [hidden]="premium_spl_menu">Special Menu </li>
+                    <li>Calendar 
+                        <!-- -<span>{{this.price_e}}</span> -->
+                    </li>
+                    <li>Birthday/Anniversary Promotion 
+                        <!-- -<span>{{this.price_b}}</span> -->
+                    </li>
+                </ul>
+            </div>
+            <button type="button" (click)="enable_package_next(3)" [hidden]="premium">Select</button>
+         <div style="margin-top: -23px;" [hidden]="!premium">
+            <svg class="checkmark"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
+         </div>   
+
+        </div>
+
+
+    </div>
+    <br>
+
+    <button class="w3-button w3-green" type="submit" [disabled]="enable_next" (click)="enable_birthday()">Update</button>
+
+
+
+       
+    </div>
+<!-- tab for package update ends -->
+<!-- tab for updating products -->
+    <div id="updateproduct" *ngIf="id==='updateproduct'" class="tabcontent">
+        <div class="row">
+            <div class="col-6">
+                <label class="titleCustom" for="option1a"><input [checked]="op1=='Y'" type="checkbox" id="option1a" 
+                    (change)="getcheckvalue($event)">
+                   <strong>Birthday/Anniversary - {{price_b}}</strong></label>
+            </div>
+            <div class="col-6">
+                <label class="titleCustom" for="option2a"><input [checked]="op2=='Y'" type="checkbox" id="option2a" 
+                    (change)="getcheckvalue($event)">
+                  <strong>Entertainment / Event Calendar - {{price_e}}</strong></label>
+            </div>
+        </div>
+        <div class="row">
+             <div class="col-6">
+                <label class="titleCustom" for="option3"> 
+                            
+                    <strong>Acrylic Two-Sided Tabletop or Wall Sign Holder</strong></label>
+                    <div class="row">
+                        <div class="col-7">
+                            <label for="tblsign">5" x 7" Tabletop Sign Holder - {{cling_data1}} </label>
+                        </div>
+                        <div class="col-2">
+                            <input type="text" id="tblsign" name="tblsign" [(ngModel)]="Tabletop_Sign_Holder" size="4" #tblsign>
+    
+                        </div>
+                    </div>
+                   
+                    <br><br>
+                    <div class="row">
+                        <div class="col-7">
+                            <label for="wallsign1">5" x 7" Wall Mount Sign Holder - {{cling_data2}}</label>
+    
+                        </div>
+                        <div class="col-2">
+                            <input type="text" id="wallsign1" name="wallsign1" [(ngModel)]="Wall_Mount_Sign_Holder1" size="4" #wallsign1>
+    
+                        </div>
+                    </div>
+                    <br><br>
+    
+                    <div class="row">
+                        <div class="col-7">
+                            <label for="wallsign2">8.5" x 11" Wall Mount Sign Holder - {{cling_data3}}</label><br>
+    
+                        </div>
+                        <div class="col-2">
+                            <input type="text" id="wallsign2" name="wallsign2" [(ngModel)]="Wall_Mount_Sign_Holder2" size="4" #wallsign2>
+    
+    
+                        </div>
+                    </div>
+             </div>
+            <div class="col-6">
+                <label class="titleCustom" for="option4">
+                        
+                    <strong>Self-adhering 6" x 10" Window Cling</strong></label>
+                <div class="row">
+                    <div class="col-5">
+                        <label for="selfcling">6" x 10" Window Clings - {{cling_data4}}</label>     
+                        <br>
+                  
+                    </div>
+                    <div class="col-2">
+                      <input type="text" id="selfcling" name="selfcling" [(ngModel)]="Window_Clings" size="4" #selfcling>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+             <button class="w3-button w3-green m-3" type="submit" (click)="update_package()">Update</button>
+  
+
+                <!-- <br> -->
+       
+    </div>
+    <!-- tab for updating products ends -->
+ </div>
+</div>
+</div>
+</div>
+
+</div>
+<!-- snackbar -->
+<div id="snackbar">Updated Successfully</div>
+
